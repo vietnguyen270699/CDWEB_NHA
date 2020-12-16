@@ -11,7 +11,7 @@ public class AccountController {
 
     @GetMapping("profile")
     public ModelAndView frofile() {
-        return new ModelAndView("userprofile");
+        return new ModelAndView("agentprofile");
     }
 
     @GetMapping("newPost")
