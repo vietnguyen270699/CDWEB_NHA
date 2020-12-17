@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 
-@RequestMapping("hostel")
+@RequestMapping("/hostel")
 public class LoginController {
 
     @GetMapping("login")
@@ -19,5 +19,10 @@ public class LoginController {
     @GetMapping("register")
     public ModelAndView register() {
         return new ModelAndView("register");
+    }
+    
+    @GetMapping("forgotpassword")
+    public ModelAndView fogotpassword() {
+        return new ModelAndView("forgotPassword");
     }
 }
