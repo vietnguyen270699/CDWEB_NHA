@@ -6,9 +6,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -18,9 +15,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user")
 public class UserEntity extends BaseEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int userid;
 	@Column
 	String userName;
 	@Column
@@ -50,14 +44,14 @@ public class UserEntity extends BaseEntity {
 	@OneToMany(mappedBy = "userEntity")
 	private List<PostEntity> post ;
 
-	
 
-	public UserEntity(String createDate, String createBy, String modifyDate, String modifyBy, int userid,
-			String userName, String password, String email, int phone, String address, double money,
-			List<RoleEntity> roles, List<DepositHistoryEntity> depositHistory,
-			List<TransactionHistoryEntity> transactionHistory, List<FeedbackEntity> feedback, List<PostEntity> post) {
-		super(createDate, createBy, modifyDate, modifyBy);
-		this.userid = userid;
+	public UserEntity(Long id, Date createDate, String createBy, Date modifyDate,
+					  String modifyBy, String userName, String password, String email, int phone,
+					  String address, double money, List<RoleEntity> roles,
+					  List<DepositHistoryEntity> depositHistory,
+					  List<TransactionHistoryEntity> transactionHistory,
+					  List<FeedbackEntity> feedback, List<PostEntity> post) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
 		this.userName = userName;
 		this.password = password;
 		this.email = email;
@@ -69,14 +63,6 @@ public class UserEntity extends BaseEntity {
 		this.transactionHistory = transactionHistory;
 		this.feedback = feedback;
 		this.post = post;
-	}
-
-	public int getUserid() {
-		return userid;
-	}
-
-	public void setUserid(int userid) {
-		this.userid = userid;
 	}
 
 	public String getUserName() {

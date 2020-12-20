@@ -15,9 +15,6 @@ import javax.persistence.Table;
 @Table(name = "feedback")
 public class FeedbackEntity extends BaseEntity{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int feedbackid;
 	@Column
 	String content;
 	
@@ -29,25 +26,12 @@ public class FeedbackEntity extends BaseEntity{
 	private PostEntity post_id;
 
 
-	
-
-	public FeedbackEntity(String createDate, String createBy, String modifyDate, String modifyBy, int feedbackid,
-			String content, UserEntity userEntity, PostEntity post_id) {
-		super(createDate, createBy, modifyDate, modifyBy);
-		this.feedbackid = feedbackid;
+	public FeedbackEntity(Long id, Date createDate, String createBy, Date modifyDate,
+						  String modifyBy, String content, UserEntity userEntity, PostEntity post_id) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
 		this.content = content;
 		this.userEntity = userEntity;
 		this.post_id = post_id;
-	}
-
-
-	public int getFeedbackid() {
-		return feedbackid;
-	}
-
-
-	public void setFeedbackid(int feedbackid) {
-		this.feedbackid = feedbackid;
 	}
 
 

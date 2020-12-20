@@ -15,30 +15,17 @@ import javax.persistence.Table;
 @Table(name = "image")
 public class ImageEntity extends BaseEntity{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int imageid;
 	@Column
 	private String link;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private PostEntity post_id;
 
-	
-	public ImageEntity(String createDate, String createBy, String modifyDate, String modifyBy, int imageid, String link,
-			PostEntity post_id) {
-		super(createDate, createBy, modifyDate, modifyBy);
-		this.imageid = imageid;
+	public ImageEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy,
+					   String link, PostEntity post_id) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
 		this.link = link;
 		this.post_id = post_id;
-	}
-
-	public int getImageid() {
-		return imageid;
-	}
-
-	public void setImageid(int imageid) {
-		this.imageid = imageid;
 	}
 
 	public String getLink() {

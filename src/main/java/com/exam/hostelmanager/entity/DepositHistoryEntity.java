@@ -17,9 +17,6 @@ import javax.persistence.Table;
 @Table(name = "deposit_history_entity")
 public class DepositHistoryEntity extends BaseEntity{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int depositid;
 	@Column
     double money;
 	@Column
@@ -32,27 +29,15 @@ public class DepositHistoryEntity extends BaseEntity{
 	@ManyToOne(cascade = CascadeType.ALL)
 	private UserEntity userEntity;
 
-	
-	
-	
-
-	public DepositHistoryEntity(String createDate, String createBy, String modifyDate, String modifyBy, int depositid,
-			double money, String time, String state, String type, UserEntity userEntity) {
-		super(createDate, createBy, modifyDate, modifyBy);
-		this.depositid = depositid;
+	public DepositHistoryEntity(Long id, Date createDate, String createBy, Date modifyDate,
+								String modifyBy, double money, String time, String state, String type,
+								UserEntity userEntity) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
 		this.money = money;
 		this.time = time;
 		this.state = state;
 		this.type = type;
 		this.userEntity = userEntity;
-	}
-
-	public int getDepositid() {
-		return depositid;
-	}
-
-	public void setDepositid(int depositid) {
-		this.depositid = depositid;
 	}
 
 	public double getMoney() {
