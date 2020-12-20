@@ -10,8 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class AccountController {
 
     @GetMapping("profile")
-    public ModelAndView frofile() {
-        return new ModelAndView("agentprofile");
+    public ModelAndView profile() {
+        return new ModelAndView("userProfile");
     }
 
     @GetMapping("newPost")
@@ -21,7 +21,7 @@ public class AccountController {
     
     @GetMapping("inputXu")
     public ModelAndView inputXu() {
-        return new ModelAndView("inputXu");
+        return new ModelAndView("inputCount");
     }
     
     @GetMapping("updateUser")

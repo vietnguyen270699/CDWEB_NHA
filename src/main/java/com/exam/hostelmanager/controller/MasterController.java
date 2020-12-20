@@ -11,7 +11,7 @@ public class MasterController {
 
     @GetMapping("home")
     public ModelAndView home() {
-        return new ModelAndView("index");
+        return new ModelAndView("home");
     }
     
 
