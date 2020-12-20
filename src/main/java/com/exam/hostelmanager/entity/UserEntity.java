@@ -65,6 +65,18 @@ public class UserEntity extends BaseEntity {
 		this.post = post;
 	}
 
+	public UserEntity(Long id, Date createDate, String createBy, Date modifyDate,
+					  String modifyBy, String userName, String password, String email, int phone,
+					  String address, double money) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
+		this.userName = userName;
+		this.password = password;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+		this.money = money;
+	}
+
 	public String getUserName() {
 		return userName;
 	}

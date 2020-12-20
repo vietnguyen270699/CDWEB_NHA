@@ -13,8 +13,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "role")
 public class RoleEntity extends BaseEntity {
-
-
     @Enumerated(EnumType.STRING)
     @Basic(optional = false)
     @Column

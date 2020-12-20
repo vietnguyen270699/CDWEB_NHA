@@ -22,6 +22,8 @@ public class PostEntity extends BaseEntity {
 
     @Column
     String shortDescription;
+    @Column
+    String city;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private UserEntity userEntity;
@@ -60,14 +62,14 @@ public class PostEntity extends BaseEntity {
         this.transaction = transaction;
     }
 
-
     public PostEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy,
-                      String title, String shortDescription, UserEntity userEntity, FeeEntity feeEntity,
-                      List<ImageEntity> image, List<FeedbackEntity> feedback,
+                      String title, String shortDescription, String city, UserEntity userEntity,
+                      FeeEntity feeEntity, List<ImageEntity> image, List<FeedbackEntity> feedback,
                       List<TransactionHistoryEntity> transaction, ContentEntity content) {
         super(id, createDate, createBy, modifyDate, modifyBy);
         this.title = title;
         this.shortDescription = shortDescription;
+        this.city = city;
         this.userEntity = userEntity;
         this.feeEntity = feeEntity;
         this.image = image;
@@ -116,6 +118,13 @@ public class PostEntity extends BaseEntity {
         this.feedback = feedback;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     public ContentEntity getContent() {
         return content;
