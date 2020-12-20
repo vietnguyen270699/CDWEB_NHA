@@ -14,123 +14,103 @@ import javax.persistence.Table;
 @Table(name = "content")
 public class ContentEntity extends BaseEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int idcontent;
-	@Column
-	String description;
-	@Column
-	double price;
-	@Column
-	String address;
-	@Column
-	double acreage;
-	@Column
-	double electricPrice;
-	@Column
-	double waterPrice;
-	
-	@OneToOne(mappedBy = "content")
+    @Column
+    String description;
+    @Column
+    double price;
+    @Column
+    String address;
+    @Column
+    double acreage;
+    @Column
+    double electricPrice;
+    @Column
+    double waterPrice;
+
+    @OneToOne(mappedBy = "content")
     private PostEntity post;
 
-	
-	
+    public ContentEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy,
+                         String description, double price, String address, double acreage,
+                         double electricPrice, double waterPrice, PostEntity post) {
+        super(id, createDate, createBy, modifyDate, modifyBy);
+        this.description = description;
+        this.price = price;
+        this.address = address;
+        this.acreage = acreage;
+        this.electricPrice = electricPrice;
+        this.waterPrice = waterPrice;
+        this.post = post;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 
 
-	public ContentEntity(String createDate, String createBy, String modifyDate, String modifyBy, int idcontent,
-			String description, double price, String address, double acreage, double electricPrice, double waterPrice,
-			PostEntity post) {
-		super(createDate, createBy, modifyDate, modifyBy);
-		this.idcontent = idcontent;
-		this.description = description;
-		this.price = price;
-		this.address = address;
-		this.acreage = acreage;
-		this.electricPrice = electricPrice;
-		this.waterPrice = waterPrice;
-		this.post = post;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
 
-	public int getIdcontent() {
-		return idcontent;
-	}
+    public double getPrice() {
+        return price;
+    }
 
 
-	public void setIdcontent(int idcontent) {
-		this.idcontent = idcontent;
-	}
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
 
-	public String getDescription() {
-		return description;
-	}
+    public String getAddress() {
+        return address;
+    }
 
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
 
-	public double getPrice() {
-		return price;
-	}
+    public double getAcreage() {
+        return acreage;
+    }
 
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
+    public void setAcreage(double acreage) {
+        this.acreage = acreage;
+    }
 
 
-	public String getAddress() {
-		return address;
-	}
+    public double getElectricPrice() {
+        return electricPrice;
+    }
 
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public void setElectricPrice(double electricPrice) {
+        this.electricPrice = electricPrice;
+    }
 
 
-	public double getAcreage() {
-		return acreage;
-	}
+    public double getWaterPrice() {
+        return waterPrice;
+    }
 
 
-	public void setAcreage(double acreage) {
-		this.acreage = acreage;
-	}
+    public void setWaterPrice(double waterPrice) {
+        this.waterPrice = waterPrice;
+    }
 
 
-	public double getElectricPrice() {
-		return electricPrice;
-	}
+    public PostEntity getPost() {
+        return post;
+    }
 
 
-	public void setElectricPrice(double electricPrice) {
-		this.electricPrice = electricPrice;
-	}
+    public void setPost(PostEntity post) {
+        this.post = post;
+    }
 
 
-	public double getWaterPrice() {
-		return waterPrice;
-	}
-
-
-	public void setWaterPrice(double waterPrice) {
-		this.waterPrice = waterPrice;
-	}
-
-
-	public PostEntity getPost() {
-		return post;
-	}
-
-
-	public void setPost(PostEntity post) {
-		this.post = post;
-	}
-
-	
-	
 }

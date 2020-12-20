@@ -15,10 +15,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "transactionhistory")
 public class TransactionHistoryEntity extends BaseEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Basic(optional = false)
-	int trandactionhistoryid;
 	@Column
 	String content;
 	@Column
@@ -37,21 +33,17 @@ public class TransactionHistoryEntity extends BaseEntity {
 		return feeEntity;
 	}
 
-	
 
-	public TransactionHistoryEntity(String createDate, String createBy, String modifyDate, String modifyBy,
-			int trandactionhistoryid, String content, String time, FeeEntity feeEntity, UserEntity userEntity,
-			PostEntity postEntity) {
-		super(createDate, createBy, modifyDate, modifyBy);
-		this.trandactionhistoryid = trandactionhistoryid;
+	public TransactionHistoryEntity(Long id, Date createDate, String createBy, Date modifyDate,
+									String modifyBy, String content, String time, FeeEntity feeEntity,
+									UserEntity userEntity, PostEntity postEntity) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
 		this.content = content;
 		this.time = time;
 		this.feeEntity = feeEntity;
 		this.userEntity = userEntity;
 		this.postEntity = postEntity;
 	}
-
-
 
 	public PostEntity getPostEntity() {
 		return postEntity;
@@ -61,13 +53,6 @@ public class TransactionHistoryEntity extends BaseEntity {
 		this.postEntity = postEntity;
 	}
 
-	public int getTrandactionhistoryid() {
-		return trandactionhistoryid;
-	}
-
-	public void setTrandactionhistoryid(int trandactionhistoryid) {
-		this.trandactionhistoryid = trandactionhistoryid;
-	}
 
 	public String getContent() {
 		return content;
