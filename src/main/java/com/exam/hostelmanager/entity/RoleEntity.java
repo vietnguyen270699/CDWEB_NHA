@@ -19,6 +19,10 @@ public class RoleEntity extends BaseEntity {
 
 	@ManyToMany(mappedBy = "roles")
 	private List<UserEntity> users = new ArrayList<>();
+	
+	public RoleEntity() {
+		super();
+	}
 
 	public RoleEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy, ERole roleName,
 			List<UserEntity> users) {
