@@ -15,23 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/hostel")
 public class LoginController {
 
-    private IUserService userService;
-
-    public LoginController(IUserService userService) {
-        this.userService = userService;
-    }
-
-    @PostMapping("registerNow")
-    public String registerUserAccount(@ModelAttribute("user")UserDTO dto){
-        userService.save(dto);
-        return "redirect:/hostel/register?success";
-    }
-
-    // **
-    @ModelAttribute("user")
-    public UserDTO userDTO(){
-        return new UserDTO();
-    }
 
     @GetMapping("login")
     public ModelAndView login() {
@@ -39,14 +22,28 @@ public class LoginController {
     }
 
 
-    @GetMapping("register")
-    public String register(Model model) {
-//        model.addAttribute("user", new UserDTO());     ==> thay bang donh tren **
-        return "register";
+    @PostMapping("loginNow")
+    public String loginNow() {
+        return "home";
     }
+
 
     @GetMapping("forgotPassword")
     public ModelAndView fogotPassword() {
         return new ModelAndView("forgotPassword");
     }
+
+
+    @PostMapping("logout")
+    public String logout() {
+        return "home";
+    }
+
+@PostMapping("logoutSuccess")
+    public String logoutSuccess() {
+        return "home";
+    }
+
+
+
 }
