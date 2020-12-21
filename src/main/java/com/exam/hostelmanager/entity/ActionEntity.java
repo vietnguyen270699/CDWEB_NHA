@@ -28,7 +28,11 @@ public class ActionEntity extends BaseEntity {
         this.user = user;
     }
 
-    public String getName() {
+    public ActionEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
+	}
+
+	public String getName() {
         return name;
     }
 

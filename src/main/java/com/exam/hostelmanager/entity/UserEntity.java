@@ -44,6 +44,10 @@ public class UserEntity extends BaseEntity {
 	@OneToMany(mappedBy = "userEntity")
 	private List<PostEntity> post ;
 
+	
+	public UserEntity() {
+		super();
+	}
 
 	public UserEntity(Long id, Date createDate, String createBy, Date modifyDate,
 					  String modifyBy, String userName, String password, String email, int phone,
@@ -75,6 +79,10 @@ public class UserEntity extends BaseEntity {
 		this.phone = phone;
 		this.address = address;
 		this.money = money;
+	}
+
+	public UserEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
 	}
 
 	public String getUserName() {

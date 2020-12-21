@@ -26,12 +26,22 @@ public class FeedbackEntity extends BaseEntity{
 	private PostEntity post_id;
 
 
+	public FeedbackEntity() {
+		super();
+	}
+
+
 	public FeedbackEntity(Long id, Date createDate, String createBy, Date modifyDate,
 						  String modifyBy, String content, UserEntity userEntity, PostEntity post_id) {
 		super(id, createDate, createBy, modifyDate, modifyBy);
 		this.content = content;
 		this.userEntity = userEntity;
 		this.post_id = post_id;
+	}
+
+
+	public FeedbackEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
 	}
 
 

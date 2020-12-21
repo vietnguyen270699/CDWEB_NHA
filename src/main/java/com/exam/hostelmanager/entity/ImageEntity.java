@@ -27,6 +27,14 @@ public class ImageEntity extends BaseEntity{
 		this.link = link;
 		this.post_id = post_id;
 	}
+	
+	public ImageEntity() {
+		super();
+	}
+
+	public ImageEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
+	}
 
 	public String getLink() {
 		return link;

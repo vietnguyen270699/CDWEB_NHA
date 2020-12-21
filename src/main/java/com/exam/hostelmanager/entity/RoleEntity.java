@@ -9,44 +9,47 @@ import java.util.List;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "role")
 public class RoleEntity extends BaseEntity {
-    @Enumerated(EnumType.STRING)
-    @Basic(optional = false)
-    @Column
-    private ERole roleName;
+	@Enumerated(EnumType.STRING)
+	@Basic(optional = false)
+	@Column
+	private ERole roleName;
 
-    @ManyToMany(mappedBy = "roles")
-    private List<UserEntity> users = new ArrayList<>();
+	@ManyToMany(mappedBy = "roles")
+	private List<UserEntity> users = new ArrayList<>();
 
-    public RoleEntity(Long id, Date createDate, String createBy, Date modifyDate,
-                      String modifyBy, ERole roleName, List<UserEntity> users) {
-        super(id, createDate, createBy, modifyDate, modifyBy);
-        this.roleName = roleName;
-        this.users = users;
-    }
+	public RoleEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy, ERole roleName,
+			List<UserEntity> users) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
+		this.roleName = roleName;
+		this.users = users;
+	}
 
-    public RoleEntity(ERole roleUser) {
-        super();
-        this.roleName = roleUser;
-    }
+	public RoleEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
+	}
 
-    public ERole getRoleName() {
-        return roleName;
-    }
+	public RoleEntity(ERole roleUser) {
+		super();
+		this.roleName = roleUser;
+	}
 
-    public void setRoleName(ERole roleName) {
-        this.roleName = roleName;
-    }
+	public ERole getRoleName() {
+		return roleName;
+	}
 
-    public List<UserEntity> getUsers() {
-        return users;
-    }
+	public void setRoleName(ERole roleName) {
+		this.roleName = roleName;
+	}
 
-    public void setUsers(List<UserEntity> users) {
-        this.users = users;
-    }
+	public List<UserEntity> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<UserEntity> users) {
+		this.users = users;
+	}
 
 }

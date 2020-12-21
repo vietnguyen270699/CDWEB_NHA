@@ -28,6 +28,10 @@ public class DepositHistoryEntity extends BaseEntity{
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private UserEntity userEntity;
+	
+	public DepositHistoryEntity() {
+		super();
+	}
 
 	public DepositHistoryEntity(Long id, Date createDate, String createBy, Date modifyDate,
 								String modifyBy, double money, String time, String state, String type,
@@ -38,6 +42,10 @@ public class DepositHistoryEntity extends BaseEntity{
 		this.state = state;
 		this.type = type;
 		this.userEntity = userEntity;
+	}
+
+	public DepositHistoryEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
 	}
 
 	public double getMoney() {
