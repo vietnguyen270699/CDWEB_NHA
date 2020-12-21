@@ -15,5 +15,9 @@ public class MasterController {
     }
     
 
+    @GetMapping("error404")
+    public String showError404(){
+        return "page404";
+    }
 }
 

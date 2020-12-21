@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/hostel")
+@RequestMapping("/admin")
 public class AccountController {
 
     @GetMapping("profile")
@@ -19,7 +19,7 @@ public class AccountController {
         return new ModelAndView("newPost");
     }
     
-    @GetMapping("inputXu")
+    @GetMapping("inputCount")
     public ModelAndView inputXu() {
         return new ModelAndView("inputCount");
     }
