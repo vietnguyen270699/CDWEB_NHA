@@ -19,8 +19,12 @@ public class ActionEntity extends BaseEntity {
     private String post;
     @Column
     private String user;
+    
+    public ActionEntity() {
+		super();
+	}
 
-    public ActionEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy,
+	public ActionEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy,
                         String name, String post, String user) {
         super(id, createDate, createBy, modifyDate, modifyBy);
         this.name = name;
@@ -28,7 +32,11 @@ public class ActionEntity extends BaseEntity {
         this.user = user;
     }
 
-    public String getName() {
+    public ActionEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
+	}
+
+	public String getName() {
         return name;
     }
 

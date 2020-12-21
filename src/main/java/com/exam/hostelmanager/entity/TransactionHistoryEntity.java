@@ -34,6 +34,11 @@ public class TransactionHistoryEntity extends BaseEntity {
 	}
 
 
+	public TransactionHistoryEntity() {
+		super();
+	}
+
+
 	public TransactionHistoryEntity(Long id, Date createDate, String createBy, Date modifyDate,
 									String modifyBy, String content, String time, FeeEntity feeEntity,
 									UserEntity userEntity, PostEntity postEntity) {
@@ -44,6 +49,11 @@ public class TransactionHistoryEntity extends BaseEntity {
 		this.userEntity = userEntity;
 		this.postEntity = postEntity;
 	}
+
+	public TransactionHistoryEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
+	}
+
 
 	public PostEntity getPostEntity() {
 		return postEntity;

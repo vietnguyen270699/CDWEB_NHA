@@ -35,8 +35,19 @@ public class FeeEntity extends BaseEntity {
         this.trasactionlist = trasactionlist;
         this.postlist = postlist;
     }
+    
+    
+    public FeeEntity() {
+		super();
+	}
 
-    public double getPrice() {
+
+	public FeeEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
+	}
+
+
+	public double getPrice() {
         return price;
     }
 

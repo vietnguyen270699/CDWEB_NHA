@@ -37,11 +37,14 @@ public abstract class BaseEntity {
         this.modifyDate = modifyDate;
         this.modifyBy = modifyBy;
     }
-    public BaseEntity(){
+ 
 
-    }
+    public BaseEntity() {
+		super();
+	}
 
-    public Long getId() {
+
+	public Long getId() {
         return id;
     }
 

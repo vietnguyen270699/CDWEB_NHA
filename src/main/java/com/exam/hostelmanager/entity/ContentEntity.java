@@ -2,6 +2,7 @@ package com.exam.hostelmanager.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,10 +28,20 @@ public class ContentEntity extends BaseEntity {
     @Column
     double waterPrice;
 
-    @OneToOne(mappedBy = "content")
+	@OneToOne(mappedBy = "content",  cascade = CascadeType.ALL, orphanRemoval = true)
     private PostEntity post;
+	
+	
+	
+    public ContentEntity() {
+		super();
+	}
 
-    public ContentEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy,
+	public ContentEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
+	}
+
+	public ContentEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy,
                          String description, double price, String address, double acreage,
                          double electricPrice, double waterPrice, PostEntity post) {
         super(id, createDate, createBy, modifyDate, modifyBy);
