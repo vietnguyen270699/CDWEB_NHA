@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="head :: head">
 
@@ -21,7 +21,7 @@
 								<div class="property-info">
 									<span class="property-thumb-info-label">
 										<span class="label price">$358,000</span>
-										<span class="label"><a href="propertyDetail.html" class="btn-more">thông tin thêm</a></span>
+										<span class="label"><a href="propertyDetail.html" class="btn-more">thÃ´ng tin thÃªm</a></span>
 									</span>
 									<div class="property-thumb-info-content">
 										<h2><a href="propertyDetail.html">Chatham St NW, Roanoke, VA 24012</a></h2>
@@ -37,7 +37,7 @@
 								<div class="property-info">
 									<span class="property-thumb-info-label">
 										<span class="label price">$358,000</span>
-										<span class="label"><a href="propertyDetail.html" class="btn-more">THông tin thêm</a></span>
+										<span class="label"><a href="propertyDetail.html" class="btn-more">THÃ´ng tin thÃªm</a></span>
 									</span>
 									<div class="property-thumb-info-content">
 										<h2><a href="propertyDetail.html">Presidential Parcel Frames Command Views of Mt. Rushmore</a></h2>
@@ -53,7 +53,7 @@
 								<div class="property-info">
 									<span class="property-thumb-info-label">
 										<span class="label price">$358,000</span>
-										<span class="label"><a href="propertyDetail.html" class="btn-more">THông tin thêm</a></span>
+										<span class="label"><a href="propertyDetail.html" class="btn-more">THÃ´ng tin thÃªm</a></span>
 									</span>
 									<div class="property-thumb-info-content">
 										<h2><a href="propertyDetail.html">Alpine Rd, Stockton, CA 95215</a></h2>
@@ -73,21 +73,24 @@
 					<form name="advancedsearch">
 						<div class="row">
 							<div class="col-xs-6 col-sm-3">
-								Loại tin
+								Tỉnh/thành
 								<div class="form-group">
 									
 									<select id="property-status" name="property-status" data-placeholder="Property Status" class="chosen-select">
 										
-										<option selected="selected" value="cho thue">Cho thuê</option>
-										<option value="tim o ghep">Tìm ở ghép</option>
+										<option selected="selected" value="TPHCM">TP Hồ Chí
+											Minh</option>
+										<option value="BinhDuong">Bình Dương</option>
+										<option value="DongNai">Đồng Nai</option>
+
 									</select>
 								</div>
 							</div>	
 							
 							<div class="col-xs-6 col-sm-3">
-								Diện tích 
+								Diện tích
 								<div class="form-group">
-									<label class="sr-only" for="property-types">Diện Tích dưới</label>
+									<label class="sr-only" for="property-types">Diện tích</label>
 									<select id="property-types" name="property-types" data-placeholder="Property Types" class="chosen-select">
 										<option selected="selected" value="30m2"> < 30 m2</option>
 										<option value="40m2"> < 40 m2</option>
@@ -103,11 +106,11 @@
 								<div class="form-group">
 									<label class="sr-only" for="property-types">Giá</label>
 									<select id="property-types" name="property-types" data-placeholder="Property Types" class="chosen-select">
-										<option selected="selected" value="1 triệu"> < 1 triệu</option>
-										<option value="2 triệu"> < 2 triệu</option>
-										<option value="3 triệu"> < 3 triệu</option>
-										<option value="4 triệu"> < 4 triệu</option>
-										<option value="5 triệu"> > 4 triệu</option>
+										<option selected="selected" value="1 triá»‡u"> < 1 triệu</option>
+										<option value="2 triá»‡u"> < 2 triệu</option>
+										<option value="3 triá»‡u"> < 3 triệu</option>
+										<option value="4 triá»‡u"> < 4 triệu</option>
+										<option value="5 triá»‡u"> > 4 triệu</option>
 									</select>
 								</div>
 							</div>	
@@ -141,7 +144,7 @@
 										<img alt="" class="img-responsive" src="/images/properties/property-featured-1.jpg">
 									</div>
 									<div class="property-thumb-info-content">
-										<h3><a href="propertyDetail.html">Alpine Rd, Stockton, CA 95215</a></h3>
+										<h3><a href="#">Alpine Rd, Stockton, CA 95215</a></h3>
 										<p>Amet luctus nisl tempus.</p>
 									</div>
 								</div>
@@ -154,7 +157,7 @@
 										<img alt="" class="img-responsive" src="/images/properties/property-featured-2.jpg">
 									</div>
 									<div class="property-thumb-info-content">
-										<h3><a href="propertyDetail.html">J St, Modesto, CA 95351</a></h3>
+										<h3><a href="#">J St, Modesto, CA 95351</a></h3>
 										<p>Amet luctus nisl tempus.</p>
 									</div>
 								</div>
@@ -167,7 +170,7 @@
 										<img alt="" class="img-responsive" src="/images/properties/property-featured-3.jpg">
 									</div>
 									<div class="property-thumb-info-content">
-										<h3><a href="propertyDetail.html">Spring Gate DrUNIT 4106</a></h3>
+										<h3><a href="#l">Spring Gate DrUNIT 4106</a></h3>
 										<p>Amet luctus nisl tempus.</p>
 									</div>
 								</div>
@@ -180,7 +183,7 @@
 										<img alt="" class="img-responsive" src="/images/properties/property-featured-4.jpg">
 									</div>
 									<div class="property-thumb-info-content">
-										<h3><a href="propertyDetail.html">Chatham St NW, Roanoke</a></h3>
+										<h3><a href="#">Chatham St NW, Roanoke</a></h3>
 										<p>Amet luctus nisl tempus.</p>
 									</div>
 								</div>
@@ -193,7 +196,7 @@
 										<img alt="" class="img-responsive" src="/images/properties/property-featured-5.jpg">
 									</div>
 									<div class="property-thumb-info-content">
-										<h3><a href="propertyDetail.html">Stockton, CA 95215</a></h3>
+										<h3><a href="#">Stockton, CA 95215</a></h3>
 										<p>Amet luctus nisl tempus.</p>
 									</div>
 								</div>
@@ -211,8 +214,8 @@
 					<h2>Danh sách</h2>
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs pgl-pro-tabs text-center animation" role="tablist">
-						<li class="active"><a href="#all" role="tab" data-toggle="tab">Tất cả</a></li>
-						<li><a href="#ktx" role="tab" data-toggle="tab">Phòng Ktx</a></li>
+						<li class="active"><a href="#all" role="tab" data-toggle="tab">Nổi bật</a></li>
+						<li><a href="#ktx" role="tab" data-toggle="tab">Phòng KTX</a></li>
 						<li><a href="#nhatro" role="tab" data-toggle="tab">Nhà trọ</a></li>
 						
 					</ul>
@@ -236,7 +239,7 @@
 											</div>
 											<div class="amenities clearfix">
 												<ul class="pull-left">
-													<li><strong>Diện tích</strong> 450<sup>m2</sup></li>
+													<li><strong>Diá»‡n tÃ­ch</strong> 450<sup>m2</sup></li>
 												</ul>
 												<span class="label forrent pull-right"><a href="#">Lưu Tin</a> </span>
 											</div>
@@ -259,9 +262,9 @@
 											</div>
 											<div class="amenities clearfix">
 												<ul class="pull-left">
-													<li><strong>Diện tích</strong> 450<sup>m2</sup></li>
+													<li><strong>Diá»‡n tÃ­ch</strong> 450<sup>m2</sup></li>
 												</ul>
-												<span class="label forrent pull-right"><a href="#">Lưu Tin</a> </span>
+												<span class="label forrent pull-right"><a href="#">LÆ°u Tin</a> </span>
 											</div>
 										</div>
 									</div>
@@ -282,9 +285,9 @@
 											</div>
 											<div class="amenities clearfix">
 												<ul class="pull-left">
-													<li><strong>Diện tích</strong> 450<sup>m2</sup></li>
+													<li><strong>Diá»‡n tÃ­ch</strong> 450<sup>m2</sup></li>
 												</ul>
-												<span class="label forrent pull-right"><a href="#">Lưu Tin</a> </span>
+												<span class="label forrent pull-right"><a href="#">LÆ°u Tin</a> </span>
 											</div>
 										</div>
 									</div>
@@ -307,9 +310,9 @@
 											</div>
 											<div class="amenities clearfix">
 												<ul class="pull-left">
-													<li><strong>Diện tích</strong> 450<sup>m2</sup></li>
+													<li><strong>Diá»‡n tÃ­ch</strong> 450<sup>m2</sup></li>
 												</ul>
-												<span class="label forrent pull-right"><a href="#">Lưu Tin</a> </span>
+												<span class="label forrent pull-right"><a href="#">LÆ°u Tin</a> </span>
 											</div>
 										</div>
 									</div>
@@ -330,9 +333,9 @@
 											</div>
 											<div class="amenities clearfix">
 												<ul class="pull-left">
-													<li><strong>Diện tích</strong> 450<sup>m2</sup></li>
+													<li><strong>Diá»‡n tÃ­ch</strong> 450<sup>m2</sup></li>
 												</ul>
-												<span class="label forrent pull-right"><a href="#">Lưu Tin</a> </span>
+												<span class="label forrent pull-right"><a href="#">LÆ°u Tin</a> </span>
 											</div>
 										</div>
 									</div>
@@ -353,9 +356,9 @@
 											</div>
 											<div class="amenities clearfix">
 												<ul class="pull-left">
-													<li><strong>Diện tích</strong> 450<sup>m2</sup></li>
+													<li><strong>Diá»‡n tÃ­ch</strong> 450<sup>m2</sup></li>
 												</ul>
-												<span class="label forrent pull-right"><a href="#">Lưu Tin</a> </span>
+												<span class="label forrent pull-right"><a href="#">LÆ°u Tin</a> </span>
 											</div>
 										</div>
 									</div>
@@ -380,9 +383,9 @@
 											</div>
 											<div class="amenities clearfix">
 												<ul class="pull-left">
-													<li><strong>Diện tích</strong> 450<sup>m2</sup></li>
+													<li><strong>Diá»‡n tÃ­ch</strong> 450<sup>m2</sup></li>
 												</ul>
-												<span class="label forrent pull-right"><a href="#">Lưu Tin</a> </span>
+												<span class="label forrent pull-right"><a href="#">LÆ°u Tin</a> </span>
 											</div>
 										</div>
 									</div>
@@ -403,9 +406,9 @@
 											</div>
 											<div class="amenities clearfix">
 												<ul class="pull-left">
-													<li><strong>Diện tích</strong> 450<sup>m2</sup></li>
+													<li><strong>Diá»‡n tÃ­ch</strong> 450<sup>m2</sup></li>
 												</ul>
-												<span class="label forrent pull-right"><a href="#">Lưu Tin</a> </span>
+												<span class="label forrent pull-right"><a href="#">LÆ°u Tin</a> </span>
 											</div>
 										</div>
 									</div>
@@ -426,9 +429,9 @@
 											</div>
 											<div class="amenities clearfix">
 												<ul class="pull-left">
-													<li><strong>Diện tích</strong> 450<sup>m2</sup></li>
+													<li><strong>Diá»‡n tÃ­ch</strong> 450<sup>m2</sup></li>
 												</ul>
-												<span class="label forrent pull-right"><a href="#">Lưu Tin</a> </span>
+												<span class="label forrent pull-right"><a href="#">LÆ°u Tin</a> </span>
 											</div>
 										</div>
 									</div>
@@ -453,9 +456,9 @@
 											</div>
 											<div class="amenities clearfix">
 												<ul class="pull-left">
-													<li><strong>Diện tích</strong> 450<sup>m2</sup></li>
+													<li><strong>Diá»‡n tÃ­ch</strong> 450<sup>m2</sup></li>
 												</ul>
-												<span class="label forrent pull-right"><a href="#">Lưu Tin</a> </span>
+												<span class="label forrent pull-right"><a href="#">LÆ°u Tin</a> </span>
 											</div>
 										</div>
 									</div>
@@ -476,9 +479,9 @@
 											</div>
 											<div class="amenities clearfix">
 												<ul class="pull-left">
-													<li><strong>Diện tích</strong> 450<sup>m2</sup></li>
+													<li><strong>Diá»‡n tÃ­ch</strong> 450<sup>m2</sup></li>
 												</ul>
-												<span class="label forrent pull-right"><a href="#">Lưu Tin</a> </span>
+												<span class="label forrent pull-right"><a href="#">LÆ°u Tin</a> </span>
 											</div>
 										</div>
 									</div>
@@ -503,17 +506,17 @@
 				<div class="pgl-upper-foot">
 					<div class="row">
 						<div class="col-sm-4">
-							<h2>Thông tin liên hệ</h2>
+							<h2>ThÃ´ng tin liÃªn há»‡</h2>
 							
 							<address>
 								
-								<i class="fa fa-phone"></i> Điện thoại : 0800-666-6666<br>
+								<i class="fa fa-phone"></i> Ä�iá»‡n thoáº¡i : 0800-666-6666<br>
 								<i class="fa fa-fax"></i> Fax : 1-800-666-8888<br>
 								<i class="fa fa-envelope-o"></i> Mail: <a href="mailto:viet@gmail.com">viet@gmail.com</a>
 							</address>
 						</div>
 						<div class="col-sm-2">
-							<h2>Hướng dẫn</h2>
+							<h2>HÆ°á»›ng dáº«n</h2>
 							<ul class="list-unstyled">
 								<li><a href="#">Help and FAQs</a></li>
 								<li><a href="#">Home Price</a></li>
@@ -536,7 +539,7 @@
 					</div>
 				</div>
 				<div class="pgl-copyrights">
-					<p>Copyright © 2020 Nha. Designed by</p>
+					<p>Copyright Â© 2020 Nha. Designed by</p>
 				</div>
 			</div>
 		</footer>

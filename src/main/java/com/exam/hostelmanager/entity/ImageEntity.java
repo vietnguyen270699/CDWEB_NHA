@@ -5,35 +5,33 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "image")
-public class ImageEntity extends BaseEntity{
+public class ImageEntity extends BaseEntity {
 
 	@Column
 	private String link;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	private PostEntity post_id;
 
-	public ImageEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy,
-					   String link, PostEntity post_id) {
-		super(id, createDate, createBy, modifyDate, modifyBy);
-		this.link = link;
-		this.post_id = post_id;
-	}
-	
 	public ImageEntity() {
 		super();
 	}
 
 	public ImageEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy) {
 		super(id, createDate, createBy, modifyDate, modifyBy);
+	}
+
+	public ImageEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy, String link,
+			PostEntity post_id) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
+		this.link = link;
+		this.post_id = post_id;
 	}
 
 	public String getLink() {
@@ -51,5 +49,5 @@ public class ImageEntity extends BaseEntity{
 	public void setPost_id(PostEntity post_id) {
 		this.post_id = post_id;
 	}
-	
+
 }

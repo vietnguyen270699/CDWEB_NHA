@@ -164,9 +164,9 @@
 											<div class="col-sm-6 col-md-4">
 												<div class="property-thumb-info-image">
 													<img alt="" class="img-responsive"
-														src="/images/properties/property-1.jpg"> <span
+														th:src="@{'/images/properties/' + ${post.image[0].link}}"> <span
 														class="property-thumb-info-label"> <span
-														class="label price">1234</span>
+														class="label price" th:text="${post.content.price}"></span>
 													</span>
 												</div>
 											</div>
@@ -175,10 +175,12 @@
 
 													<div class="property-thumb-info-content">
 														<h3>
-															<a href="propertyDetail.html" th:text="${post.title}"></a>
+															<a th:href="@{'/hostel/detailPost/'+${post.id}}"
+																th:text="${post.title}"></a>
 														</h3>
 														<address th:text="${post.shortDescription}"></address>
-														<p th:text="${post.content.price}"></p>
+														 <strong>Người tạo: </strong><p th:text="${post.createBy}"></p>
+
 													</div>
 													<div class="amenities clearfix">
 														<ul class="pull-left">
@@ -211,8 +213,8 @@
 							<form name="advancedsearch">
 
 								<div class="form-group">
-									Tỉnh/Thành <label class="sr-only" for="location">Tỉnh/Thành</label>
-									<select id="location" name="location"
+									Tỉnh/Thành <label class="sr-only" for="city">Tỉnh/Thành</label>
+									<select id="location" name="city"
 										data-placeholder="Location" class="chosen-select">
 										<option selected="selected" value="TPHCM">TP Hồ Chí
 											Minh</option>
@@ -224,8 +226,8 @@
 									</select>
 								</div>
 								<div class="form-group">
-									Diện tích <label class="sr-only" for="property-types">Diện
-										tích</label> <select id="property-types" name="property-types"
+									Diện tích <label class="sr-only" for="acreage">Diện
+										tích</label> <select id="property-types" name="acreage"
 										data-placeholder="Property Types" class="chosen-select">
 										<option selected="selected" value="30m2">< 30 m2</option>
 										<option value="40m2">< 40 m2</option>
@@ -236,8 +238,8 @@
 									</select>
 								</div>
 								<div class="form-group">
-									Giá <label class="sr-only" for="area-from">Giá</label> <select
-										id="property-types" name="property-types"
+									Giá <label class="sr-only" for="price">Giá</label> <select
+										id="property-types" name="price"
 										data-placeholder="Property Types" class="chosen-select">
 										<option selected="selected" value="1 triệu">< 1 triệu</option>
 										<option value="2 triệu">< 2 triệu</option>
