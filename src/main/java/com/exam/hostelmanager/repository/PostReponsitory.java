@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.exam.hostelmanager.entity.PostEntity;
 
-public interface PostReponsitory extends CrudRepository<PostEntity, Integer>{
+public interface PostReponsitory extends CrudRepository<PostEntity, Long>{
 
 }
