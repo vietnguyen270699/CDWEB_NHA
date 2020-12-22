@@ -51,11 +51,11 @@ public class ListHomeController {
 		return "propertyDetail";
 	}
 
-	@ResponseBody
-	@GetMapping("/api")
-	public String api(@RequestParam int id) {
-		System.out.println(id);
-		return "ok";
-	}
+//	@ResponseBody
+//	@GetMapping("/api")
+//	public String api(@RequestParam int id) {
+//		System.out.println(id);
+//		return "ok";
+//	}
 
 }
