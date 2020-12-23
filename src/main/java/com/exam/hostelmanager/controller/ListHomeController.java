@@ -54,7 +54,7 @@ public class ListHomeController {
 		return "propertyDetail";
 	}
 
-	@RequestMapping("Seach")
+	@RequestMapping("Search")
 	public String listpostSeach(ModelMap model, @RequestParam(defaultValue = "") String city,
 			@RequestParam(defaultValue = "") Double acreage, @RequestParam(defaultValue = "") Double price) {
 		citymode = city;
@@ -85,7 +85,7 @@ public class ListHomeController {
 		return "gridSidebar";
 	}
 
-	@RequestMapping("Seach/sortUp")
+	@RequestMapping("Search/sortUp")
 	public String listpostSeachSortUp(ModelMap model) {
 
 		List<PostEntity> listpostsort = (List<PostEntity>) postservice
@@ -97,7 +97,7 @@ public class ListHomeController {
 		return "gridSidebar";
 	}
 
-	@RequestMapping("Seach/sortDown")
+	@RequestMapping("Search/sortDown")
 	public String listpostSeachSortDown(ModelMap model) {
 
 		List<PostEntity> listpostsort = (List<PostEntity>) postservice
