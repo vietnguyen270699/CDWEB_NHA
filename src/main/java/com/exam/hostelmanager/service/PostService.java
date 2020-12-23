@@ -28,10 +28,38 @@ public interface PostService {
 	boolean existsById(Long id);
 
 	Optional<PostEntity> findById(Long id);
+	
+	
 
 	List<PostEntity> saveAll(List<PostEntity> entities);
 
 	PostEntity save(PostEntity entity);
+
+	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqual(String city, Double acreage,
+			Double price);
+
+	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceDesc(
+			String city, Double acreage, Double price);
+
+	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceAsc(
+			String city, Double acreage, Double price);
+
+	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceGreaterThanEqual(String city, Double acreage,
+			Double price);
+
+	List<PostEntity> findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceLessThanEqual(String city, Double acreage,
+			Double price);
+
+	List<PostEntity> findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceGreaterThanEqual(String city, Double acreage,
+			Double price);
+
+	
+
+
+
+	
+
+	
 
 
 
