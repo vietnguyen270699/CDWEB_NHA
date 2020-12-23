@@ -4,13 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
@@ -28,7 +22,7 @@ public class UserEntity extends BaseEntity {
 	@Column
 	double money;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<RoleEntity> roles = new ArrayList<>();
 
@@ -71,6 +65,20 @@ public class UserEntity extends BaseEntity {
 
 	public UserEntity(Long id, Date createDate, String createBy, Date modifyDate,
 					  String modifyBy, String userName, String password, String email, int phone,
+					  String address, double money, List<RoleEntity> roles) {
+		super(id, createDate, createBy, modifyDate, modifyBy);
+		this.userName = userName;
+		this.password = password;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+		this.money = money;
+		this.roles = roles;
+	}
+
+
+	public UserEntity(Long id, Date createDate, String createBy, Date modifyDate,
+					  String modifyBy, String userName, String password, String email, int phone,
 					  String address, double money) {
 		super(id, createDate, createBy, modifyDate, modifyBy);
 		this.userName = userName;
@@ -79,10 +87,6 @@ public class UserEntity extends BaseEntity {
 		this.phone = phone;
 		this.address = address;
 		this.money = money;
-	}
-
-	public UserEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy) {
-		super(id, createDate, createBy, modifyDate, modifyBy);
 	}
 
 	public String getUserName() {

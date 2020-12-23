@@ -42,15 +42,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
-    @Override
+        @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        super.configure(http);
         http.csrf().disable();
         http.authorizeRequests().antMatchers("/hostel/**").permitAll();
 
-        http.authorizeRequests().antMatchers("/hostel/admin/**").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+        http.authorizeRequests().antMatchers("/hostel/admin/**").access("hasAnyRole(1L, 3L)");
 
-        http.authorizeRequests().antMatchers("hostel/admin").access("hasRole('ROLE_ADMIN')");
+        http.authorizeRequests().antMatchers("hostel/admin").access("hasRole(1L)");
 
         http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/hostel/error404");
 
@@ -58,10 +57,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().and().formLogin()
                 .loginProcessingUrl("/hostel/loginNow")
                 .loginPage("/hostel/login")
-                .defaultSuccessUrl("/hostel/profile")
+                .defaultSuccessUrl("/hostel/home")
                 .failureUrl("/hostel/login?error=true")
                 .usernameParameter("email")
-                .passwordParameter("password")
+                .passwordParameter("pass")
                 .and().logout().logoutUrl("/hostel/logout").logoutSuccessUrl("/hostel/login?logout");
 
         //remember me
@@ -80,10 +79,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
 
-    //        @Override
+//    @Override
     protected void configure1(HttpSecurity http) throws Exception {
-        super.configure(http);
-        http.authorizeRequests().antMatchers("/hostel/**")
+
+        http.csrf().disable();
+        http.authorizeRequests().antMatchers("/hostel/home")
                 .permitAll().anyRequest().authenticated().
                 and().
                 formLogin().loginPage("/hostel/loginNow").permitAll().and().logout().

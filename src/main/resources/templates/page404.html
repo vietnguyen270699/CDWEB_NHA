@@ -9,8 +9,6 @@
 		<header th:replace="header :: header">
 			
 		</header>
-		
-		
 		<!-- Begin Main -->
 		<div role="main" class="main pgl-bg-grey">
 			<!-- Begin page top -->
@@ -40,7 +38,7 @@
 				<div class="pgl-upper-foot">
 					<div class="row">
 						<div class="col-sm-4">
-							<h2>Thông tin liên hệ</h2>
+							<h2 th:text="#{label.ContactInfo}"></h2>
 							
 							<address>
 								
@@ -50,7 +48,7 @@
 							</address>
 						</div>
 						<div class="col-sm-2">
-							<h2>Hướng dẫn</h2>
+							<h2 th:text="#{label.tutorial}"></h2>
 							<ul class="list-unstyled">
 								<li><a href="#">Help and FAQs</a></li>
 								<li><a href="#">Home Price</a></li>
@@ -59,7 +57,7 @@
 							</ul>
 						</div>
 						<div class="col-sm-2">
-							<h2>Trang</h2>
+							<h2 th:text="#{label.page}"></h2>
 							<ul class="list-unstyled">
 								<li><a href="#">Font &amp; Color</a></li>
 								<li><a href="#">Blogs</a></li>

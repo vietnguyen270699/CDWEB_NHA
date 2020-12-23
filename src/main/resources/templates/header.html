@@ -5,63 +5,63 @@
 
 </head>
 <body>
-	<header th:fragment="header">
-		<div id="top">
-			<div class="container">
+<header th:fragment="header">
+    <div id="top">
+        <div class="container">
 
-				<ul class="nav nav-pills nav-top navbar-right">
+            <ul class="nav nav-pills nav-top navbar-right">
 
-					<li><a href="#" title="" data-placement="bottom"
-						data-toggle="tooltip" data-original-title="Email"><i
-							class="fa fa-envelope-o"></i></a></li>
-					<li><a href="#" title="" data-placement="bottom"
-						data-toggle="tooltip" data-original-title="Facebook"><i
-							class="fa fa-facebook"></i></a></li>
-					<li><a href="#" title="" data-placement="bottom"
-						data-toggle="tooltip" data-original-title="Twitter"><i
-							class="fa fa-twitter"></i></a></li>
-					<li><a href="#" title="" data-placement="bottom"
-						data-toggle="tooltip" data-original-title="Google+"><i
-							class="fa fa-google-plus"></i></a></li>
-					<li><select class="form-control form-control-sm m-5"
-						id="locales">
-							<option value="en">English</option>
-							<option value="vn">VietNamese</option>
-					</select></li>
-				</ul>
-			</div>
-		</div>
-		<nav class="navbar navbar-default pgl-navbar-main" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".navbar-collapse">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="logo" th:href="@{/hostel/home}"><img src="/images/nha.gif"
-						alt="Flatize"></a>
-				</div>
+                <li><a href="#" title="" data-placement="bottom"
+                       data-toggle="tooltip" data-original-title="Email"><i
+                        class="fa fa-envelope-o"></i></a></li>
+                <li><a href="#" title="" data-placement="bottom"
+                       data-toggle="tooltip" data-original-title="Facebook"><i
+                        class="fa fa-facebook"></i></a></li>
+                <li><a href="#" title="" data-placement="bottom"
+                       data-toggle="tooltip" data-original-title="Twitter"><i
+                        class="fa fa-twitter"></i></a></li>
+                <li><a href="#" title="" data-placement="bottom"
+                       data-toggle="tooltip" data-original-title="Google+"><i
+                        class="fa fa-google-plus"></i></a></li>
+                <li>
+                    <a href="/hostel/home?lang=en">English</a>
+                </li>
 
-				<div class="navbar-collapse collapse width">
-					<ul class="nav navbar-nav pull-right">
-						<li><a th:href="@{/hostel/home}">Trang Chủ</a></li>
-						<!-- <li><a href="list-fullwidth.html">Danh sÃ¡ch nhÃ  trá»�</a></li> -->
-						<li><a th:href="@{/hostel/listPost}">Danh sách</a></li>
-						<li><a th:href="@{/hostel/blog}">Blog</a></li>
-						<li><a th:href="@{/hostel/contact}">Liện hệ</a></li>
-						<li class="login"><a th:href="@{/admin/profile}"><i
-								class="fa fa-user"></i>Tài khoản</a></li>
-						<li><a th:href="@{/hostel/login}">Đăng nhập</a></li>
-					</ul>
-				</div>
-				<!--/.nav-collapse -->
-			</div>
-			<!--/.container-fluid -->
-		</nav>
-	</header>
+                <li><a href="/hostel/home?lang=vi">Vietnamese</a></li>
+
+            </ul>
+        </div>
+    </div>
+    <nav class="navbar navbar-default pgl-navbar-main" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span> <span
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span>
+                </button>
+                <a class="logo" th:href="@{/hostel/home}"><img src="/images/nha.gif"
+                                                               alt="Flatize"></a>
+            </div>
+
+            <div class="navbar-collapse collapse width">
+                <ul class="nav navbar-nav pull-right">
+                    <li><a th:href="@{/hostel/home}" th:text="#{label.home}"></a></li>
+                    <li><a th:href="@{/hostel/listPost}" th:text="#{label.list}"></a></li>
+                    <li><a th:href="@{/hostel/blog}" th:text="#{label.blog}"></a></li>
+                    <li><a th:href="@{/hostel/contact}" th:text="#{label.contact}"></a></li>
+                    <li class="login"><a th:href="@{/admin/profile}"><i
+                            class="fa fa-user" th:text="#{label.account}"></i></a></li>
+                    <li><a th:href="@{/hostel/login}" th:text="#{label.login}"></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
 
 </body>
+
 
 </html>

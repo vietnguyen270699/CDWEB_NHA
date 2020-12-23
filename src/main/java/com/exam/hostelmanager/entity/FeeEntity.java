@@ -3,13 +3,8 @@ package com.exam.hostelmanager.entity;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,19 +16,19 @@ public class FeeEntity extends BaseEntity {
     private double price;
 
     @OneToMany(mappedBy = "feeEntity")
-    private List<TransactionHistoryEntity> trasactionlist;
+    private List<TransactionHistoryEntity> transactionList;
 
     @OneToMany(mappedBy = "feeEntity")
-    private List<PostEntity> postlist;
+    private List<PostEntity> postList;
 
 
     public FeeEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy,
-                     double price, List<TransactionHistoryEntity> trasactionlist,
-                     List<PostEntity> postlist) {
+                     double price, List<TransactionHistoryEntity> transactionList,
+                     List<PostEntity> postList) {
         super(id, createDate, createBy, modifyDate, modifyBy);
         this.price = price;
-        this.trasactionlist = trasactionlist;
-        this.postlist = postlist;
+        this.transactionList = transactionList;
+        this.postList = postList;
     }
     
     
@@ -55,20 +50,20 @@ public class FeeEntity extends BaseEntity {
         this.price = price;
     }
 
-    public List<TransactionHistoryEntity> getTrasactionlist() {
-        return trasactionlist;
+    public List<TransactionHistoryEntity> getTransactionList() {
+        return transactionList;
     }
 
-    public void setTrasactionlist(List<TransactionHistoryEntity> trasactionlist) {
-        this.trasactionlist = trasactionlist;
+    public void setTransactionList(List<TransactionHistoryEntity> transactionlist) {
+        this.transactionList = transactionlist;
     }
 
-    public List<PostEntity> getPostlist() {
-        return postlist;
+    public List<PostEntity> getPostList() {
+        return postList;
     }
 
-    public void setPostlist(List<PostEntity> postlist) {
-        this.postlist = postlist;
+    public void setPostList(List<PostEntity> postList) {
+        this.postList = postList;
     }
 
 
