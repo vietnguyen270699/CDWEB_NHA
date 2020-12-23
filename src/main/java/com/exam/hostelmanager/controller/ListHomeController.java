@@ -19,6 +19,9 @@ import com.exam.hostelmanager.service.PostService;
 @Controller
 @RequestMapping("/hostel")
 public class ListHomeController {
+	String citymode;
+	Double pricemode;
+	Double acreagemode;
 
 	@Autowired
 	private PostService postservice;
@@ -51,6 +54,60 @@ public class ListHomeController {
 		return "propertyDetail";
 	}
 
+	@RequestMapping("Seach")
+	public String listpostSeach(ModelMap model, @RequestParam(defaultValue = "") String city,
+			@RequestParam(defaultValue = "") Double acreage, @RequestParam(defaultValue = "") Double price) {
+		citymode = city;
+		acreagemode = acreage;
+		pricemode = price;
+
+		if (acreage < 70 && price < 4000000) {
+			List<PostEntity> listpost = (List<PostEntity>) postservice
+					.findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqual(city, acreage, price);
+
+			model.addAttribute("posts", listpost);
+		} else if (acreage > 70 && price < 4000000) {
+			List<PostEntity> listpost = (List<PostEntity>) postservice
+					.findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceLessThanEqual(city, acreage, price);
+
+			model.addAttribute("posts", listpost);
+		}else if (acreage < 70 && price > 4000000) {
+			List<PostEntity> listpost = (List<PostEntity>) postservice
+					.findByContentCityAndContentAcreageLessThanEqualAndContentPriceGreaterThanEqual(city, acreage, price);
+
+			model.addAttribute("posts", listpost);
+		}else if(acreage > 70 && price > 4000000){
+			List<PostEntity> listpost = (List<PostEntity>) postservice
+					.findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceGreaterThanEqual(city, acreage, price);
+
+			model.addAttribute("posts", listpost);
+		}
+		return "gridSidebar";
+	}
+
+	@RequestMapping("Seach/sortUp")
+	public String listpostSeachSortUp(ModelMap model) {
+
+		List<PostEntity> listpostsort = (List<PostEntity>) postservice
+				.findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceAsc(
+						citymode, acreagemode, pricemode);
+
+		model.addAttribute("posts", listpostsort);
+
+		return "gridSidebar";
+	}
+
+	@RequestMapping("Seach/sortDown")
+	public String listpostSeachSortDown(ModelMap model) {
+
+		List<PostEntity> listpostsort = (List<PostEntity>) postservice
+				.findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceDesc(
+						citymode, acreagemode, pricemode);
+
+		model.addAttribute("posts", listpostsort);
+
+		return "gridSidebar";
+	}
 //	@ResponseBody
 //	@GetMapping("/api")
 //	public String api(@RequestParam int id) {
