@@ -3,6 +3,7 @@ package com.exam.hostelmanager.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.taglibs.standard.lang.jstl.IntegerDivideOperator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ import com.exam.hostelmanager.service.PostService;
 public class PostEntityServiceImpl implements PostService {
 	@Autowired
 	PostReponsitory postReponsitory;
-	
+
 	@Autowired
 	private ImageReponsitory imageReponsitory;
 
@@ -50,6 +51,57 @@ public class PostEntityServiceImpl implements PostService {
 		return (List<PostEntity>) postReponsitory.findAllById(ids);
 	}
 
+
+
+	
+
+	@Override
+	public List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqual(String city,
+			Double acreage, Double price) {
+		return postReponsitory.findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqual(city,
+				acreage, price);
+	}
+
+	
+	
+	@Override
+	public List<PostEntity> findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceLessThanEqual(String city,
+			Double acreage, Double price) {
+		return postReponsitory.findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceLessThanEqual(city,
+				acreage, price);
+	}
+
+	@Override
+	public List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceGreaterThanEqual(String city,
+			Double acreage, Double price) {
+		return postReponsitory.findByContentCityAndContentAcreageLessThanEqualAndContentPriceGreaterThanEqual(city,
+				acreage, price);
+	}
+
+	@Override
+	public List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceAsc(
+			String city, Double acreage, Double price) {
+		return postReponsitory
+				.findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceAsc(city,
+						acreage, price);
+	}
+	
+
+	@Override
+	public List<PostEntity> findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceGreaterThanEqual(
+			String city, Double acreage, Double price) {
+		return postReponsitory.findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceGreaterThanEqual(city,
+				acreage, price);
+	}
+
+	@Override
+	public List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceDesc(
+			String city, Double acreage, Double price) {
+		return postReponsitory
+				.findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceDesc(
+						city, acreage, price);
+	}
+
 	@Override
 	public long count() {
 		return postReponsitory.count();
@@ -74,18 +126,13 @@ public class PostEntityServiceImpl implements PostService {
 	public void deleteAll() {
 		postReponsitory.deleteAll();
 	}
-	
-	
-	
-	
-	
-	
+
 //	@Override
 //	public List<ImageEntity> findAllImage(){
 //		return (List<ImageEntity>) imageReponsitory.findAll();
 //		
 //	}
-	
+
 //	@Override
 //	public PostEntity save(PostEntity entity) {
 //		return postReponsitory.save(entity);

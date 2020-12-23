@@ -1,9 +1,37 @@
 package com.exam.hostelmanager.repository;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.exam.hostelmanager.entity.PostEntity;
 
-public interface PostReponsitory extends CrudRepository<PostEntity, Long>{
+@Repository
+public interface PostReponsitory extends CrudRepository<PostEntity, Long> {
+	// tìm kiếm theo yêu cầu
+	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqual(
+			@Param("city") String city, @Param("acreage") Double acreage, @Param("price") Double price);
+
+	// tìm kiếm theo yêu cầu có Diện tích lớn hơn {> 70 m2}
+	List<PostEntity> findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceLessThanEqual(
+			@Param("city") String city, @Param("acreage") Double acreage, @Param("price") Double price);
+
+	// tìm kiếm theo yêu cầu có giá { > 4 triệu }
+	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceGreaterThanEqual(
+			@Param("city") String city, @Param("acreage") Double acreage, @Param("price") Double price);
+	// tìm kiếm theo yêu cầu có giá và diện tích { > 4 triệu , > 70 m2}
+		List<PostEntity> findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceGreaterThanEqual(
+				@Param("city") String city, @Param("acreage") Double acreage, @Param("price") Double price);
+
+	// tìm sắp xếp tăng dần theo giá
+	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceAsc(
+			@Param("city") String city, @Param("acreage") Double acreage, @Param("price") Double price);
+
+	// tìm sắp xếp giảm dần theo giá
+	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceDesc(
+			@Param("city") String city, @Param("acreage") Double acreage, @Param("price") Double price);
 
 }
