@@ -1,9 +1,7 @@
 package com.exam.hostelmanager.entity;
-
 import com.exam.hostelmanager.common.ERole;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +15,7 @@ public class RoleEntity extends BaseEntity {
 	@Column
 	private ERole roleName;
 
-	@ManyToMany(mappedBy = "roles")
+	@ManyToMany(mappedBy = "roles" )
 	private List<UserEntity> users = new ArrayList<>();
 	
 	public RoleEntity() {
@@ -25,19 +23,19 @@ public class RoleEntity extends BaseEntity {
 	}
 
 	public RoleEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy, ERole roleName,
-			List<UserEntity> users) {
+					  List<UserEntity> users) {
 		super(id, createDate, createBy, modifyDate, modifyBy);
 		this.roleName = roleName;
 		this.users = users;
 	}
 
-	public RoleEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy) {
+	public RoleEntity(Long id, Date createDate, String createBy, Date modifyDate,String modifyBy) {
 		super(id, createDate, createBy, modifyDate, modifyBy);
 	}
 
-	public RoleEntity(ERole roleUser) {
-		super();
-		this.roleName = roleUser;
+	public RoleEntity(Long id) {
+		super(id);
+
 	}
 
 	public ERole getRoleName() {
