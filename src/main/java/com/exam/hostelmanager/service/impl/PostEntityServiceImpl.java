@@ -49,7 +49,9 @@ public class PostEntityServiceImpl implements PostService {
 	}
 
 
+
 	
+
 	@Override
 	public List<PostEntity> findByTitleOrderByFeeEntityPriceDesc(String title) {
 		return postReponsitory.findByTitleOrderByFeeEntityPriceDesc(title);
@@ -138,6 +140,8 @@ public class PostEntityServiceImpl implements PostService {
 	public void deleteAll() {
 		postReponsitory.deleteAll();
 	}
+
+	
 
 //	@Override
 //	public List<ImageEntity> findAllImage(){

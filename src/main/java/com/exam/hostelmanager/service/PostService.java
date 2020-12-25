@@ -3,6 +3,7 @@ package com.exam.hostelmanager.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.exam.hostelmanager.entity.ImageEntity;
@@ -59,6 +60,8 @@ public interface PostService {
 
 	List<PostEntity> findByTitleOrderByFeeEntityPriceDesc(String title);
 
+	
 
+	
 
 }
