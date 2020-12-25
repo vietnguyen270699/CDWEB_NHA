@@ -28,15 +28,13 @@ public interface PostService {
 	boolean existsById(Long id);
 
 	Optional<PostEntity> findById(Long id);
-	
-	
 
 	List<PostEntity> saveAll(List<PostEntity> entities);
 
 	PostEntity save(PostEntity entity);
 
-	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqual(String city, Double acreage,
-			Double price);
+	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqual(String city,
+			Double acreage, Double price);
 
 	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceDesc(
 			String city, Double acreage, Double price);
@@ -44,48 +42,22 @@ public interface PostService {
 	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceAsc(
 			String city, Double acreage, Double price);
 
-	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceGreaterThanEqual(String city, Double acreage,
-			Double price);
+	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceGreaterThanEqual(String city,
+			Double acreage, Double price);
 
-	List<PostEntity> findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceLessThanEqual(String city, Double acreage,
-			Double price);
+	List<PostEntity> findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceLessThanEqual(String city,
+			Double acreage, Double price);
 
-	List<PostEntity> findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceGreaterThanEqual(String city, Double acreage,
-			Double price);
+	List<PostEntity> findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceGreaterThanEqual(String city,
+			Double acreage, Double price);
 
-	
+	List<PostEntity> findByContentPriceGreaterThanEqualOrderByContentPriceDesc(Double price);
 
+	List<PostEntity> findByContentPriceGreaterThanEqualOrderByContentPriceAsc(Double price);
 
+	List<PostEntity> findByFeeEntityPriceGreaterThanOrderByFeeEntityPriceDesc(Double fee);
 
-	
-
-	
-
-
-
-//	void deleteAll();
-//
-//	void deleteAll(List<PostEntity> entities);
-//
-//	void delete(PostEntity entity);
-//
-//	void deleteById(Integer id);
-//
-//	long count();
-//
-//	List<PostEntity> findAllById(List<Integer> ids);
-//
-//	Iterable<PostEntity> findAll();
-//
-//	boolean existsById(Integer id);
-//
-//	Optional<PostEntity> findById(Integer id);
-//
-//	List<PostEntity> saveAll(List<PostEntity> entities);
-//
-//	PostEntity save(PostEntity entity);
-//
-//	List<ImageEntity> findAllImage();
+	List<PostEntity> findByTitleOrderByFeeEntityPriceDesc(String title);
 
 
 

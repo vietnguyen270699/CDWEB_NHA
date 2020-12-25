@@ -22,9 +22,10 @@ public interface PostReponsitory extends CrudRepository<PostEntity, Long> {
 	// tìm kiếm theo yêu cầu có giá { > 4 triệu }
 	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceGreaterThanEqual(
 			@Param("city") String city, @Param("acreage") Double acreage, @Param("price") Double price);
+
 	// tìm kiếm theo yêu cầu có giá và diện tích { > 4 triệu , > 70 m2}
-		List<PostEntity> findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceGreaterThanEqual(
-				@Param("city") String city, @Param("acreage") Double acreage, @Param("price") Double price);
+	List<PostEntity> findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceGreaterThanEqual(
+			@Param("city") String city, @Param("acreage") Double acreage, @Param("price") Double price);
 
 	// tìm sắp xếp tăng dần theo giá
 	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceAsc(
@@ -34,4 +35,17 @@ public interface PostReponsitory extends CrudRepository<PostEntity, Long> {
 	List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceDesc(
 			@Param("city") String city, @Param("acreage") Double acreage, @Param("price") Double price);
 
+	// tìm sắp xếp tăng dần theo giá tất cả
+	List<PostEntity> findByContentPriceGreaterThanEqualOrderByContentPriceAsc(@Param("price") Double price);
+
+	// tìm sắp xếp tăng dần theo giá tất cả
+	List<PostEntity> findByContentPriceGreaterThanEqualOrderByContentPriceDesc(@Param("price") Double price);
+
+	// Danh sách nổi bật (sắp xếp theo fee)
+	List<PostEntity> findByFeeEntityPriceGreaterThanOrderByFeeEntityPriceDesc(@Param("fee") Double fee);
+
+	// Danh sách nổi bật theo title (sắp xếp theo fee)
+	List<PostEntity> findByTitleOrderByFeeEntityPriceDesc(@Param("title") String title);
+
+	
 }
