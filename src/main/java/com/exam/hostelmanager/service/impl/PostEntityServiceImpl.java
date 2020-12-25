@@ -18,9 +18,6 @@ public class PostEntityServiceImpl implements PostService {
 	@Autowired
 	PostReponsitory postReponsitory;
 
-	@Autowired
-	private ImageReponsitory imageReponsitory;
-
 	@Override
 	public PostEntity save(PostEntity entity) {
 		return postReponsitory.save(entity);
@@ -52,8 +49,26 @@ public class PostEntityServiceImpl implements PostService {
 	}
 
 
-
 	
+	@Override
+	public List<PostEntity> findByTitleOrderByFeeEntityPriceDesc(String title) {
+		return postReponsitory.findByTitleOrderByFeeEntityPriceDesc(title);
+	}
+
+	@Override
+	public List<PostEntity> findByFeeEntityPriceGreaterThanOrderByFeeEntityPriceDesc(Double fee) {
+		return postReponsitory.findByFeeEntityPriceGreaterThanOrderByFeeEntityPriceDesc(fee);
+	}
+
+	@Override
+	public List<PostEntity> findByContentPriceGreaterThanEqualOrderByContentPriceAsc(Double price) {
+		return postReponsitory.findByContentPriceGreaterThanEqualOrderByContentPriceAsc(price);
+	}
+
+	@Override
+	public List<PostEntity> findByContentPriceGreaterThanEqualOrderByContentPriceDesc(Double price) {
+		return postReponsitory.findByContentPriceGreaterThanEqualOrderByContentPriceDesc(price);
+	}
 
 	@Override
 	public List<PostEntity> findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqual(String city,
@@ -62,8 +77,6 @@ public class PostEntityServiceImpl implements PostService {
 				acreage, price);
 	}
 
-	
-	
 	@Override
 	public List<PostEntity> findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceLessThanEqual(String city,
 			Double acreage, Double price) {
@@ -85,7 +98,6 @@ public class PostEntityServiceImpl implements PostService {
 				.findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceAsc(city,
 						acreage, price);
 	}
-	
 
 	@Override
 	public List<PostEntity> findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceGreaterThanEqual(
