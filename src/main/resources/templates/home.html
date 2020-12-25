@@ -90,14 +90,14 @@
 			<!-- Begin Advanced Search -->
 			<section class="pgl-advanced-search pgl-bg-light">
 				<div class="container">
-					<form name="advancedsearch">
+					<form name="advancedsearch" th:action="@{/hostel/Search}">
 						<div class="row">
 							<div class="col-xs-6 col-sm-3">
-								<p th:text="#{label.city}"></p>
+								<h3 th:text="#{label.city}"></h3>
+								<label class="sr-only" for="acreage" th:text="#{label.city}"></label>
 								<div class="form-group">
-
-									<select id="property-status" name="property-status"
-										data-placeholder="Property Status" class="chosen-select">
+									<select id="location" name="city" data-placeholder="Lựa chọn"
+										class="chosen-select">
 
 										<option selected="selected" value="TPHCM">TP Hồ Chí
 											Minh</option>
@@ -109,36 +109,32 @@
 							</div>
 
 							<div class="col-xs-6 col-sm-3">
-								Diện tích
+								<h3 th:text="#{label.acreage}"></h3>
 								<div class="form-group">
-									<label class="sr-only">Diện tích</label> <select
-										name="property-types" data-placeholder="Property Types"
-										class="chosen-select">
-										<option selected="selected" value="30m2">< 30 m2</option>
-										<option value="40m2">< 40 m2</option>
-										<option value="50m2">< 50m2</option>
-										<option value="60m2">< 60 m2</option>
-										<option value="70m2">< 70 m2</option>
-										<option value="80m2">< 80 m2</option>
+									<label class="sr-only" for="acreage">Diện
+										tích</label> <select id="property-types" name="acreage"
+										data-placeholder="Lựa chọn" class="chosen-select">
+										<option value="30" >< 30 m2</option>
+										<option value="40">< 40 m2</option>
+										<option value="50">< 50 m2</option>
+										<option value="60">< 60 m2</option>
+										<option value="70">< 70 m2</option>
+										<option value="71">> 70 m2</option>
 									</select>
 								</div>
 							</div>
 							<div class="col-xs-6 col-sm-3">
-								Giá
+									<h3 th:text="#{label.price}"></h3>
 								<div class="form-group">
-									<label class="sr-only">Giá</label> <select
-										name="property-types" data-placeholder="Property Types"
+									<label class="sr-only" for="price">Giá</label> <select
+										id="property-types" name="price" data-placeholder="Lựa chọn"
 										class="chosen-select">
-										<option selected="selected" value="1 triá»‡u">< 1
-											triệu</option>
-										<option value="2"><p 2 th:text="#{label.money}"></p>
-										</option>
-										<option value="3"><p 3 th:text="#{label.money}"></p>
-										</option>
-										<option value="4"><p 4 th:text="#{label.money}"></p>
-										</option>
-										<option value="5"><p 5 th:text="#{label.money}"></p>
-										</option>
+										<option value="1000000" >< 1 triệu</option>
+										<option value="2000000">< 2 triệu</option>
+										<option value="3000000">< 3 triệu</option>
+										<option value="4000000">< 4 triệu</option>
+										<option value="4000001">> 4 triệu</option>
+										
 									</select>
 								</div>
 							</div>

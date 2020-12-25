@@ -49,13 +49,13 @@
                                             </address>
 
                                             <div class="col-md-12">
-                                                <a class="btn btn-default btn-sm" th:href="@{/hostel/updateUser}"> Cập
+                                                <a class="btn btn-default btn-sm" th:href="@{/admin/updateUser}"> Cập
                                                     nhật</a>
 
-                                                <a class="btn btn-default btn-sm" th:href="@{/hostel/inputXu}"> Nạp
+                                                <a class="btn btn-default btn-sm" th:href="@{/admin/inputXu}"> Nạp
                                                     xu</a>
 
-                                                <a class="btn btn-default btn-sm" th:href="@{/hostel/newPost}"> Đăng
+                                                <a class="btn btn-default btn-sm" th:href="@{/admin/newPost}"> Đăng
                                                     Bài</a>
                                             </div>
                                         </div>
@@ -94,74 +94,45 @@
                     <div class="container">
                         <h2>Tin đã lưu</h2>
                         <div class="properties-full properties-listing properties-listfull">
-                            <div class="pgl-property animation">
-                                <div class="row">
-                                    <div class="col-sm-6 col-md-4">
-                                        <div class="property-thumb-info-image">
-                                            <img alt="" class="img-responsive" src="/images/properties/property-1.jpg">
-                                            <span class="property-thumb-info-label">
-														<span class="label price">$358,000</span>
-													</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-8">
-                                        <div class="property-thumb-info">
+                            	<div class="pgl-property animation" th:each="post : ${postsave}">
+										<div class="row">
+											<div class="col-sm-6 col-md-4">
+												<div class="property-thumb-info-image">
+													<img alt="" class="img-responsive"
+														th:src="@{'/images/properties/' + ${post.image[0].link}}">
+													<span class="property-thumb-info-label"> <span
+														class="label price"
+														th:text="${post.content.price} +' VNĐ'"></span>
 
-                                            <div class="property-thumb-info-content">
-                                                <h3><a href="propertyDetail.html">Poolside character home on a wide
-                                                    422sqm</a></h3>
-                                                <address>Ferris Park, Jersey City Land in Sales</address>
-                                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                                                    non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                                    laborum.</p>
-                                            </div>
-                                            <div class="amenities clearfix">
-                                                <ul class="pull-left">
-                                                    <li><strong>Diện tích</strong> 450<sup>m2</sup></li>
-                                                </ul>
-                                                <ul class="pull-right">
-                                                    <span class="label forrent pull-right"><a href="#">Xóa</a> </span>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pgl-property animation">
-                                <div class="row">
-                                    <div class="col-sm-6 col-md-4">
-                                        <div class="property-thumb-info-image">
-                                            <img alt="" class="img-responsive" src="/images/properties/property-2.jpg">
-                                            <span class="property-thumb-info-label">
-														<span class="label price">$358,000</span>
-													</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-8">
-                                        <div class="property-thumb-info">
 
-                                            <div class="property-thumb-info-content">
-                                                <h3><a href="propertyDetail.html">Poolside character home on a wide
-                                                    422sqm</a></h3>
-                                                <address>Ferris Park, Jersey City Land in Sales</address>
-                                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                                                    non proident, sunt in culpa qui officia deserunt mollit anim id est
-                                                    laborum.</p>
-                                            </div>
-                                            <div class="amenities clearfix">
-                                                <ul class="pull-left">
-                                                    <li><strong>Diện tích</strong> 450<sup>m2</sup></li>
-                                                </ul>
-                                                <ul class="pull-right">
-                                                    <span class="label forrent pull-right"><a href="#">Xóa</a> </span>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+													</span>
+												</div>
+											</div>
+											<div class="col-sm-6 col-md-8">
+												<div class="property-thumb-info">
+
+													<div class="property-thumb-info-content">
+														<h3>
+															<a th:href="@{'/hostel/detailPost/'+${post.id}}"
+																th:text="${post.title}"></a>
+														</h3>
+														<address th:text="${post.shortDescription}"></address>
+														<strong>Người tạo: </strong>
+														<p th:text="${post.createBy}"></p>
+
+													</div>
+													<div class="amenities clearfix">
+														<ul class="pull-left">
+															<li><strong>Area:</strong> <strong
+																th:text="${post.content.acreage}"></strong> <sup>m2</sup></li>
+														</ul>
+														<button class="label forrent pull-right btn-save" th:data-id="${post.id}" > Xóa</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+                           
 
                         </div>
                     </div>

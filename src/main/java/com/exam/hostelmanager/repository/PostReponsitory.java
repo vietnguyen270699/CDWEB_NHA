@@ -2,6 +2,7 @@ package com.exam.hostelmanager.repository;
 
 import java.util.List;
 
+import org.hibernate.mapping.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -47,5 +48,9 @@ public interface PostReponsitory extends CrudRepository<PostEntity, Long> {
 	// Danh sách nổi bật theo title (sắp xếp theo fee)
 	List<PostEntity> findByTitleOrderByFeeEntityPriceDesc(@Param("title") String title);
 
-	
+	// Danh sách Đã lưu
+//	@Query("SELECT p FROM Post p WHERE p.id in ids")
+//	List<PostEntity> findByIdIn(String ids);
+//	List<PostEntity> findByIdIn(Collection<Id> ids);
+
 }
