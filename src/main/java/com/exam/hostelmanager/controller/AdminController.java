@@ -10,7 +10,36 @@ public class AdminController {
 
     @GetMapping("home")
     public String loginAdmin() {
-        return "admin";
+        return "adminIndex";
+    }
+    
+    @GetMapping("adminUser")
+    public String loginAdminUser() {
+        return "adminUserManager";
+    }
+    
+    @GetMapping("adminPost")
+    public String loginAdminPost() {
+        return "adminPostManager";
+    }
+    
+    @GetMapping("adminFeedback")
+    public String loginAdminFeeback() {
+        return "adminFeedbackManager";
+    }
+    
+    @GetMapping("adminUser/formAddUser")
+    public String loginAdminformAdd() {
+        return "adminFormAdd";
+    }
+    @GetMapping("adminUser/formEditUser")
+    public String loginAdminformEditUser() {
+        return "adminFormEditUser";
+    }
+    
+    @GetMapping("adminPost/formEditPost")
+    public String loginAdminformEditPost() {
+        return "adminFormEditPost";
     }
 
 }
