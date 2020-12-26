@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -33,24 +34,24 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public UserEntity save(UserDTO userDTO) {
-        RoleEntity entity = new RoleEntity(1L);
-        UserEntity userEntity = new UserEntity(userDTO.getId(), userDTO.getCreatedDate(),
-                userDTO.getCreatedBy(), userDTO.getModifiedDate(), userDTO.getModifiedBy(),
-                userDTO.getUserName(), passwordEncoder.encode(userDTO.getPassword()), userDTO.getEmail(), userDTO.getPhone(),
-                userDTO.getAddress(), userDTO.getMoney(), Arrays.asList(entity));
+    public UserEntity save(UserEntity userEntity) {
+        userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
         return userRepository.save(userEntity);
     }
 
     @Override
-    public UserDetails loadUserByUsername(java.lang.String username) throws UsernameNotFoundException {
+    public UserEntity findUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity user = userRepository.findByEmail(username);
         if (user == null) {
-            System.out.println("KHONG CO USER NAMEEEEEEEE");
             throw new UsernameNotFoundException("Invalid username or password");
         }
         User result = new User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
-        System.out.println("lllllllllllOK KM OK \n" + result.getUsername() + "\n" + result.getPassword());
+        System.out.println(result.getUsername() + "\n" + result.getPassword());
         for (RoleEntity a : user.getRoles()) {
             System.out.println(a.getRoleName());
         }

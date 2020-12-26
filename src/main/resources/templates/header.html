@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+>
 
 <head>
 
@@ -51,9 +53,23 @@
                     <li><a th:href="@{/hostel/listPost}" th:text="#{label.list}"></a></li>
                     <li><a th:href="@{/hostel/blog}" th:text="#{label.blog}"></a></li>
                     <li><a th:href="@{/hostel/contact}" th:text="#{label.contact}"></a></li>
-                    <li class="login"><a th:href="@{/admin/profile}"><i
-                            class="fa fa-user" th:text="#{label.account}"></i></a></li>
-                    <li><a th:href="@{/hostel/login}" th:text="#{label.login}"></a></li>
+                    <div class="nav navbar-nav pull-right"
+                         sec:authorize="isAuthenticated()">
+                        <li>
+                            <a th:href="@{/admin/profile}"><i
+                                    class="fa fa-user" th:text="#{label.account}"></i></a></li>
+
+                        <li>
+                            <a th:href="@{/hostel/logout}" th:text="#{logout}"></a></li>
+                    </div>
+                    <div class="nav navbar-nav pull-right"
+                         sec:authorize="isAnonymous()">
+                        <li>
+                            <a th:href="@{/admin/profile}"><i
+                                    class="fa fa-user" th:text="#{label.account}"></i></a></li>
+                        <li>
+                            <a th:href="@{/hostel/login}" th:text="#{label.login}">Log in</a></li>
+                    </div>
                 </ul>
             </div>
         </div>

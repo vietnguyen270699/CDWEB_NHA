@@ -26,7 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    //tim kiem user trong db va ma hoa pass
+    //tim kiem updateU trong db va ma hoa pass
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
@@ -49,7 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests().antMatchers("/hostel/admin/**").access("hasAnyRole(1L, 3L)");
 
-        http.authorizeRequests().antMatchers("hostel/admin").access("hasRole(1L)");
+        http.authorizeRequests().antMatchers("/hostel/admin").access("hasRole(1L)");
 
         http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/hostel/error404");
 

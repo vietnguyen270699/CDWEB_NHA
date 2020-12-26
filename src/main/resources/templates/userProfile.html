@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+>
 
 <head th:replace="head :: head">
 
@@ -39,20 +41,21 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-9">
-                                        <div class="pgl-agent-info">
-
-                                            <h4><a href="userProfile.html">Quốc Việt</a></h4>
+                                        <div class="pgl-agent-info" th:if="${profile != null}">
+                                            <h4><a href="userProfile.html" th:text="${profile.getUserName()}">akass </a>
+                                            </h4>
                                             <address>
-                                                <h5> Xu hiện có : 0 xu </h5>
-                                                <i class="fa fa-phone"></i> Điện thoại : 0800-666-6666<br>
-                                                <i class="fa fa-envelope-o"></i> Mail: <a href="mailto:viet@gmail.com">viet@gmail.com</a>
+                                                <h5 th:text="${profile.getMoney()}"></h5>
+                                                <i class="fa fa-phone" th:text="${profile.getPhone()}"> </i><br>
+                                                <i class="fa fa-envelope-o"></i> Mail: <a
+                                                    th:href="${profile.getEmail()}" th:text="${profile.getEmail()}"></a>
                                             </address>
 
                                             <div class="col-md-12">
                                                 <a class="btn btn-default btn-sm" th:href="@{/admin/updateUser}"> Cập
                                                     nhật</a>
 
-                                                <a class="btn btn-default btn-sm" th:href="@{/admin/inputXu}"> Nạp
+                                                <a class="btn btn-default btn-sm" th:href="@{/admin/inputCoin}"> Nạp
                                                     xu</a>
 
                                                 <a class="btn btn-default btn-sm" th:href="@{/admin/newPost}"> Đăng
@@ -94,45 +97,48 @@
                     <div class="container">
                         <h2>Tin đã lưu</h2>
                         <div class="properties-full properties-listing properties-listfull">
-                            	<div class="pgl-property animation" th:each="post : ${postsave}">
-										<div class="row">
-											<div class="col-sm-6 col-md-4">
-												<div class="property-thumb-info-image">
-													<img alt="" class="img-responsive"
-														th:src="@{'/images/properties/' + ${post.image[0].link}}">
-													<span class="property-thumb-info-label"> <span
-														class="label price"
-														th:text="${post.content.price} +' VNĐ'"></span>
+                            <div class="pgl-property animation" th:each="post : ${postsave}">
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-4">
+                                        <div class="property-thumb-info-image">
+                                            <img alt="" class="img-responsive"
+                                                 th:src="@{'/images/properties/' + ${post.image[0].link}}">
+                                            <span class="property-thumb-info-label"> <span
+                                                    class="label price"
+                                                    th:text="${post.content.price} +' VNĐ'"></span>
 
 
 													</span>
-												</div>
-											</div>
-											<div class="col-sm-6 col-md-8">
-												<div class="property-thumb-info">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-8">
+                                        <div class="property-thumb-info">
 
-													<div class="property-thumb-info-content">
-														<h3>
-															<a th:href="@{'/hostel/detailPost/'+${post.id}}"
-																th:text="${post.title}"></a>
-														</h3>
-														<address th:text="${post.shortDescription}"></address>
-														<strong>Người tạo: </strong>
-														<p th:text="${post.createBy}"></p>
+                                            <div class="property-thumb-info-content">
+                                                <h3>
+                                                    <a th:href="@{'/hostel/detailPost/'+${post.id}}"
+                                                       th:text="${post.title}"></a>
+                                                </h3>
+                                                <address th:text="${post.shortDescription}"></address>
+                                                <strong>Người tạo: </strong>
+                                                <p th:text="${post.createBy}"></p>
 
-													</div>
-													<div class="amenities clearfix">
-														<ul class="pull-left">
-															<li><strong>Area:</strong> <strong
-																th:text="${post.content.acreage}"></strong> <sup>m2</sup></li>
-														</ul>
-														<button class="label forrent pull-right btn-save" th:data-id="${post.id}" > Xóa</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-                           
+                                            </div>
+                                            <div class="amenities clearfix">
+                                                <ul class="pull-left">
+                                                    <li><strong>Area:</strong> <strong
+                                                            th:text="${post.content.acreage}"></strong> <sup>m2</sup>
+                                                    </li>
+                                                </ul>
+                                                <button class="label forrent pull-right btn-save"
+                                                        th:data-id="${post.id}"> Xóa
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
 
                         </div>
                     </div>
@@ -259,8 +265,6 @@
                     </div>
                 </div>
             </section>
-            <!-- End Properties -->
-
         </section>
     </div>
     <!-- End Main -->

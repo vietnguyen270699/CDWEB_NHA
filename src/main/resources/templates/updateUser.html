@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+>
 
 <head th:replace="head :: head">
 
@@ -9,24 +11,28 @@
     <header th:replace="header :: header">
 
     </header>
-
-
-    <!-- Begin Main -->
     <div role="main" class="main pgl-bg-grey">
 
         <!-- Begin Featured Agents -->
         <section class="pgl-agents">
             <div class="container">
-                <h2>Cáº­p nháº­t tÃ i khoáº£n</h2>
+                <div th:if="${param.success}">
+                    <div class="alert alert-info">You've successfully registered
+                        to our awesome app!
+                    </div>
+                </div>
+
+                <h2>Cap nhat thong tin</h2>
                 <div class="agent-profile">
                     <div class="row">
-                        <form id="contact-form" name="form1" method="post" action="#">
+                        <form id="contact-form" th:action="@{/admin/updateNow}"  method="post">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label for="name">Tên *</label>
-                                        <input type="text" name="name" id="name" class="form-control"
-                                               data-msg-required="Please enter your name." required>
+                                        <input type="text" id="name" class="form-control"
+                                               data-msg-required="Please enter your name." required
+                                               autofocus="autofocus">
                                     </div>
 
                                 </div>
@@ -35,30 +41,32 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label for="customer_mail">Email*</label>
-                                        <input type="email" name="customer_mail" id="customer_mail" class="form-control"
+                                        <label type="email" name="customer_mail" id="customer_mail"
+                                               class="form-control" sec:authentication="principal.username"
                                                disabled>
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Mật khẩu cũ*</label>
-                                        <input type="password" name="subject" class="form-control"
+                                        <input type="password" class="form-control"
                                                data-msg-required="Please enter the subject." required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Mật khẩu mới*</label>
-                                        <input type="password" name="subject" class="form-control"
+                                        <input type="password" class="form-control"
+
                                                data-msg-required="Please enter the subject." required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Số điện thoại*</label>
-                                        <input type="number" name="subject" class="form-control"
-                                               data-msg-required="Please enter the subject." value="0963052585"
-                                               required>
+                                        <input type="number" class="form-control"
+                                               data-msg-required="Please enter the subject." required>
                                     </div>
                                 </div>
 
