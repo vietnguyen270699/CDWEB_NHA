@@ -50,7 +50,6 @@ public class ListHomeController {
 	public String detailpost(ModelMap model, @PathVariable(name = "id") Long id) {
 		Optional<PostEntity> optionpost = postservice.findById(id);
 		if (optionpost.isPresent()) {
-
 			model.addAttribute("post", optionpost.get());
 		} else {
 			return listpost(model);

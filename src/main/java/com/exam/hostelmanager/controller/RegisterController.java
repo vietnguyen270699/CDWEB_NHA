@@ -1,6 +1,6 @@
 package com.exam.hostelmanager.controller;
 
-import com.exam.hostelmanager.dto.UserDTO;
+import com.exam.hostelmanager.entity.UserEntity;
 import com.exam.hostelmanager.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,21 +20,20 @@ public class RegisterController {
     }
 
     @PostMapping("registerNow")
-    public String registerUserAccount(@ModelAttribute("user") UserDTO dto) {
+    public String registerUserAccount(@ModelAttribute("user") UserEntity dto) {
         userService.save(dto);
         return "redirect:/hostel/register?success";
     }
 
     // **
     @ModelAttribute("user")
-    public UserDTO userDTO() {
-        return new UserDTO();
+    public UserEntity userDTO() {
+        return new UserEntity();
     }
 
 
     @GetMapping("register")
     public String register(Model model) {
-//        model.addAttribute("user", new UserDTO());     ==> thay bang donh tren **
         return "register";
     }
 

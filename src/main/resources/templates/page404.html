@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+>
 
 <head th:replace="head :: head">
 
@@ -23,7 +25,9 @@
 			
 			<div class="container">
 				<div class="pgl-error text-center">
-					<h1 class="error-title"><strong>Ban không có quyền truy cập</strong></h1>
+					<h1 class="error-title"><strong>Ban không có quyền truy cập
+						<span sec:authentication="principal.authorities"></span>
+					</strong></h1>
 					<p class="error-msg">The page cannot be found</p>
 					<a href="index-2.html" class="btn btn-primary">Return to the homepage</a>
 				</div>

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+>
 
 <head th:replace="head :: head">
 
@@ -18,7 +20,8 @@
                 <h2>Đăng nhập</h2>
                 <div class="agent-profile">
                     <div class="row">
-                        <form id="contact-form" th:action="@{/hostel/loginNow}" method="post">
+                        <form id="contact-form" th:action="@{/hostel/loginNow}" method="post"
+                              th:object="${loginUser}">
                             <div class="form-group">
                                 <!--   error message    -->
                                 <div th:if="${param.error}">
@@ -53,8 +56,8 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="submit" th:value="#{label.login}"
 
+                                <input type="submit" th:value="#{label.login}" onclick="changeLogout()"
                                        class="btn btn-primary min-wide">
                                 Remember Me?
                                 <input name="rememberMe" type="checkbox">
@@ -120,6 +123,16 @@
     <!-- End footer -->
 
 </div>
+
+<script>
+    function changeLogout() {
+        var x = document.createElement("BUTTON");
+        var t = document.createTextNode("LOGOUT");
+        x.appendChild(t);
+        document.body.appendChild(x);
+    }
+</script>
+
 
 <script src="/vendor/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
