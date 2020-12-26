@@ -29,7 +29,7 @@
 
 						<!-- Begin Featured -->
 						<section class="pgl-featured">
-							<h2>Nổi Bật</h2>
+							<h2 th:text="#{highLights}"></h2>
 							<div class="row">
 								<div class="owl-carousel pgl-pro-slide"
 									data-plugin-options='{"items": 3, "singleItem": false, "autoPlay": false, "pagination": false}'>
@@ -149,7 +149,7 @@
 
 										</ul>
 										<ul class="list-inline list-sort pull-leaf">
-											<li><label for="sortby-status">Sắp xếp : </label> <a
+											<li><label th:text="#{sort}"> </label> <a
 												id="sort1" th:href="@{/hostel/Search/sortUp}"> Giá tăng</a> | <a id="sort2"
 												th:href="@{/hostel/Search/sortDown}"> Giá giảm</a></li>
 
@@ -214,7 +214,7 @@
 							<form name="advancedsearch" th:action="@{/hostel/Search}">
 
 								<div class="form-group">
-									Tỉnh/Thành <label class="sr-only" for="city">Tỉnh/Thành</label>
+									Tỉnh/Thành <label class="sr-only" th:text="#{label.city}"></label>
 									<select id="location" name="city" data-placeholder="Lựa chọn"
 										class="chosen-select">
 
@@ -228,7 +228,7 @@
 									</select>
 								</div>
 								<div class="form-group">
-									Diện tích <label class="sr-only" for="acreage">Diện
+									Diện tích <label class="sr-only">Diện
 										tích</label> <select id="property-types" name="acreage"
 										data-placeholder="Lựa chọn" class="chosen-select">
 
@@ -241,8 +241,8 @@
 									</select>
 								</div>
 								<div class="form-group">
-									Giá <label class="sr-only" for="price">Giá</label> <select
-										id="property-types" name="price" data-placeholder="Lựa chọn"
+									Giá <label class="sr-only" >Giá</label> <select
+										name="price" data-placeholder="Lựa chọn"
 										class="chosen-select">
 
 										<option value="1000000" >< 1 triệu</option>
