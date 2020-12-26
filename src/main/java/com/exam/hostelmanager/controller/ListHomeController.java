@@ -144,11 +144,6 @@ public class ListHomeController {
 		cookieservice.create("listsave", value, 30);
 				return true;
 	}
-//	@ResponseBody
-//	@GetMapping("/api")
-//	public String api(@RequestParam int id) {
-//		System.out.println(id);
-//		return "ok";
-//	}
+
 
 }

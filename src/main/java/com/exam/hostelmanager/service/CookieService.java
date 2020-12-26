@@ -41,7 +41,6 @@ public class CookieService {
 	}
 
 	public void delete(String name) {
-
 		this.create(name, "", 0);
 	}
 
