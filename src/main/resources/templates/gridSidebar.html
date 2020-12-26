@@ -188,8 +188,7 @@
 															<li><strong>Area:</strong> <strong
 																th:text="${post.content.acreage}"></strong> <sup>m2</sup></li>
 														</ul>
-														<span class="label forrent pull-right"><a href="#">Lưu
-																Tin</a> </span>
+														<button class="label forrent pull-right btn-save" th:data-id="${post.id}" th:text="#{button.save}"> </button>
 													</div>
 												</div>
 											</div>
@@ -338,7 +337,24 @@
 
 	<!-- Style Switcher -->
 	<script type="text/javascript" src="/style-switcher/js/switcher.js"></script>
-
+	<script type="text/javascript" src="/js/cookiesave.js"></script>
+	<!-- <script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax({
+			url:'/hostel/api',
+			method:'get',
+			data:{
+				id:10
+			},
+			success:function(value){
+				alert(value)
+			},
+			error:function(err){
+				alert(err)
+			}
+		})
+	})
+	</script> -->
 </body>
 
 <!-- Mirrored from pixelgeeklab.com/html/realestast/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 16 Aug 2015 08:54:11 GMT -->
