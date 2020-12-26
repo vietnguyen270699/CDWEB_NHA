@@ -60,6 +60,8 @@ public interface PostService {
 
 	List<PostEntity> findByTitleOrderByFeeEntityPriceDesc(String title);
 
+	List<PostEntity> findByIdIn(List<Long> ids);
+
 	
 
 	

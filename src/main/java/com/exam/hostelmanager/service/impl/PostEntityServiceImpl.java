@@ -53,6 +53,11 @@ public class PostEntityServiceImpl implements PostService {
 	
 
 	@Override
+	public List<PostEntity> findByIdIn(List<Long> ids) {
+		return postReponsitory.findByIdIn(ids);
+	}
+
+	@Override
 	public List<PostEntity> findByTitleOrderByFeeEntityPriceDesc(String title) {
 		return postReponsitory.findByTitleOrderByFeeEntityPriceDesc(title);
 	}
