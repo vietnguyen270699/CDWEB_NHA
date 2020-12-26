@@ -26,16 +26,11 @@ public class AccountController {
 
 	@Autowired
 	private CookieService cookieservice;
-//    @GetMapping("profile")
-//    public ModelAndView profile() {
-//        return new ModelAndView("userProfile");
-//    }
+
 
 	@RequestMapping("profile")
 	public String listpost(ModelMap model) {
-//		List<PostEntity> listpostsave = (List<PostEntity>) postservice
-//				.findByFeeEntityPriceGreaterThanOrderByFeeEntityPriceDesc(pricefee);
-//		model.addAttribute("postsave", listpostsave);
+
 		Cookie postsave = cookieservice.read("listsave");
 
 		if (postsave != null) {
