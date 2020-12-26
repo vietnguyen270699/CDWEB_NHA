@@ -49,9 +49,6 @@ public class PostEntityServiceImpl implements PostService {
 	}
 
 
-
-	
-
 	@Override
 	public List<PostEntity> findByIdIn(List<Long> ids) {
 		return postReponsitory.findByIdIn(ids);
@@ -148,65 +145,6 @@ public class PostEntityServiceImpl implements PostService {
 
 	
 
-//	@Override
-//	public List<ImageEntity> findAllImage(){
-//		return (List<ImageEntity>) imageReponsitory.findAll();
-//		
-//	}
 
-//	@Override
-//	public PostEntity save(PostEntity entity) {
-//		return postReponsitory.save(entity);
-//	}
-//
-//	@Override
-//	public List<PostEntity> saveAll(List<PostEntity> entities) {
-//		return (List<PostEntity>) postReponsitory.saveAll(entities);
-//	}
-//
-//	@Override
-//	public Optional<PostEntity> findById(Integer id) {
-//		return postReponsitory.findById(id);
-//	}
-//
-//	@Override
-//	public boolean existsById(Integer id) {
-//		return postReponsitory.existsById(id);
-//	}
-//
-//	@Override
-//	public Iterable<PostEntity> findAll() {
-//		return postReponsitory.findAll();
-//	}
-//
-//	@Override
-//	public List<PostEntity> findAllById(List<Integer> ids) {
-//		return (List<PostEntity>) postReponsitory.findAllById(ids);
-//	}
-//
-//	@Override
-//	public long count() {
-//		return postReponsitory.count();
-//	}
-//
-//	@Override
-//	public void deleteById(Integer id) {
-//		postReponsitory.deleteById(id);
-//	}
-//
-//	@Override
-//	public void delete(PostEntity entity) {
-//		postReponsitory.delete(entity);
-//	}
-//
-//	@Override
-//	public void deleteAll(List<PostEntity> entities) {
-//		postReponsitory.deleteAll(entities);
-//	}
-//
-//	@Override
-//	public void deleteAll() {
-//		postReponsitory.deleteAll();
-//	}
 
 }
