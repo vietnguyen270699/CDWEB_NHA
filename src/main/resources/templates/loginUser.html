@@ -37,14 +37,14 @@
 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label for="email">Email đăng nhập*</label>
+                                        <label for="email">Email*</label>
                                         <input type="email" name="email" id="email" class="form-control"
                                                data-msg-required="Please enter your email." autofocus="autofocus">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label for="customer_mail">Mật khẩu*</label>
+                                        <label for="customer_mail" th:text="#{password}">*</label>
                                         <input type="password" name="pass" id="customer_mail"
                                                class="form-control" data-msg-required="Please enter your email address."
                                                data-msg-email="Please enter a valid email address." required>
@@ -53,15 +53,17 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="submit" value="Ä�Äƒng nháº­p" class="btn btn-primary min-wide">
+                                <input type="submit" th:value="#{label.login}"
+
+                                       class="btn btn-primary min-wide">
                                 Remember Me?
                                 <input name="rememberMe" type="checkbox">
 
                             </div>
                         </form>
                     </div>
-                    <label for="email"><a th:href="@{/hostel/forgotPassword}">Quên mật khẩu</a></label> </br>
-                    <label for="email"><a th:href="@{/hostel/register}">Tạo tài khoản</a></label> </br>
+                    <label for="email"><a th:href="@{/hostel/forgotPassword}" th:text="#{forgotPass}"></a></label> </br>
+                    <label for="email"><a th:href="@{/hostel/register}" th:text="#{label.register}"></a></label> </br>
                 </div>
                 <div class="col-md-3 sidebar">
                 </div>

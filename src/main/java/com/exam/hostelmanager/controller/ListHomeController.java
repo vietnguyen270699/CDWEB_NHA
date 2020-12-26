@@ -33,7 +33,7 @@ public class ListHomeController {
 
 	@GetMapping("lsHome")
 	public ModelAndView homes() {
-		return new ModelAndView("gridSidebar");
+		return new ModelAndView("listHome");
 	}
 
 	@RequestMapping("listPost")
@@ -43,7 +43,7 @@ public class ListHomeController {
 
 		model.addAttribute("posts", listpost);
 
-		return "gridSidebar";
+		return "listHome";
 	}
 
 	@RequestMapping("detailPost/{id}")
@@ -90,7 +90,7 @@ public class ListHomeController {
 
 			model.addAttribute("posts", listpost);
 		}
-		return "gridSidebar";
+		return "listHome";
 	}
 
 	@RequestMapping("Search/sortUp")
@@ -107,7 +107,7 @@ public class ListHomeController {
 
 			model.addAttribute("posts", listpostsort);
 		}
-		return "gridSidebar";
+		return "listHome";
 	}
 
 	@RequestMapping("Search/sortDown")
@@ -124,7 +124,7 @@ public class ListHomeController {
 
 			model.addAttribute("posts", listpostsort);
 		}
-		return "gridSidebar";
+		return "listHome";
 	}
 
 	@ResponseBody
