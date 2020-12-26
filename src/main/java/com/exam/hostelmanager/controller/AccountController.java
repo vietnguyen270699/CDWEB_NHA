@@ -1,5 +1,6 @@
 package com.exam.hostelmanager.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -19,6 +20,7 @@ import com.exam.hostelmanager.service.PostService;
 @RequestMapping("/admin")
 public class AccountController {
 	Double pricefee = 299.0;
+
 	@Autowired
 	private PostService postservice;
 
@@ -31,16 +33,25 @@ public class AccountController {
 
 	@RequestMapping("profile")
 	public String listpost(ModelMap model) {
-		List<PostEntity> listpostsave = (List<PostEntity>) postservice
-				.findByFeeEntityPriceGreaterThanOrderByFeeEntityPriceDesc(pricefee);
-		model.addAttribute("postsave", listpostsave);
-//		Cookie postsave = cookieservice.read("listsave");
-//		String ids = postsave.getValue();
-//		if (postsave != null) {
-//			List<PostEntity> listpostsave = (List<PostEntity>) postservice.findByIdIn(ids);
-//
-//			model.addAttribute("postsave", listpostsave);
-//		}
+//		List<PostEntity> listpostsave = (List<PostEntity>) postservice
+//				.findByFeeEntityPriceGreaterThanOrderByFeeEntityPriceDesc(pricefee);
+//		model.addAttribute("postsave", listpostsave);
+		Cookie postsave = cookieservice.read("listsave");
+
+		if (postsave != null) {
+
+			String ids = postsave.getValue();
+			String[] splits = ids.split(",");
+			List<Long> listlong = new ArrayList<Long>();
+
+			for (String item : splits) {
+				Long item1 = Long.parseLong(item);
+				listlong.add(item1);
+			}
+			
+			List<PostEntity> listpostsave = (List<PostEntity>) postservice.findByIdIn(listlong);
+			model.addAttribute("postsave", listpostsave);
+		}
 
 		return "userProfile";
 	}

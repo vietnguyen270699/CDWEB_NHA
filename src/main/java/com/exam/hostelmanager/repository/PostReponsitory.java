@@ -49,8 +49,7 @@ public interface PostReponsitory extends CrudRepository<PostEntity, Long> {
 	List<PostEntity> findByTitleOrderByFeeEntityPriceDesc(@Param("title") String title);
 
 	// Danh sách Đã lưu
-//	@Query("SELECT p FROM Post p WHERE p.id in ids")
-//	List<PostEntity> findByIdIn(String ids);
-//	List<PostEntity> findByIdIn(Collection<Id> ids);
-
+	List<PostEntity> findByIdIn(List<Long> ids);
+	// Danh sách đã đăng
+//	List<PostEntity> findByUserEntity(@Param("userid") String userid);
 }
