@@ -50,6 +50,11 @@ public class PostEntityServiceImpl implements PostService {
 
 
 	@Override
+	public List<PostEntity> findByUserEntityId(Long userid) {
+		return postReponsitory.findByUserEntityId(userid);
+	}
+
+	@Override
 	public List<PostEntity> findByIdIn(List<Long> ids) {
 		return postReponsitory.findByIdIn(ids);
 	}

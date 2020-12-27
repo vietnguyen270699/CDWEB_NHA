@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
->
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head th:replace="head :: head">
 
@@ -151,9 +150,10 @@
 
 										</ul>
 										<ul class="list-inline list-sort pull-leaf">
-											<li><label th:text="#{sort}"> </label> <a
-												id="sort1" th:href="@{/hostel/Search/sortUp}"> Giá tăng</a> | <a id="sort2"
-												th:href="@{/hostel/Search/sortDown}"> Giá giảm</a></li>
+											<li><label th:text="#{sort}"> </label> <a id="sort1"
+												th:href="@{/hostel/Search/sortUp}"> Giá tăng</a> | <a
+												id="sort2" th:href="@{/hostel/Search/sortDown}"> Giá
+													giảm</a></li>
 
 										</ul>
 									</div>
@@ -177,8 +177,10 @@
 
 													<div class="property-thumb-info-content">
 														<h3>
-															<a th:href="@{'/hostel/detailPost/'+${post.id}}"
+															<strong> <a
+																th:href="@{'/hostel/detailPost/'+${post.id}}"
 																th:text="${post.title}"></a>
+															</strong>
 														</h3>
 														<address th:text="${post.shortDescription}"></address>
 														<strong>Người tạo: </strong>
@@ -190,7 +192,9 @@
 															<li><strong>Area:</strong> <strong
 																th:text="${post.content.acreage}"></strong> <sup>m2</sup></li>
 														</ul>
-														<button class="label forrent pull-right btn-save" th:data-id="${post.id}" th:text="#{button.save}"> </button>
+														<button class="label forrent pull-right btn-save"
+															th:data-id="${post.id}" th:text="#{button.save}">
+														</button>
 													</div>
 												</div>
 											</div>
@@ -220,8 +224,7 @@
 									<select id="location" name="city" data-placeholder="Lựa chọn"
 										class="chosen-select">
 
-										<option value="TPHCM" >TP Hồ Chí
-											Minh</option>
+										<option value="TPHCM">TP Hồ Chí Minh</option>
 										<option value="BinhDuong">Bình Dương</option>
 										<option value="DongNai">Đồng Nai</option>
 
@@ -230,11 +233,11 @@
 									</select>
 								</div>
 								<div class="form-group">
-									Diện tích <label class="sr-only">Diện
-										tích</label> <select id="property-types" name="acreage"
-										data-placeholder="Lựa chọn" class="chosen-select">
+									Diện tích <label class="sr-only">Diện tích</label> <select
+										id="property-types" name="acreage" data-placeholder="Lựa chọn"
+										class="chosen-select">
 
-										<option value="30" >< 30 m2</option>
+										<option value="30">< 30 m2</option>
 										<option value="40">< 40 m2</option>
 										<option value="50">< 50 m2</option>
 										<option value="60">< 60 m2</option>
@@ -243,11 +246,10 @@
 									</select>
 								</div>
 								<div class="form-group">
-									Giá <label class="sr-only" >Giá</label> <select
-										name="price" data-placeholder="Lựa chọn"
-										class="chosen-select">
+									Giá <label class="sr-only">Giá</label> <select name="price"
+										data-placeholder="Lựa chọn" class="chosen-select">
 
-										<option value="1000000" >< 1 triệu</option>
+										<option value="1000000">< 1 triệu</option>
 										<option value="2000000">< 2 triệu</option>
 										<option value="3000000">< 3 triệu</option>
 										<option value="4000000">< 4 triệu</option>
@@ -284,8 +286,9 @@
 							<address>
 
 								<i class="fa fa-phone"></i> Điện thoại : 0800-666-6666<br>
-								<i class="fa fa-fax"></i> Fax : 1-800-666-8888<br>
-								<i class="fa fa-envelope-o"></i> Mail: <a href="mailto:viet@gmail.com">viet@gmail.com</a>
+								<i class="fa fa-fax"></i> Fax : 1-800-666-8888<br> <i
+									class="fa fa-envelope-o"></i> Mail: <a
+									href="mailto:viet@gmail.com">viet@gmail.com</a>
 							</address>
 						</div>
 						<div class="col-sm-2">

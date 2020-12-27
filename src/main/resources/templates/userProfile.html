@@ -130,7 +130,7 @@
                                                             th:text="${post.content.acreage}"></strong> <sup>m2</sup>
                                                     </li>
                                                 </ul>
-                                                <button class="label forrent pull-right btn-save"
+                                                <button class="label forrent pull-right btn-delete"
                                                         th:data-id="${post.id}"> Xóa
                                                 </button>
                                             </div>
@@ -151,119 +151,51 @@
                 <div class="container">
                     <h2>Danh sách bài đã đăng</h2>
                     <div class="properties-full properties-listing properties-listfull">
-                        <div class="listing-header clearfix">
-                            <ul class="list-inline list-icons pull-left">
+                            <div class="pgl-property animation" th:each="post : ${posted}">
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-4">
+                                        <div class="property-thumb-info-image">
+                                            <img alt="" class="img-responsive"
+                                                 th:src="@{'/images/properties/' + ${post.image[0].link}}">
+                                            <span class="property-thumb-info-label"> <span
+                                                    class="label price"
+                                                    th:text="${post.content.price} +' VNĐ'"></span>
 
-                                <li class="active"><a href="list-fullwidth.html"><i class="fa fa-th-list"></i></a></li>
 
-                            </ul>
-
-                        </div>
-                        <div class="pgl-property animation">
-                            <div class="row">
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="property-thumb-info-image">
-                                        <img alt="" class="img-responsive" src="/images/properties/property-1.jpg">
-                                        <span class="property-thumb-info-label">
-												<span class="label price">$358,000</span>
-											</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-8">
-                                    <div class="property-thumb-info">
-
-                                        <div class="property-thumb-info-content">
-                                            <h3><a href="propertyDetail.html">Poolside character home on a wide
-                                                422sqm</a></h3>
-                                            <address>Ferris Park, Jersey City Land in Sales</address>
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                proident, sunt in culpa qui officia deserunt mollit anim id est
-                                                laborum.</p>
-                                        </div>
-                                        <div class="amenities clearfix">
-                                            <ul class="pull-left">
-                                                <li><strong>Diện tích</strong> 450<sup>m2</sup></li>
-                                            </ul>
-                                            <ul class="pull-right">
-                                                <span class="label forrent pull-right"><a href="#">Xóa</a> </span>
-                                            </ul>
+													</span>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pgl-property animation">
-                            <div class="row">
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="property-thumb-info-image">
-                                        <img alt="" class="img-responsive" src="/images/properties/property-2.jpg">
-                                        <span class="property-thumb-info-label">
-												<span class="label price">$358,000</span>
-											</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-8">
-                                    <div class="property-thumb-info">
+                                    <div class="col-sm-6 col-md-8">
+                                        <div class="property-thumb-info">
 
-                                        <div class="property-thumb-info-content">
-                                            <h3><a href="propertyDetail.html">Poolside character home on a wide
-                                                422sqm</a></h3>
-                                            <address>Ferris Park, Jersey City Land in Sales</address>
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                proident, sunt in culpa qui officia deserunt mollit anim id est
-                                                laborum.</p>
-                                        </div>
-                                        <div class="amenities clearfix">
-                                            <ul class="pull-left">
-                                                <li><strong>Diện tích</strong> 450<sup>m2</sup></li>
-                                            </ul>
-                                            <ul class="pull-right">
-                                                <span class="label forrent pull-right"><a href="#">Xóa</a> </span>
-                                            </ul>
+                                            <div class="property-thumb-info-content">
+                                                <h3>
+                                                    <a th:href="@{'/hostel/detailPost/'+${post.id}}"
+                                                       th:text="${post.title}"></a>
+                                                </h3>
+                                                <address th:text="${post.shortDescription}"></address>
+                                                <strong>Người tạo: </strong>
+                                                <p th:text="${post.createBy}"></p>
+
+                                            </div>
+                                            <div class="amenities clearfix">
+                                                <ul class="pull-left">
+                                                    <li><strong>Area:</strong> <strong
+                                                            th:text="${post.content.acreage}"></strong> <sup>m2</sup>
+                                                    </li>
+                                                </ul>
+                                                <button class="label forrent pull-right btn-delete"
+                                                        th:data-id="${post.id}"> Xóa
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="pgl-property animation">
-                            <div class="row">
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="property-thumb-info-image">
-                                        <img alt="" class="img-responsive" src="/images/properties/property-3.jpg">
-                                        <span class="property-thumb-info-label">
-												<span class="label price">$358,000</span>
-											</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-8">
-                                    <div class="property-thumb-info">
 
-                                        <div class="property-thumb-info-content">
-                                            <h3><a href="propertyDetail.html">Poolside character home on a wide
-                                                422sqm</a></h3>
-                                            <address>Ferris Park, Jersey City Land in Sales</address>
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                proident, sunt in culpa qui officia deserunt mollit anim id est
-                                                laborum.</p>
-                                        </div>
-                                        <div class="amenities clearfix">
-                                            <ul class="pull-left">
-                                                <li><strong>Diện tích</strong> 450<sup>m2</sup></li>
-                                            </ul>
-                                            <ul class="pull-right">
-                                                <span class="label forrent pull-right"><a href="#">Xóa</a> </span>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
+                        </div>
                     </div>
-                </div>
             </section>
         </section>
     </div>
@@ -335,7 +267,7 @@
 
 <!-- Style Switcher -->
 <script type="text/javascript" src="/style-switcher/js/switcher.js"></script>
-
+<script type="text/javascript" src="/js/cookiesave.js"></script>
 </body>
 
 <!-- Mirrored from pixelgeeklab.com/html/realestast/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 16 Aug 2015 08:54:11 GMT -->

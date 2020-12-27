@@ -51,5 +51,5 @@ public interface PostReponsitory extends CrudRepository<PostEntity, Long> {
 	// Danh sách Đã lưu
 	List<PostEntity> findByIdIn(List<Long> ids);
 	// Danh sách đã đăng
-//	List<PostEntity> findByUserEntity(@Param("userid") String userid);
+	List<PostEntity> findByUserEntityId(@Param("userid") Long userid);
 }
