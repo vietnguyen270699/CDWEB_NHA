@@ -63,12 +63,7 @@ public class AccountController {
 
 		UserEntity userEntity = userService.findUserByEmail(user.getUsername());
 		model.addAttribute("profile", userEntity);
-		// list posted of user
-
-		List<PostEntity> listposted = (List<PostEntity>) postservice.findByUserEntityId(userEntity.getId());
-		System.out.println(listposted);
-		if(listposted!=null)
-		model.addAttribute("posted", listposted);
+		
 		
 		return "userProfile";
 	}
@@ -98,38 +93,6 @@ public class AccountController {
 		return "redirect:/admin/updateUser?success";
 	}
 
-	@ResponseBody
-	@RequestMapping("list/deletepostsave/{id}")
-	public boolean listdeletepostsave(ModelMap model, @PathVariable("id") Long id) {
 
-		Cookie listsave = cookieservice.read("listsave");
-
-		String iddelete = id.toString();
-		String value = id.toString();
-		String newvalue = "";
-
-		if (listsave != null) {
-
-			value = listsave.getValue();
-			String[] splits = value.split(",");
-
-			if (value.contains(id.toString())) {
-				for (String string : splits) {
-					if (!string.equalsIgnoreCase(iddelete)) {
-						newvalue += "," + string.toString();
-					}
-				}
-			} else {
-				return false;
-			}
-		}
-		if(newvalue.length()!=0) {
-		newvalue = newvalue.substring(1, newvalue.length());
-		cookieservice.create("listsave", newvalue, 30);
-		}else {
-			cookieservice.delete("listsave");
-		}
-		return true;
-	}
 
 }
