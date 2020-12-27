@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.Cookie;
 
-import com.exam.hostelmanager.dto.UserDTO;
+import com.exam.hostelmanager.entity.ImageEntity;
 import com.exam.hostelmanager.entity.UserEntity;
 import com.exam.hostelmanager.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,10 +64,6 @@ public class AccountController {
         return "userProfile";
     }
 
-    @GetMapping("newPost")
-    public ModelAndView newPost() {
-        return new ModelAndView("newPost");
-    }
 
     @GetMapping("inputCount")
     public ModelAndView inputXu() {
@@ -80,14 +76,39 @@ public class AccountController {
     }
 
 
-    @PostMapping("updateNow")
-    public String updateNow(Model model, Principal principal) {
+    @ModelAttribute("user")
+    public UserEntity userDTO() {
+        return new UserEntity();
+    }
 
+
+    @PostMapping("updateNow")
+    public String updateNow(Principal principal, @ModelAttribute("user") UserEntity userEntity) {
         User user = (User) ((Authentication) principal).getPrincipal();
         UserEntity entity = userService.findUserByEmail(user.getUsername());
-        entity.setPhone(012233333333);
+        entity.setPhone(userEntity.getPhone());
+        entity.setUserName(userEntity.getUserName());
+        entity.setPassword(userEntity.getPassword());
+        entity.setAddress(userEntity.getAddress());
         userService.save(entity);
         return "redirect:/admin/updateUser?success";
     }
 
+    @GetMapping("newPost")
+    public String newPost(Model model) {
+        model.addAttribute("post", new PostEntity());
+        return "newPost";
+    }
+
+    @PostMapping("postNow")
+    public String postNow(Principal principal, @ModelAttribute("post") PostEntity postEntity) {
+        User user = (User) ((Authentication) principal).getPrincipal();
+        UserEntity entity = userService.findUserByEmail(user.getUsername());
+        postEntity.setUserEntity(entity);
+        ArrayList<ImageEntity> img = new ArrayList<>();
+//        img.add(new ImageEntity(1, "abc"));
+        postEntity.setImage(img);
+        postservice.save(postEntity);
+        return "redirect:/admin/newPost?success";
+    }
 }

@@ -20,14 +20,14 @@ public class RegisterController {
     }
 
     @PostMapping("registerNow")
-    public String registerUserAccount(@ModelAttribute("user") UserEntity dto) {
-        userService.save(dto);
+    public String registerUserAccount(@ModelAttribute("user") UserEntity entity) {
+        userService.save(entity);
         return "redirect:/hostel/register?success";
     }
 
     // **
     @ModelAttribute("user")
-    public UserEntity userDTO() {
+    public UserEntity userEntity() {
         return new UserEntity();
     }
 

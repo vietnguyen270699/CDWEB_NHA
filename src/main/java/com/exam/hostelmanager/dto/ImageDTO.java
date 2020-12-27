@@ -1,8 +1,6 @@
 package com.exam.hostelmanager.dto;
 
-import java.util.Date;
-
-public class ImageDTO extends BaseDTO<ImageDTO>{
+public class ImageDTO extends BaseDTO<ImageDTO> {
     String name;
 
     public ImageDTO(String name) {
