@@ -13,3 +13,18 @@ $(document).ready(function() {
 		})
 	})
 })
+$(document).ready(function() {
+	$(".btn-delete").click(function() {
+		var id = $(this).attr("data-id");
+		$.ajax({
+			url: "/admin/list/deletepostsave/" + id,
+			success: function(response) {
+				if (response) {
+					alert("Đã xóa thành công: " + id)
+				}else{
+					alert("Xóa thất bại : " + id )
+				}
+			}
+		})
+	})
+})

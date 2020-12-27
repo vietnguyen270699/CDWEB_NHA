@@ -62,6 +62,8 @@ public interface PostService {
 
 	List<PostEntity> findByIdIn(List<Long> ids);
 
+	List<PostEntity> findByUserEntityId(Long userid);
+
 	
 
 	
