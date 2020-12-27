@@ -23,10 +23,6 @@ public class MasterController {
 	@Autowired
 	private PostService postservice;
 
-//    @GetMapping("home")
-//    public ModelAndView home() {
-//        return new ModelAndView("home");
-//    }
 	@GetMapping("home")
 	public String loadHome(ModelMap model) {
 

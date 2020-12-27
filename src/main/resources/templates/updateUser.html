@@ -25,12 +25,13 @@
                 <h2>Cap nhat thong tin</h2>
                 <div class="agent-profile">
                     <div class="row">
-                        <form id="contact-form" th:action="@{/admin/updateNow}"  method="post">
+                        <form id="contact-form" th:action="@{/admin/updateNow}" method="post" th:object="${user}">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label for="name">Tên *</label>
                                         <input type="text" id="name" class="form-control"
+                                               th:field="*{userName}"
                                                data-msg-required="Please enter your name." required
                                                autofocus="autofocus">
                                     </div>
@@ -58,7 +59,7 @@
                                     <div class="col-sm-6">
                                         <label>Mật khẩu mới*</label>
                                         <input type="password" class="form-control"
-
+                                               th:field="*{password}"
                                                data-msg-required="Please enter the subject." required>
                                     </div>
                                 </div>
@@ -66,6 +67,15 @@
                                     <div class="col-sm-6">
                                         <label>Số điện thoại*</label>
                                         <input type="number" class="form-control"
+                                               th:field="*{phone}"
+                                               data-msg-required="Please enter the subject." required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Địa chỉ*</label>
+                                        <input type="number" class="form-control"
+                                               th:field="*{address}"
                                                data-msg-required="Please enter the subject." required>
                                     </div>
                                 </div>

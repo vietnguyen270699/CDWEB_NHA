@@ -65,9 +65,6 @@
                     <div class="nav navbar-nav pull-right"
                          sec:authorize="isAnonymous()">
                         <li>
-                            <a th:href="@{/admin/profile}"><i
-                                    class="fa fa-user" th:text="#{label.account}"></i></a></li>
-                        <li>
                             <a th:href="@{/hostel/login}" th:text="#{label.login}">Log in</a></li>
                     </div>
                 </ul>
