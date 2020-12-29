@@ -21,6 +21,7 @@ $(document).ready(function() {
 			success: function(response) {
 				if (response) {
 					alert("Đã xóa thành công: " + id)
+					  location.reload();
 				}else{
 					alert("Xóa thất bại : " + id )
 				}
