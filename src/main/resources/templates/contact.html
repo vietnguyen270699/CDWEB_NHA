@@ -1,95 +1,117 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
->
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head th:replace="head :: head">
 
 </head>
 <body>
 	<div id="page">
-		<header th:replace="header :: header">
-			
-		</header>
-		
-		
+		<header th:replace="header :: header"> </header>
+
+
 		<!-- Begin Main -->
 		<div role="main" class="main pgl-bg-grey">
 			<!-- Begin page top -->
 			<section class="page-top">
 				<div class="container">
 					<div class="page-top-in">
-						<h2><span>Liên hệ</span></h2>
+						<h2>
+							<span>Liên hệ</span>
+						</h2>
 					</div>
 				</div>
 			</section>
 			<!-- End page top -->
-			
+
 			<!-- Begin content with sidebar -->
 			<div class="container">
 				<div class="row">
 					<div class="col-md-9 content">
-						
+
 						<div class="contact">
-							
+
 							<div class="row">
-								<div class="col-sm-6">
+								<div class="col-sm-6 ">
 									<strong>Địa chỉ</strong>
-									<address>129/6 tristique eu eleifend sit amet, tincid unt afringilla rhoncus lacus in condimentum.</address>
+									<address>Nong Lam University</address>
 								</div>
 								<div class="col-sm-6">
 									<address>
-										<strong>Điện thoại</strong> 012.666.999<br>
-										<strong>Fax.</strong> 012.666.999<br>
-										<strong>Email.</strong> viet@gmail.com
+										<strong>Điện thoại</strong> 096.305.8534<br> <strong>Email.</strong>
+										nha@gmail.com
 									</address>
 								</div>
 							</div>
+								<hr>
+							<div>
+								<!-- Map Begin -->
+								<div class="map">
+									<iframe
+										src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Nong%20Lam%20university+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+										height="500" width="100%" style="border: 0;"
+										allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+									<div class="map-inside" style="top: 10px !important;">
+										<i class="icon_pin"></i>
+										<div class="inside-widget">
+											<h4>Nong Lam University - Nha create by Viet and Loan</h4>
+
+										</div>
+									</div>
+								</div>
+								<!-- Map End -->
+
+							</div>
 							<hr>
-							<form id="contact-form" name="form1" method="post" action="http://pixelgeeklab.com/html/realestast/send_contact.php">
+							<form id="contact-form" name="form1" method="post"
+								action="http://pixelgeeklab.com/html/realestast/send_contact.php">
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6">
-											<label for="name">Your Name*</label>
-											<input type="text" name="name" id="name" class="form-control" data-msg-required="Please enter your name." required>
+											<label for="name">Your Name*</label> <input type="text"
+												name="name" id="name" class="form-control"
+												data-msg-required="Please enter your name." required>
 										</div>
 										<div class="col-sm-6">
-											<label for="customer_mail">Your Email*</label>
-											<input type="email" name="customer_mail" id="customer_mail" class="form-control" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." required>
+											<label for="customer_mail">Your Email*</label> <input
+												type="email" name="customer_mail" id="customer_mail"
+												class="form-control"
+												data-msg-required="Please enter your email address."
+												data-msg-email="Please enter a valid email address."
+												required>
 										</div>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6">
-											<label for="subject">Subject*</label>
-											<input type="text" name="subject" id="subject" class="form-control" data-msg-required="Please enter the subject." required>
+											<label for="subject">Subject*</label> <input type="text"
+												name="subject" id="subject" class="form-control"
+												data-msg-required="Please enter the subject." required>
 										</div>
-									
+
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="comments">Your Message*</label>
-									<textarea rows="9" name="comments" id="comments" class="form-control" data-msg-required="Please enter your message." required></textarea>
+									<textarea rows="9" name="comments" id="comments"
+										class="form-control"
+										data-msg-required="Please enter your message." required></textarea>
 								</div>
 								<div class="form-group">
-									<input type="submit" value="Submit" class="btn btn-primary min-wide" data-loading-text="Loading...">
+									<input type="submit" value="Submit"
+										class="btn btn-primary min-wide"
+										data-loading-text="Loading...">
 								</div>
 							</form>
 						</div>
-						
+
 					</div>
-					<div class="col-md-3 sidebar">
-						
-					
-						
-					
-						
-					</div>
-				</div>	
+					<div class="col-md-3 sidebar"></div>
+				</div>
 			</div>
 			<!-- End content with sidebar -->
-			
+
 		</div>
 		<!-- End Main -->
 
@@ -104,8 +126,9 @@
 							<address>
 
 								<i class="fa fa-phone"></i> Điện thoại : 0800-666-6666<br>
-								<i class="fa fa-fax"></i> Fax : 1-800-666-8888<br>
-								<i class="fa fa-envelope-o"></i> Mail: <a href="mailto:viet@gmail.com">viet@gmail.com</a>
+								<i class="fa fa-fax"></i> Fax : 1-800-666-8888<br> <i
+									class="fa fa-envelope-o"></i> Mail: <a
+									href="mailto:viet@gmail.com">viet@gmail.com</a>
 							</address>
 						</div>
 						<div class="col-sm-2">
@@ -137,29 +160,30 @@
 			</div>
 		</footer>
 		<!-- End footer -->
-			
+
 	</div>
-	
-	
+
+
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="/vendor/jquery.min.js"></script> 
-	<!-- Include all compiled plugins (below), or include individual files as needed --> 
+	<script src="/vendor/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="/bootstrap/js/bootstrap.min.js"></script>
 	<script src="/vendor/owl-carousel/owl.carousel.js"></script>
 	<script src="/vendor/flexslider/jquery.flexslider-min.js"></script>
 	<script src="/vendor/chosen/chosen.jquery.min.js"></script>
-	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+	<script type="text/javascript"
+		src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
 	<script src="/vendor/gmap/gmap3.infobox.min.js"></script>
 	<script src="/vendor/masonry/imagesloaded.pkgd.min.js"></script>
 	<script src="/vendor/masonry/masonry.pkgd.min.js"></script>
-	
+
 	<!-- Theme Initializer -->
 	<script src="/js/theme.plugins.js"></script>
 	<script src="/js/theme.js"></script>
-	
+
 	<!-- Style Switcher -->
 	<script type="text/javascript" src="/style-switcher/js/switcher.js"></script>
-	
+
 </body>
 
 <!-- Mirrored from pixelgeeklab.com/html/realestast/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 16 Aug 2015 08:54:11 GMT -->

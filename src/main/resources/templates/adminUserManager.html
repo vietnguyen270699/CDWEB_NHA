@@ -98,46 +98,7 @@
                                                 <a href="#">View all messages</a>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-email"></i>
-                                        <span class="quantity">1</span>
-                                        <div class="email-dropdown js-dropdown">
-                                            <div class="email__title">
-                                                <p>You have 3 New Emails</p>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="/images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, 3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="/images/icon/avatar-05.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, Yesterday</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="/images/icon/avatar-04.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, April 12,,2018</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__footer">
-                                                <a href="#">See all emails</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </div> 
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-notifications"></i>
                                         <span class="quantity">3</span>
@@ -184,7 +145,7 @@
                                             <img src="/images/icon/avatar-01.jpg" alt="John Doe" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                            <a class="js-acc-btn" href="#">Admin</a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -225,8 +186,7 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        
-                        
+
                         <div class="row">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
@@ -239,61 +199,37 @@
                                         
                                     </div>
                                 </div>
-                                <div class="table-responsive table-responsive-data2">
-                                    <table class="table table-data2">
+                                <div class="table-responsive table--no-card m-b-40">
+                                    <table class="table table-borderless table-striped table-earning">
                                         <thead>
                                             <tr>
                                                 <th>
-                                                    STT
+                                                    Id User
                                                 </th>
-                                                <th>name</th>
-                                                <th>email</th>
+                                                <th>User_name</th>
                                                 <th>Password</th>
+                                                <th>Email</th>
                                                 <th>Number phone</th>
                                                 <th>Address</th>
                                                 <th>Money</th>
-                                                <th></th>
+                                                <th>Create Date</th>
+                                                <th>Edit</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="tr-shadow">
-                                                <td  >01</td>
-                                                <td>vietnguyen</td>
+                                            <tr class="tr-shadow" th:each="user : ${users}">
+                                                <td th:text="${user.id}" ></td>
+                                                <td th:text="${user.userName}"></td>
                                                 <td>
-                                                    <span class="block-email">vietnguyen@example.com</span>
+                                                    <span class="block-email" th:text="${user.password}"></span>
                                                 </td>
-                                                <td class="desc">123123</td>
-                                                <td>0125658645</td>
+                                                <td class="desc" th:text="${user.email}"></td>
+                                                <td th:text="${user.phone}"></td>
                                                 <td>
-                                                    <span class="status--process">KTX khu B , Đông Hòa, Dĩ An</span>
+                                                    <span class="status--process" th:text="${user.address}"></span>
                                                 </td>
-                                                <td>$679.00</td>
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                      
-                                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Edit" th:href="@{/admin/adminUser/formEditUser}" >
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </a>
-                                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Delete" href="#">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </a>
-                                                       
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="spacer"></tr>
-                                            <tr class="tr-shadow">
-                                                <td  >02</td>
-                                                <td>vietnguyen</td>
-                                                <td>
-                                                    <span class="block-email">vietnguyen@example.com</span>
-                                                </td>
-                                                <td class="desc">123123</td>
-                                                <td>0125658645</td>
-                                                <td>
-                                                    <span class="status--process">KTX khu B , Đông Hòa, Dĩ An</span>
-                                                </td>
-                                                <td>$679.00</td>
+                                                <td th:text="${user.money}"></td>
+                                                 <td th:text="${user.createDate}"></td>
                                                 <td>
                                                     <div class="table-data-feature">
                                                       
@@ -308,57 +244,7 @@
                                                 </td>
                                             </tr>
                                             <tr class="spacer"></tr>
-                                            <tr class="tr-shadow">
-                                                <td  >01</td>
-                                                <td>vietnguyen</td>
-                                                <td>
-                                                    <span class="block-email">vietnguyen@example.com</span>
-                                                </td>
-                                                <td class="desc">123123</td>
-                                                <td>0125658645</td>
-                                                <td>
-                                                    <span class="status--process">KTX khu B , Đông Hòa, Dĩ An</span>
-                                                </td>
-                                                <td>$679.00</td>
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                      
-                                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Edit" th:href="@{/admin/adminUser/formEditUser}">
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </a>
-                                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Delete" href="#">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </a>
-                                                       
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="spacer"></tr>
-                                            <tr class="tr-shadow">
-                                                <td  >01</td>
-                                                <td>vietnguyen</td>
-                                                <td>
-                                                    <span class="block-email">vietnguyen@example.com</span>
-                                                </td>
-                                                <td class="desc">123123</td>
-                                                <td>0125658645</td>
-                                                <td>
-                                                    <span class="status--process">KTX khu B , Đông Hòa, Dĩ An</span>
-                                                </td>
-                                                <td>$679.00</td>
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                      
-                                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Edit" th:href="@{/admin/adminUser/formEditUser}" >
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </a>
-                                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Delete" href="#">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </a>
-                                                       
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                         
                                         </tbody>
                                     </table>
                                 </div>
