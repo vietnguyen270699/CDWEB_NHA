@@ -1,5 +1,4 @@
 package com.exam.hostelmanager.entity;
-import com.exam.hostelmanager.common.ERole;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,48 +9,48 @@ import javax.persistence.*;
 @Entity
 @Table(name = "role")
 public class RoleEntity extends BaseEntity {
-	@Enumerated(EnumType.STRING)
-	@Basic(optional = false)
-	@Column
-	private ERole roleName;
+    //	@Enumerated(EnumType.STRING)
+    @Basic(optional = false)
+    @Column
+    private String roleName;
 
-	@ManyToMany(mappedBy = "roles" )
-	private List<UserEntity> users = new ArrayList<>();
-	
-	public RoleEntity() {
-		super();
-	}
+    @ManyToMany(mappedBy = "roles")
+    private List<UserEntity> users = new ArrayList<>();
 
-	public RoleEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy, ERole roleName,
-					  List<UserEntity> users) {
-		super(id, createDate, createBy, modifyDate, modifyBy);
-		this.roleName = roleName;
-		this.users = users;
-	}
+    public RoleEntity() {
+        super();
+    }
 
-	public RoleEntity(Long id, Date createDate, String createBy, Date modifyDate,String modifyBy) {
-		super(id, createDate, createBy, modifyDate, modifyBy);
-	}
+    public RoleEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy, String roleName,
+                      List<UserEntity> users) {
+        super(id, createDate, createBy, modifyDate, modifyBy);
+        this.roleName = roleName;
+        this.users = users;
+    }
 
-	public RoleEntity(Long id) {
-		super(id);
+    public RoleEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy) {
+        super(id, createDate, createBy, modifyDate, modifyBy);
+    }
 
-	}
+    public RoleEntity(Long id) {
+        super(id);
 
-	public ERole getRoleName() {
-		return roleName;
-	}
+    }
 
-	public void setRoleName(ERole roleName) {
-		this.roleName = roleName;
-	}
+    public String getRoleName() {
+        return roleName;
+    }
 
-	public List<UserEntity> getUsers() {
-		return users;
-	}
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
 
-	public void setUsers(List<UserEntity> users) {
-		this.users = users;
-	}
+    public List<UserEntity> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UserEntity> users) {
+        this.users = users;
+    }
 
 }
