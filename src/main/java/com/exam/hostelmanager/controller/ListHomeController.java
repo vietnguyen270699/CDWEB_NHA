@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.exam.hostelmanager.entity.ImageEntity;
 import com.exam.hostelmanager.entity.PostEntity;
 import com.exam.hostelmanager.service.CookieService;
 import com.exam.hostelmanager.service.PostService;
@@ -30,7 +31,8 @@ public class ListHomeController {
 
 	@Autowired
 	private PostService postservice;
-
+	
+	
 	@GetMapping("lsHome")
 	public ModelAndView homes() {
 		return new ModelAndView("listHome");
@@ -40,7 +42,6 @@ public class ListHomeController {
 	public String listpost(ModelMap model) {
 
 		List<PostEntity> listpost = (List<PostEntity>) postservice.findAll();
-
 		model.addAttribute("posts", listpost);
 
 		return "listHome";
@@ -50,7 +51,15 @@ public class ListHomeController {
 	public String detailpost(ModelMap model, @PathVariable(name = "id") Long id) {
 		Optional<PostEntity> optionpost = postservice.findById(id);
 		if (optionpost.isPresent()) {
+			String city = optionpost.get().getContent().getCity();
+			List<PostEntity> listsuggestions = (List<PostEntity>) postservice.findByContentCity(city);
+			
+			List<ImageEntity> images = optionpost.get().getImage();
+			
+			model.addAttribute("listsuggestions", listsuggestions);
+			model.addAttribute("images", images);
 			model.addAttribute("post", optionpost.get());
+				
 		} else {
 			return listpost(model);
 		}

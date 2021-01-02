@@ -64,6 +64,8 @@ public interface PostService {
 
 	List<PostEntity> findByUserEntityId(Long userid);
 
+	List<PostEntity> findByContentCity(String city);
+
 	
 
 	

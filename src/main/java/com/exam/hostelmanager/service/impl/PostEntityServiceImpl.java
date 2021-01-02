@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.exam.hostelmanager.entity.ImageEntity;
 import com.exam.hostelmanager.entity.PostEntity;
-import com.exam.hostelmanager.repository.ImageReponsitory;
 import com.exam.hostelmanager.repository.PostReponsitory;
 import com.exam.hostelmanager.service.PostService;
 
@@ -54,7 +53,12 @@ public class PostEntityServiceImpl implements PostService {
 	public List<PostEntity> findAllById(List<Long> ids) {
 		return (List<PostEntity>) postReponsitory.findAllById(ids);
 	}
+	
 
+	@Override
+	public List<PostEntity> findByContentCity(String city) {
+		return postReponsitory.findByContentCity(city);
+	}
 
 	@Override
 	public List<PostEntity> findByIdIn(List<Long> ids) {
