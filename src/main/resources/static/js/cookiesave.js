@@ -24,6 +24,7 @@ $(document).ready(function() {
 					  location.reload();
 				}else{
 					alert("Xóa thất bại : " + id )
+					  location.reload();
 				}
 			}
 		})
