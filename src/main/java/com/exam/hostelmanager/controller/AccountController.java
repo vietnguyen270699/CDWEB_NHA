@@ -30,14 +30,6 @@ import com.exam.hostelmanager.service.PostService;
 @Controller
 @RequestMapping("/admin")
 public class AccountController {
-//
-//    public static final String SUCCESS_URL = "admin/pay/success";
-//    public static final String CANCEL_URL = "admin/pay/cancel";
-
-    Double pricefee = 299.0;
-//    @Autowired
-//    private PayPalService service;
-
     @Autowired
     private PostService postService;
     @Autowired
@@ -99,7 +91,7 @@ public class AccountController {
         entity.setUserName(userEntity.getUserName());
         entity.setPassword(userEntity.getPassword());
         entity.setAddress(userEntity.getAddress());
-        userService.save(entity);
+        userService.save(entity, 1);
         return "redirect:/admin/updateUser?success";
     }
 
@@ -124,64 +116,6 @@ public class AccountController {
     }
 
 
-    //paypal
-//    @GetMapping("/paypal")
-//    public String homePayPal() {
-//        return "paypalHome";
-//
-//    }
-
-//    @PostMapping("/pay")
-//    public String payment(@ModelAttribute("order") OrderPayPal order) {
-//        try {
-//            Payment payment = service.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
-//                    order.getIntent(), order.getDescription(), "http://localhost:8080/" + CANCEL_URL,
-//                    "http://localhost:8080/" + SUCCESS_URL);
-//            for (Links link : payment.getLinks()) {
-//                if (link.getRel().equals("approval_url")) {
-//                    return "redirect:" + link.getHref();
-//                }
-//            }
-//
-//        } catch (PayPalRESTException e) {
-//
-//            e.printStackTrace();
-//        }
-//        return "redirect:/paypal";
-//    }
-
-
-//    @PostMapping(value = CANCEL_URL)
-//    public String cancel() {
-//        return "cancelPayPal";
-//    }
-
-//    @PostMapping(value = SUCCESS_URL)
-//    public String successPay(@RequestParam("paymentId") String paymentId,
-//                             @RequestParam("PayerID") String payerId,
-//                             Principal principal, @ModelAttribute("user") UserEntity userEntity,
-//                             @ModelAttribute("order") OrderPayPal order) {
-//
-//        try {
-//            User user = (User) ((Authentication) principal).getPrincipal();
-//            UserEntity entity = userService.findUserByEmail(user.getUsername());
-//
-//            Payment payment = service.executePayment(paymentId, payerId);
-//            System.out.println("GET JSONNNNNNNNNNNN   \n" + payment.toJSON());
-//            if (payment.getState().equals("approved")) {
-//                entity.setMoney(entity.getMoney() + order.getPrice());
-//
-//                userService.save(entity);
-//                System.out.println("PRICE: PRICE PRICE PRICE PRICE \n" + entity.getMoney());
-//                return "successPayPal";
-//            }
-//
-//        } catch (PayPalRESTException exception) {
-//            System.out.println(exception.getMessage());
-//        }
-//
-//        return "redirect:/paypal";
-//    }
 
     //delete account
     @ResponseBody

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <meta charset="UTF-8" />
-    <title>Insert title here</title>
+    <head th:replace="head :: head">
 </head>
 <body>
 <h1>Payment Failure</h1>
+
+<div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
 </body>
 </html>

@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.exam.hostelmanager.entity.PostEntity;
 import com.exam.hostelmanager.service.PostService;
@@ -17,7 +14,7 @@ import com.exam.hostelmanager.service.PostService;
 @Controller
 @RequestMapping("/hostel")
 public class MasterController {
-	Double pricefee = 299.0;
+	Double priceFee = 299.0;
 	String ktx = "Ký túc xá";
 	String hostel = "Nhà trọ";
 	@Autowired
@@ -27,7 +24,7 @@ public class MasterController {
 	public String loadHome(ModelMap model) {
 
 		List<PostEntity> listpost = (List<PostEntity>) postservice
-				.findByFeeEntityPriceGreaterThanOrderByFeeEntityPriceDesc(pricefee);
+				.findByFeeEntityPriceGreaterThanOrderByFeeEntityPriceDesc(priceFee);
 
 		List<PostEntity> listhostel = (List<PostEntity>) postservice
 				.findByTitleOrderByFeeEntityPriceDesc(hostel);

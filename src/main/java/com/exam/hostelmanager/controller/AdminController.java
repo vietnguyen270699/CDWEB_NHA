@@ -36,8 +36,8 @@ public class AdminController {
 
 	@GetMapping("adminPost")
 	public String loginAdminPost(ModelMap model) {
-		List<PostEntity> listpost = (List<PostEntity>) postservice.findAll();
-		model.addAttribute("posts", listpost);
+		List<PostEntity> listPost = (List<PostEntity>) postservice.findAll();
+		model.addAttribute("posts", listPost);
 	
 		return "adminPostManager";
 	}
