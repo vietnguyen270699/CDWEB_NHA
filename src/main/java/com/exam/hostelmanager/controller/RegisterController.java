@@ -21,11 +21,10 @@ public class RegisterController {
 
     @PostMapping("registerNow")
     public String registerUserAccount(@ModelAttribute("user") UserEntity entity) {
-        userService.save(entity);
+        userService.save(entity, 1);
         return "redirect:/hostel/register?success";
     }
 
-    // **
     @ModelAttribute("user")
     public UserEntity userEntity() {
         return new UserEntity();

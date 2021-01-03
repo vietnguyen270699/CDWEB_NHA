@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 
@@ -62,26 +63,30 @@ public class PaypalController {
 
 
     @GetMapping(value = CANCEL_URL)
-    public String cancel() {
+    public String cancel(RedirectAttributes redirAttrs) {
+        redirAttrs.addFlashAttribute("error", "The error XYZ occurred.");
+
         return "cancelPayPal";
     }
 
     @GetMapping(value = SUCCESS_URL)
     public String successPay(@RequestParam("paymentId") String paymentId,
                              @RequestParam("PayerID") String payerId,
-                             Principal principal, @ModelAttribute("user") UserEntity userEntity) {
+                             Principal principal, @ModelAttribute("user") UserEntity userEntity,
+                             RedirectAttributes redirAttrs) {
 
         try {
             User user = (User) ((Authentication) principal).getPrincipal();
             UserEntity entity = userService.findUserByEmail(user.getUsername());
+            redirAttrs.addFlashAttribute("success", "Everything went just fine.");
 
             Payment payment = service.executePayment(paymentId, payerId);
             System.out.println("GET JSONNNNNNNNNNNN   \n" + payment.toJSON());
             if (payment.getState().equals("approved")) {
                 entity.setMoney(entity.getMoney() + price);
 
-                userService.save(entity);
-                System.out.println("PRICE: PRICE PRICE PRICE PRICE \n" + entity.getMoney() + ", "+ price);
+                userService.save(entity, 0);
+                System.out.println("PRICE: PRICE PRICE PRICE PRICE \n" + entity.getMoney() + ", " + price);
                 return "successPayPal";
             }
 

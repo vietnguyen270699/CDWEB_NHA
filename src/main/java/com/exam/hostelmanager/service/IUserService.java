@@ -7,12 +7,11 @@ import java.util.List;
 
 public interface IUserService extends UserDetailsService {
 
-    UserEntity save(UserEntity userEntity);
+    UserEntity save(UserEntity userEntity, int index);
 
     UserEntity findUserByEmail(String email);
 
 	List<UserEntity> findAll();
 
-	
 
 }

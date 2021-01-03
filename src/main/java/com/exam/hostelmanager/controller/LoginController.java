@@ -30,7 +30,7 @@ public class LoginController {
     }
 
 
-    @PostMapping("loginNow")
+    @GetMapping("loginNow")
     public String loginNow() {
          return "home";
     }
@@ -48,12 +48,12 @@ public class LoginController {
     }
 
 
-    @PostMapping("logout")
+    @GetMapping("logout")
     public String logout() {
         return "home";
     }
 
-    @PostMapping("logoutSuccess")
+    @GetMapping("logoutSuccess")
     public String logoutSuccess() {
         return "home";
     }

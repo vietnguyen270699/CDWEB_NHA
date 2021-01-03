@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.InMemoryTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -26,7 +25,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    //tim kiem updateU trong db va ma hoa pass
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
@@ -47,15 +45,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests().antMatchers("/hostel/**").permitAll();
 
-//        http.authorizeRequests().antMatchers("/admin/home", "/admin/profile").access("hasAnyRole('ADMIN', 'USER')");
-//
-//        http.authorizeRequests().antMatchers("/admin/**").access("hasRole('ADMIN')");
+        http.authorizeRequests().antMatchers("/admin/profile",
+                "/admin/updateUser", "/admin/postNow", "/admin/list/deletepostsave/**",
+                "/admin/paypal/**", "/admin/pay/**")
+                .access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')");
+
+        http.authorizeRequests().antMatchers("/admin/home", "/admin/adminUser",
+                "/admin/adminPost", "/admin/adminFeedback", "/admin/adminUser/formAddUser",
+                "/admin/adminUser/formEditUser", "/admin/adminPost/formEditPost")
+                .access("hasRole('ROLE_ADMIN')");
 
         http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/hostel/error404");
 
         // Cấu hình cho Login Form.
         http.authorizeRequests().and().formLogin()
-                .loginProcessingUrl("/hostel/loginNow")
+                .loginProcessingUrl("/j_spring_security_check") // Submit URL
                 .loginPage("/hostel/login")
                 .defaultSuccessUrl("/hostel/home")
                 .failureUrl("/hostel/login?error=true")
@@ -72,26 +76,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PersistentTokenRepository persistentTokenRepository() {
-
-        //luu tam in ram
         InMemoryTokenRepositoryImpl memory = new InMemoryTokenRepositoryImpl();
         return memory;
     }
-
-
-    //    @Override
-    protected void configure1(HttpSecurity http) throws Exception {
-
-        http.csrf().disable();
-        http.authorizeRequests().antMatchers("/hostel/home")
-                .permitAll().anyRequest().authenticated().
-                and().
-                formLogin().loginPage("/hostel/loginNow").permitAll().and().logout().
-                invalidateHttpSession(true).clearAuthentication(true).
-                logoutRequestMatcher(new AntPathRequestMatcher("/hostel/logout")).
-                logoutSuccessUrl("/hostel/login?logout").permitAll();
-
-    }
-
 
 }

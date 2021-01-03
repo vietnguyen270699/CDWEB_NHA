@@ -23,14 +23,14 @@ import com.exam.hostelmanager.service.PostService;
 @Controller
 @RequestMapping("/hostel")
 public class ListHomeController {
-	String citymode = null;
-	Double pricemode = (double) 0;
-	Double acreagemode = null;
+	String cityMode = null;
+	Double priceMode = (double) 0;
+	Double acreageMode = null;
 	@Autowired
-	CookieService cookieservice;
+	CookieService cookieService;
 
 	@Autowired
-	private PostService postservice;
+	private PostService postService;
 	
 	
 	@GetMapping("lsHome")
@@ -41,18 +41,18 @@ public class ListHomeController {
 	@RequestMapping("listPost")
 	public String listpost(ModelMap model) {
 
-		List<PostEntity> listpost = (List<PostEntity>) postservice.findAll();
+		List<PostEntity> listpost = (List<PostEntity>) postService.findAll();
 		model.addAttribute("posts", listpost);
 
 		return "listHome";
 	}
 
 	@RequestMapping("detailPost/{id}")
-	public String detailpost(ModelMap model, @PathVariable(name = "id") Long id) {
-		Optional<PostEntity> optionpost = postservice.findById(id);
+	public String detailPost(ModelMap model, @PathVariable(name = "id") Long id) {
+		Optional<PostEntity> optionpost = postService.findById(id);
 		if (optionpost.isPresent()) {
 			String city = optionpost.get().getContent().getCity();
-			List<PostEntity> listsuggestions = (List<PostEntity>) postservice.findByContentCity(city);
+			List<PostEntity> listsuggestions = (List<PostEntity>) postService.findByContentCity(city);
 			
 			List<ImageEntity> images = optionpost.get().getImage();
 			
@@ -70,65 +70,65 @@ public class ListHomeController {
 	@RequestMapping("Search")
 	public String listpostSeach(ModelMap model, @RequestParam(defaultValue = "") String city,
 			@RequestParam(defaultValue = "") Double acreage, @RequestParam(defaultValue = "") Double price) {
-		citymode = city;
-		acreagemode = acreage;
-		pricemode = price;
+		cityMode = city;
+		acreageMode = acreage;
+		priceMode = price;
 
 		if (acreage < 70 && price < 4000000) {
-			List<PostEntity> listpost = (List<PostEntity>) postservice
+			List<PostEntity> listpost = (List<PostEntity>) postService
 					.findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqual(city, acreage, price);
 
 			model.addAttribute("posts", listpost);
 		} else if (acreage > 70 && price < 4000000) {
-			List<PostEntity> listpost = (List<PostEntity>) postservice
+			List<PostEntity> listpost = (List<PostEntity>) postService
 					.findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceLessThanEqual(city, acreage,
 							price);
 
 			model.addAttribute("posts", listpost);
 		} else if (acreage < 70 && price > 4000000) {
-			List<PostEntity> listpost = (List<PostEntity>) postservice
+			List<PostEntity> listPost = (List<PostEntity>) postService
 					.findByContentCityAndContentAcreageLessThanEqualAndContentPriceGreaterThanEqual(city, acreage,
 							price);
 
-			model.addAttribute("posts", listpost);
+			model.addAttribute("posts", listPost);
 		} else if (acreage > 70 && price > 4000000) {
-			List<PostEntity> listpost = (List<PostEntity>) postservice
+			List<PostEntity> listPost = (List<PostEntity>) postService
 					.findByContentCityAndContentAcreageGreaterThanEqualAndContentPriceGreaterThanEqual(city, acreage,
 							price);
 
-			model.addAttribute("posts", listpost);
+			model.addAttribute("posts", listPost);
 		}
 		return "listHome";
 	}
 
 	@RequestMapping("Search/sortUp")
 	public String listpostSeachSortUp(ModelMap model) {
-		if (pricemode != 0) {
-			List<PostEntity> listpostsort = (List<PostEntity>) postservice
+		if (priceMode != 0) {
+			List<PostEntity> listPostSort = (List<PostEntity>) postService
 					.findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceAsc(
-							citymode, acreagemode, pricemode);
+							cityMode, acreageMode, priceMode);
 
-			model.addAttribute("posts", listpostsort);
+			model.addAttribute("posts", listPostSort);
 		} else {
-			List<PostEntity> listpostsort = (List<PostEntity>) postservice
-					.findByContentPriceGreaterThanEqualOrderByContentPriceAsc(pricemode);
+			List<PostEntity> listPostSort = (List<PostEntity>) postService
+					.findByContentPriceGreaterThanEqualOrderByContentPriceAsc(priceMode);
 
-			model.addAttribute("posts", listpostsort);
+			model.addAttribute("posts", listPostSort);
 		}
 		return "listHome";
 	}
 
 	@RequestMapping("Search/sortDown")
 	public String listpostSeachSortDown(ModelMap model) {
-		if (pricemode != 0) {
-			List<PostEntity> listpostsort = (List<PostEntity>) postservice
+		if (priceMode != 0) {
+			List<PostEntity> listpostsort = (List<PostEntity>) postService
 					.findByContentCityAndContentAcreageLessThanEqualAndContentPriceLessThanEqualOrderByContentPriceDesc(
-							citymode, acreagemode, pricemode);
+							cityMode, acreageMode, priceMode);
 
 			model.addAttribute("posts", listpostsort);
 		} else {
-			List<PostEntity> listpostsort = (List<PostEntity>) postservice
-					.findByContentPriceGreaterThanEqualOrderByContentPriceDesc(pricemode);
+			List<PostEntity> listpostsort = (List<PostEntity>) postService
+					.findByContentPriceGreaterThanEqualOrderByContentPriceDesc(priceMode);
 
 			model.addAttribute("posts", listpostsort);
 		}
@@ -139,7 +139,7 @@ public class ListHomeController {
 	@RequestMapping("list/postsave/{id}")
 	public boolean listpostsave(ModelMap model, @PathVariable("id") Long id) {
 
-		Cookie listsave = cookieservice.read("listsave");
+		Cookie listsave = cookieService.read("listsave");
 		String value = id.toString();
 		if (listsave != null) {
 			value = listsave.getValue();
@@ -149,7 +149,7 @@ public class ListHomeController {
 				return false;
 			}
 		}
-		cookieservice.create("listsave", value, 30);
+		cookieService.create("listsave", value, 30);
 				return true;
 	}
 

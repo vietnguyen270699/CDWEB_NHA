@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements IUserService {
-	@Autowired
+    @Autowired
     private UserRepository userRepository;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -34,19 +34,20 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public UserEntity save(UserEntity userEntity) {
-        userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+    public UserEntity save(UserEntity userEntity, int index) {
+        if (index == 1) {
+            userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+        }
         return userRepository.save(userEntity);
     }
 
-   
 
-	@Override
-	public List<UserEntity> findAll() {
-		return userRepository.findAll();
-	}
+    @Override
+    public List<UserEntity> findAll() {
+        return userRepository.findAll();
+    }
 
-	@Override
+    @Override
     public UserEntity findUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
