@@ -34,7 +34,7 @@ public class PaypalController {
 
     @GetMapping("/paypal")
     public String homePayPal() {
-        return "user/paypalHome";
+        return "paypalHome";
 
     }
 
@@ -65,7 +65,7 @@ public class PaypalController {
     public String cancel(RedirectAttributes redirAttrs) {
         redirAttrs.addFlashAttribute("error", "The error XYZ occurred.");
 
-        return "user/cancelPayPal";
+        return "cancelPayPal";
     }
 
     @GetMapping(value = SUCCESS_URL)
@@ -84,7 +84,7 @@ public class PaypalController {
                 entity.setMoney(entity.getMoney() + price);
 
                 userService.save(entity, 0);
-                return "user/successPayPal";
+                return "successPayPal";
             }
 
         } catch (PayPalRESTException exception) {

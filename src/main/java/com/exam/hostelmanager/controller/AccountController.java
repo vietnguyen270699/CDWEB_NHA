@@ -71,12 +71,12 @@ public class AccountController {
             model.addAttribute("posted", listPosted);
         }
 
-        return "user/userProfile";
+        return "userProfile";
     }
 
     @GetMapping("updateUser")
     public String updateUser() {
-        return "user/updateUser";
+        return "updateUser";
     }
 
     @ModelAttribute("user")
@@ -93,13 +93,13 @@ public class AccountController {
         entity.setPassword(userEntity.getPassword());
         entity.setAddress(userEntity.getAddress());
         userService.save(entity, 1);
-        return "redirect:/admin/updateUser?success";
+        return "redirect:/updateUser?success";
     }
 
     @GetMapping("newPost")
     public String newPost(Model model) {
         model.addAttribute("post", new PostEntity());
-        return "user/newPost";
+        return "newPost";
     }
 
     @PostMapping("/checkCoin")
@@ -136,7 +136,7 @@ public class AccountController {
         postEntity.setFeeEntity(feeService.findByFee(Double.parseDouble(fee)));
 
         postService.save(postEntity);
-        return "redirect:/admin/newPost?success";
+        return "redirect:/newPost?success";
     }
 
 

@@ -30,7 +30,7 @@ public class AdminController {
 	public String loginAdminUser(ModelMap model) {
 		List<UserEntity> listUser = (List<UserEntity>) userService.findAll();
 		model.addAttribute("users", listUser);
-		return "admin/adminUserManager";
+		return "adminUserManager";
 	}
 
 	@GetMapping("adminPost")
@@ -38,27 +38,27 @@ public class AdminController {
 		List<PostEntity> listPost = (List<PostEntity>) postservice.findAll();
 		model.addAttribute("posts", listPost);
 	
-		return "admin/adminPostManager";
+		return "adminPostManager";
 	}
 
 	@GetMapping("adminFeedback")
 	public String loginAdminFeeback() {
-		return "admin/adminFeedbackManager";
+		return "adminFeedbackManager";
 	}
 
 	@GetMapping("adminUser/formAddUser")
 	public String loginAdminFormAdd() {
-		return "admin/adminFormAdd";
+		return "adminFormAdd";
 	}
 
 	@GetMapping("adminUser/formEditUser")
 	public String loginAdminFormEditUser() {
-		return "admin/adminFormEditUser";
+		return "adminFormEditUser";
 	}
 
 	@GetMapping("adminPost/formEditPost")
 	public String loginAdminFormEditPost() {
-		return "admin/adminFormEditPost";
+		return "adminFormEditPost";
 	}
 
 }

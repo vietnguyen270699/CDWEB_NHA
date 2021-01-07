@@ -11,7 +11,7 @@ public class BlogController {
 
     @GetMapping("blog")
     public String blog() {
-        return "user/blogSingle";
+        return "blogSingle";
     }
 
 }
