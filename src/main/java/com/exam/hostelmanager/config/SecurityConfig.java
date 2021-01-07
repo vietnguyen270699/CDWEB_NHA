@@ -45,14 +45,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests().antMatchers("/hostel/**").permitAll();
 
-        http.authorizeRequests().antMatchers("/admin/profile",
-                "/admin/updateUser", "/admin/postNow", "/admin/list/deletepostsave/**",
-                "/admin/paypal/**", "/admin/pay/**")
+        http.authorizeRequests().antMatchers("/admin/profile/**",
+                "/admin/updateUser/**", "/admin/postNow/**", "/admin/list/deletepostsave/**",
+                "/admin/paypal/**", "/admin/pay/**", "/admin/newPost/**")
                 .access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')");
 
-        http.authorizeRequests().antMatchers("/admin/home", "/admin/adminUser",
-                "/admin/adminPost", "/admin/adminFeedback", "/admin/adminUser/formAddUser",
-                "/admin/adminUser/formEditUser", "/admin/adminPost/formEditPost")
+        http.authorizeRequests().antMatchers("/admin/home/**", "/admin/adminUser/**",
+                "/admin/adminPost/**", "/admin/adminFeedback/**", "/admin/adminUser/formAddUser/**",
+                "/admin/adminUser/formEditUser/**", "/admin/adminPost/formEditPost/**")
                 .access("hasRole('ROLE_ADMIN')");
 
         http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/hostel/error404");

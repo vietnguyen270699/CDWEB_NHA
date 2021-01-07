@@ -10,8 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class ContactController {
 
     @GetMapping("contact")
-    public ModelAndView contact() {
-        return new ModelAndView("contact");
+    public String contact() {
+        return "user/contact";
     }
 
 }

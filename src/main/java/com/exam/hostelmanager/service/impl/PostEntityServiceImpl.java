@@ -3,6 +3,7 @@ package com.exam.hostelmanager.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import com.exam.hostelmanager.entity.FeeEntity;
 import org.apache.taglibs.standard.lang.jstl.IntegerDivideOperator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,6 +60,7 @@ public class PostEntityServiceImpl implements PostService {
 	public List<PostEntity> findByContentCity(String city) {
 		return postReponsitory.findByContentCity(city);
 	}
+
 
 	@Override
 	public List<PostEntity> findByIdIn(List<Long> ids) {

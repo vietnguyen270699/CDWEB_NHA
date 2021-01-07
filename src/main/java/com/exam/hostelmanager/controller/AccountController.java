@@ -1,19 +1,22 @@
 package com.exam.hostelmanager.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.Cookie;
 
 import com.exam.hostelmanager.entity.ImageEntity;
-import com.exam.hostelmanager.entity.OrderPayPal;
 import com.exam.hostelmanager.entity.UserEntity;
-import com.exam.hostelmanager.service.IUserService;
-import com.exam.hostelmanager.service.PayPalService;
-import com.paypal.api.payments.Links;
-import com.paypal.api.payments.Payment;
-import com.paypal.base.rest.PayPalRESTException;
+import com.exam.hostelmanager.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
@@ -21,11 +24,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.exam.hostelmanager.entity.PostEntity;
-import com.exam.hostelmanager.service.CookieService;
-import com.exam.hostelmanager.service.PostService;
 
 @Controller
 @RequestMapping("/admin")
@@ -34,6 +35,9 @@ public class AccountController {
     private PostService postService;
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private FeeService feeService;
 
     @Autowired
     private CookieService cookieService;
@@ -62,20 +66,17 @@ public class AccountController {
         model.addAttribute("profile", userEntity);
 
         // list posted of user
-        List<PostEntity> listposted = (List<PostEntity>) postService.findByUserEntityId(userEntity.getId());
-        if (listposted != null) {
-            model.addAttribute("posted", listposted);
+        List<PostEntity> listPosted = (List<PostEntity>) postService.findByUserEntityId(userEntity.getId());
+        if (listPosted != null) {
+            model.addAttribute("posted", listPosted);
         }
 
-        return "userProfile";
+        return "user/userProfile";
     }
 
-
-    //update user
-
     @GetMapping("updateUser")
-    public String updateUser(Model model) {
-        return "updateUser";
+    public String updateUser() {
+        return "user/updateUser";
     }
 
     @ModelAttribute("user")
@@ -95,26 +96,48 @@ public class AccountController {
         return "redirect:/admin/updateUser?success";
     }
 
-
-    //new post
     @GetMapping("newPost")
     public String newPost(Model model) {
         model.addAttribute("post", new PostEntity());
-        return "newPost";
+        return "user/newPost";
+    }
+
+    @PostMapping("/checkCoin")
+    @ResponseBody
+    public String check(@RequestParam String fee, Principal principal) {
+        User user = (User) ((Authentication) principal).getPrincipal();
+        UserEntity entity = userService.findUserByEmail(user.getUsername());
+
+        return (entity.getMoney() < Double.parseDouble(fee) ? "big" : "ok");
     }
 
     @PostMapping("postNow")
-    public String postNow(Principal principal, @ModelAttribute("post") PostEntity postEntity) {
+    public String postNow(Principal principal, @ModelAttribute("post") PostEntity postEntity,
+                          @RequestParam("photo") MultipartFile photo, @RequestParam("fee") String fee) {
         User user = (User) ((Authentication) principal).getPrincipal();
         UserEntity entity = userService.findUserByEmail(user.getUsername());
+        entity.setMoney(entity.getMoney() - Double.parseDouble(fee));
+        userService.save(entity, 1);
         postEntity.setUserEntity(entity);
-        ArrayList<ImageEntity> img = new ArrayList<>();
-//        img.add(new ImageEntity(1, "abc"));
-        postEntity.setImage(img);
+
+        Path path = Paths.get("uploads/");
+        try {
+            InputStream inputStream = photo.getInputStream();
+            Files.copy(inputStream, path.resolve(photo.getOriginalFilename()),
+                    StandardCopyOption.REPLACE_EXISTING);
+
+            ImageEntity imageEntity = new ImageEntity(photo.getOriginalFilename().toUpperCase(Locale.ROOT));
+            imageEntity.setPost_id(postEntity);
+            postEntity.setImage(Arrays.asList(imageEntity));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        postEntity.setFeeEntity(feeService.findByFee(Double.parseDouble(fee)));
+
         postService.save(postEntity);
         return "redirect:/admin/newPost?success";
     }
-
 
 
     //delete account

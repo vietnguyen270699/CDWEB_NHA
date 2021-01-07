@@ -1,20 +1,13 @@
 package com.exam.hostelmanager.controller;
 
-import com.exam.hostelmanager.dto.UserDTO;
 import com.exam.hostelmanager.entity.UserEntity;
 import com.exam.hostelmanager.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.security.Principal;
 
 @Controller
 
@@ -32,7 +25,7 @@ public class LoginController {
 
     @GetMapping("loginNow")
     public String loginNow() {
-         return "home";
+        return "user/home";
     }
 
 
@@ -43,19 +36,19 @@ public class LoginController {
 
 
     @GetMapping("forgotPassword")
-    public ModelAndView fogotPassword() {
-        return new ModelAndView("forgotPassword");
+    public ModelAndView forgotPassword() {
+        return new ModelAndView("user/forgotPassword");
     }
 
 
     @GetMapping("logout")
     public String logout() {
-        return "home";
+        return "user/home";
     }
 
     @GetMapping("logoutSuccess")
     public String logoutSuccess() {
-        return "home";
+        return "user/home";
     }
 
 

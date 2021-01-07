@@ -3,6 +3,7 @@ package com.exam.hostelmanager.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.exam.hostelmanager.entity.FeeEntity;
 import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -49,12 +49,13 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserEntity findUserByEmail(String email) {
-        return userRepository.findByEmail(email);
+        UserEntity userEntity = userRepository.findByEmail(email).orElse(null);
+        return userEntity;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity user = userRepository.findByEmail(username);
+        UserEntity user = userRepository.findByEmail(username).get();
         if (user == null) {
             throw new UsernameNotFoundException("Invalid username or password");
         }

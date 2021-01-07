@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.exam.hostelmanager.entity.PostEntity;
 import com.exam.hostelmanager.entity.UserEntity;
-import com.exam.hostelmanager.repository.UserRepository;
 import com.exam.hostelmanager.service.IUserService;
 import com.exam.hostelmanager.service.PostService;
 
@@ -20,18 +19,18 @@ public class AdminController {
 	@Autowired
 	private PostService postservice;
 	@Autowired
-	private IUserService userservice;
+	private IUserService userService;
 	
 	@GetMapping("home")
 	public String loginAdmin() {
-		return "adminIndex";
+		return "admin/adminIndex";
 	}
 
 	@GetMapping("adminUser")
 	public String loginAdminUser(ModelMap model) {
-		List<UserEntity> listuser = (List<UserEntity>) userservice.findAll();
-		model.addAttribute("users", listuser);
-		return "adminUserManager";
+		List<UserEntity> listUser = (List<UserEntity>) userService.findAll();
+		model.addAttribute("users", listUser);
+		return "admin/adminUserManager";
 	}
 
 	@GetMapping("adminPost")
@@ -39,27 +38,27 @@ public class AdminController {
 		List<PostEntity> listPost = (List<PostEntity>) postservice.findAll();
 		model.addAttribute("posts", listPost);
 	
-		return "adminPostManager";
+		return "admin/adminPostManager";
 	}
 
 	@GetMapping("adminFeedback")
 	public String loginAdminFeeback() {
-		return "adminFeedbackManager";
+		return "admin/adminFeedbackManager";
 	}
 
 	@GetMapping("adminUser/formAddUser")
-	public String loginAdminformAdd() {
-		return "adminFormAdd";
+	public String loginAdminFormAdd() {
+		return "admin/adminFormAdd";
 	}
 
 	@GetMapping("adminUser/formEditUser")
-	public String loginAdminformEditUser() {
-		return "adminFormEditUser";
+	public String loginAdminFormEditUser() {
+		return "admin/adminFormEditUser";
 	}
 
 	@GetMapping("adminPost/formEditPost")
-	public String loginAdminformEditPost() {
-		return "adminFormEditPost";
+	public String loginAdminFormEditPost() {
+		return "admin/adminFormEditPost";
 	}
 
 }

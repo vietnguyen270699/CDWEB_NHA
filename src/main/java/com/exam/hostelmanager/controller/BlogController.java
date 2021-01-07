@@ -10,8 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class BlogController {
 
     @GetMapping("blog")
-    public ModelAndView blog() {
-        return new ModelAndView("blogSingle");
+    public String blog() {
+        return "user/blogSingle";
     }
 
 }

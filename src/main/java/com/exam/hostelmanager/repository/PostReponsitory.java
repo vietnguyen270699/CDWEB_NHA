@@ -1,6 +1,7 @@
 package com.exam.hostelmanager.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.hibernate.mapping.Collection;
 import org.springframework.data.jpa.repository.Query;
@@ -55,4 +56,7 @@ public interface PostReponsitory extends CrudRepository<PostEntity, Long> {
 	
 	// Danh sách gợi ý
 	List<PostEntity> findByContentCity(@Param("city") String city);
+
+
+
 }
