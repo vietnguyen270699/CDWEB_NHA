@@ -25,7 +25,7 @@ public class LoginController {
 
     @GetMapping("loginNow")
     public String loginNow() {
-        return "user/home";
+        return "home";
     }
 
 
@@ -37,18 +37,18 @@ public class LoginController {
 
     @GetMapping("forgotPassword")
     public ModelAndView forgotPassword() {
-        return new ModelAndView("user/forgotPassword");
+        return new ModelAndView("forgotPassword");
     }
 
 
     @GetMapping("logout")
     public String logout() {
-        return "user/home";
+        return "home";
     }
 
     @GetMapping("logoutSuccess")
     public String logoutSuccess() {
-        return "user/home";
+        return "home";
     }
 
 

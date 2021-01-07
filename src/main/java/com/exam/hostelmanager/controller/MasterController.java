@@ -35,11 +35,11 @@ public class MasterController {
 		model.addAttribute("posts", listPost);
 		model.addAttribute("hostels", listHostel);
 		model.addAttribute("ktxs", listKtx);
-		return "user/home";
+		return "home";
 	}
 
 	@GetMapping("error404")
 	public String showError404() {
-		return "user/page404";
+		return "page404";
 	}
 }

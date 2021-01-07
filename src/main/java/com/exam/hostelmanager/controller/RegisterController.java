@@ -30,7 +30,7 @@ public class RegisterController {
 
     @GetMapping("register")
     public String register(Model model) {
-        return "user/register";
+        return "register";
     }
 
     @PostMapping("/checkEmail")

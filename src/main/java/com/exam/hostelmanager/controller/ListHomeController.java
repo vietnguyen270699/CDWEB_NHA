@@ -34,7 +34,7 @@ public class ListHomeController {
 
     @GetMapping("lsHome")
     public String homes() {
-        return "user/listHome";
+        return "listHome";
     }
 
     @RequestMapping("listPost")
@@ -43,7 +43,7 @@ public class ListHomeController {
         List<PostEntity> listPost = (List<PostEntity>) postService.findAll();
         model.addAttribute("posts", listPost);
 
-        return "user/listHome";
+        return "listHome";
     }
 
     @RequestMapping("detailPost/{id}")
@@ -63,7 +63,7 @@ public class ListHomeController {
             return listPost(model);
         }
 
-        return "user/propertyDetail";
+        return "propertyDetail";
     }
 
     @RequestMapping("Search")
@@ -97,7 +97,7 @@ public class ListHomeController {
 
             model.addAttribute("posts", listPost);
         }
-        return "user/listHome";
+        return "listHome";
     }
 
     @RequestMapping("Search/sortUp")
@@ -114,7 +114,7 @@ public class ListHomeController {
 
             model.addAttribute("posts", listPostSort);
         }
-        return "user/listHome";
+        return "listHome";
     }
 
     @RequestMapping("Search/sortDown")
@@ -131,7 +131,7 @@ public class ListHomeController {
 
             model.addAttribute("posts", listPostSort);
         }
-        return "user/listHome";
+        return "listHome";
     }
 
     @ResponseBody
