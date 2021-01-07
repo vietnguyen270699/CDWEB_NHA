@@ -117,7 +117,7 @@ public class AccountController {
         User user = (User) ((Authentication) principal).getPrincipal();
         UserEntity entity = userService.findUserByEmail(user.getUsername());
         entity.setMoney(entity.getMoney() - Double.parseDouble(fee));
-        userService.save(entity, 1);
+        userService.save(entity, 0);
         postEntity.setUserEntity(entity);
 
         Path path = Paths.get("uploads/");

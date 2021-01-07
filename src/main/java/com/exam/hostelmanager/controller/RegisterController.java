@@ -1,23 +1,34 @@
 package com.exam.hostelmanager.controller;
 
+import com.exam.hostelmanager.entity.RoleEntity;
 import com.exam.hostelmanager.entity.UserEntity;
 import com.exam.hostelmanager.service.IUserService;
+import com.exam.hostelmanager.service.RoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
 
 @Controller
 @RequestMapping("hostel")
 public class RegisterController {
 
+    @Autowired
     private IUserService userService;
-
-    public RegisterController(IUserService userService) {
-        this.userService = userService;
-    }
+    @Autowired
+    private RoleService roleService;
 
     @PostMapping("registerNow")
-    public String registerUserAccount(@ModelAttribute("user") UserEntity entity) {
+    public String registerUserAccount(@ModelAttribute("user") UserEntity entity,
+                                      @RequestParam("role") String role) {
+        boolean bRole = Boolean.parseBoolean(role);
+        RoleEntity roleEntity = bRole ? roleService.findByRoleName("ROLE_USER") :
+                roleService.findByRoleName("ROLE_GUEST");
+
+        entity.setRoles(Arrays.asList(roleEntity));
+
         userService.save(entity, 1);
         return "redirect:/hostel/register?success";
     }
