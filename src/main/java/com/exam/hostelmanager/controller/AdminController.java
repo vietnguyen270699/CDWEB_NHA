@@ -16,49 +16,49 @@ import com.exam.hostelmanager.service.PostService;
 @Controller
 @RequestMapping("admin")
 public class AdminController {
-	@Autowired
-	private PostService postservice;
-	@Autowired
-	private IUserService userService;
-	
-	@GetMapping("home")
-	public String loginAdmin() {
-		return "admin/adminIndex";
-	}
+    @Autowired
+    private PostService postservice;
+    @Autowired
+    private IUserService userService;
 
-	@GetMapping("adminUser")
-	public String loginAdminUser(ModelMap model) {
-		List<UserEntity> listUser = (List<UserEntity>) userService.findAll();
-		model.addAttribute("users", listUser);
-		return "adminUserManager";
-	}
+    @GetMapping("home")
+    public String loginAdmin() {
+        return "admin/adminIndex";
+    }
 
-	@GetMapping("adminPost")
-	public String loginAdminPost(ModelMap model) {
-		List<PostEntity> listPost = (List<PostEntity>) postservice.findAll();
-		model.addAttribute("posts", listPost);
-	
-		return "adminPostManager";
-	}
+    @GetMapping("adminUser")
+    public String loginAdminUser(ModelMap model) {
+        List<UserEntity> listUser = (List<UserEntity>) userService.findAll();
+        model.addAttribute("users", listUser);
+        return "admin/adminUserManager";
+    }
 
-	@GetMapping("adminFeedback")
-	public String loginAdminFeeback() {
-		return "adminFeedbackManager";
-	}
+    @GetMapping("adminPost")
+    public String loginAdminPost(ModelMap model) {
+        List<PostEntity> listPost = (List<PostEntity>) postservice.findAll();
+        model.addAttribute("posts", listPost);
 
-	@GetMapping("adminUser/formAddUser")
-	public String loginAdminFormAdd() {
-		return "adminFormAdd";
-	}
+        return "admin/adminPostManager";
+    }
 
-	@GetMapping("adminUser/formEditUser")
-	public String loginAdminFormEditUser() {
-		return "adminFormEditUser";
-	}
+    @GetMapping("adminFeedback")
+    public String loginAdminFeeback() {
+        return "admin/adminFeedbackManager";
+    }
 
-	@GetMapping("adminPost/formEditPost")
-	public String loginAdminFormEditPost() {
-		return "adminFormEditPost";
-	}
+    @GetMapping("adminUser/formAddUser")
+    public String loginAdminFormAdd() {
+        return "admin/adminFormAdd";
+    }
+
+    @GetMapping("adminUser/formEditUser")
+    public String loginAdminFormEditUser() {
+        return "admin/adminFormEditUser";
+    }
+
+    @GetMapping("adminPost/formEditPost")
+    public String loginAdminFormEditPost() {
+        return "admin/adminFormEditPost";
+    }
 
 }

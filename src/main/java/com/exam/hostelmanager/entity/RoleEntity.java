@@ -32,8 +32,9 @@ public class RoleEntity extends BaseEntity {
         super(id, createDate, createBy, modifyDate, modifyBy);
     }
 
-    public RoleEntity(Long id) {
-        super(id);
+    public RoleEntity(String roleName) {
+        super();
+        this.roleName = roleName;
 
     }
 

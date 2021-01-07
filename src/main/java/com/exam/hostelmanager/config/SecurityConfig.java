@@ -48,7 +48,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/admin/profile/**",
                 "/admin/updateUser/**", "/admin/postNow/**", "/admin/list/deletepostsave/**",
                 "/admin/paypal/**", "/admin/pay/**", "/admin/newPost/**")
+                .access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')  or hasRole('ROLE_GUEST') ");
+
+        http.authorizeRequests().antMatchers("/admin/postNow/**", "/admin/list/deletepostsave/**",
+                "/admin/paypal/**", "/admin/pay/**", "/admin/newPost/**")
                 .access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')");
+
 
         http.authorizeRequests().antMatchers("/admin/home/**", "/admin/adminUser/**",
                 "/admin/adminPost/**", "/admin/adminFeedback/**", "/admin/adminUser/formAddUser/**",

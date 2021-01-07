@@ -12,14 +12,7 @@ import lombok.ToString;
 public class OrderPayPal {
     private double price;
     private String currency, method, intent, description;
-	public OrderPayPal(double price, String currency, String method, String intent, String description) {
-		super();
-		this.price = price;
-		this.currency = currency;
-		this.method = method;
-		this.intent = intent;
-		this.description = description;
-	}
+
 	public double getPrice() {
 		return price;
 	}
