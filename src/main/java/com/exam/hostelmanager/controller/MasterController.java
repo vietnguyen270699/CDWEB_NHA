@@ -23,23 +23,23 @@ public class MasterController {
 	@GetMapping("home")
 	public String loadHome(ModelMap model) {
 
-		List<PostEntity> listpost = (List<PostEntity>) postservice
+		List<PostEntity> listPost = (List<PostEntity>) postservice
 				.findByFeeEntityPriceGreaterThanOrderByFeeEntityPriceDesc(priceFee);
 
-		List<PostEntity> listhostel = (List<PostEntity>) postservice
+		List<PostEntity> listHostel = (List<PostEntity>) postservice
 				.findByTitleOrderByFeeEntityPriceDesc(hostel);
 		
-		List<PostEntity> listktx = (List<PostEntity>) postservice
+		List<PostEntity> listKtx = (List<PostEntity>) postservice
 				.findByTitleOrderByFeeEntityPriceDesc(ktx);
 		
-		model.addAttribute("posts", listpost);
-		model.addAttribute("hostels", listhostel);
-		model.addAttribute("ktxs", listktx);
-		return "home";
+		model.addAttribute("posts", listPost);
+		model.addAttribute("hostels", listHostel);
+		model.addAttribute("ktxs", listKtx);
+		return "user/home";
 	}
 
 	@GetMapping("error404")
 	public String showError404() {
-		return "page404";
+		return "user/page404";
 	}
 }

@@ -26,22 +26,26 @@
                 <div class="agent-profile">
                     <div class="row">
 
-                        <form id="contact-form" th:action="@{/hostel/registerNow}" method="post" th:object="${user}">
+                        <form id="contact-form" th:action="@{/hostel/registerNow}" method="post"
+                              th:object="${user}">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label for="name">Tên *</label>
-                                        <input type="text" id="name" class="form-control" th:field="*{userName}"
-                                               data-msg-required="Please enter your name." required
-                                               autofocus="autofocus">
+                                        <input type="text" id="name" class="form-control"
+                                               th:field="*{userName}"
+                                               data-msg-required="Please enter your name.">
+                                        <p id="errorName" style="color:red;"></p>
                                     </div>
                                     <div class="col-sm-6">
-                                        <label for="customer_mail">Email*</label>
-                                        <input type="email" name="customer_mail" id="customer_mail" class="form-control"
-                                               th:field="*{email}"
+                                        <label>Email*</label>
+                                        <input type="email" name="customer_mail" id="mail"
+                                               class="form-control" th:field="*{email}"
                                                data-msg-required="Please enter your email address."
-                                               data-msg-email="Please enter a valid email address." required
-                                               autofocus="autofocus">
+                                               data-msg-email="Please enter a valid email address."
+                                               required>
+
+                                        <p id="errorEmail" style="color:red;"></p>
                                     </div>
                                 </div>
                             </div>
@@ -49,14 +53,16 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Mật khẩu*</label>
-                                        <input type="password" class="form-control" th:field="*{password}"
+                                        <input type="password" id="password" class="form-control" th:field="*{password}"
                                                data-msg-required="Please enter the subject." required>
+                                        <p id="errorPW" style="color:#ff0000;"></p>
                                     </div>
                                     <div class="col-sm-6">
                                         <label>Số điện thoại*</label>
-                                        <input type="number" class="form-control" th:field="*{phone}"
+                                        <input type="number" id="phone" class="form-control" th:field="*{phone}"
                                                data-msg-required="Please enter the subject." required
                                                autofocus="autofocus">
+                                        <p id="errorPhone" style="color:red;"></p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -64,12 +70,14 @@
                                         <label>Xác nhận mật khẩu*</label>
                                         <input type="password" name="subject" id="rePass" class="form-control"
                                                data-msg-required="Please enter the subject." required>
+                                        <p id="errorPWagain" style="color:red;"></p>
                                     </div>
                                     <div class="col-sm-6">
                                         <label>Địa chỉ*</label>
-                                        <input type="text" class="form-control" th:field="*{address}"
+                                        <input type="text" class="form-control" id="address" th:field="*{address}"
                                                data-msg-required="Please enter the subject." required
                                                autofocus="autofocus">
+                                        <p id="errorAddress"></p>
                                     </div>
                                     <div class="col-sm-6">
                                         Bạn là chủ nhà trọ?
@@ -133,29 +141,113 @@
                 <p>Copyright © 2020 Nha. Designed by</p>
             </div>
         </div>
+
     </footer>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="/vendor/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/vendor/owl-carousel/owl.carousel.js"></script>
-    <script src="/vendor/flexslider/jquery.flexslider-min.js"></script>
-    <script src="/vendor/chosen/chosen.jquery.min.js"></script>
-    <script type="text/javascript"
-            src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
-    <script src="/vendor/gmap/gmap3.infobox.min.js"></script>
-    <script src="/vendor/masonry/imagesloaded.pkgd.min.js"></script>
-    <script src="/vendor/masonry/masonry.pkgd.min.js"></script>
-
-    <!-- Theme Initializer -->
-    <script src="/js/theme.plugins.js"></script>
-    <script src="/js/theme.js"></script>
-
-    <!-- Style Switcher -->
-    <script type="text/javascript" src="/style-switcher/js/switcher.js"></script>
+</div>
 
 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/vendor/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/owl-carousel/owl.carousel.js"></script>
+<script src="/vendor/flexslider/jquery.flexslider-min.js"></script>
+<script src="/vendor/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript"
+        src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+<script src="/vendor/gmap/gmap3.infobox.min.js"></script>
+<script src="/vendor/masonry/imagesloaded.pkgd.min.js"></script>
+<script src="/vendor/masonry/masonry.pkgd.min.js"></script>
+
+<!-- Theme Initializer -->
+<script src="/js/theme.plugins.js"></script>
+<script src="/js/theme.js"></script>
+
+<!-- Style Switcher -->
+<script type="text/javascript" src="/style-switcher/js/switcher.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#contact-form').submit(function (event) {
+            var stop = false;
+            var email = $("#mail").val();
+            var password = $("#password").val()
+            var rePass = $("#rePass").val()
+            var name = $("#name").val()
+            var phone = $("#phone").val();
+            var address = $("#address").val();
+            // $("#error").text("");
+            $("#errorPW").text("");
+            $("#errorPWagain").text("");
+            $("#errorName").text("");
+            $("#errorPhone").text("");
+            $("#errorAddress").text("");
+            // if (rePass !== password) {
+            //     console.log("ok")
+            //     $("#error").text("Mật khẩu không tương ứng. Thử lại")
+            //     stop = true;
+            // }
+            if (email === "") {
+                $("#errorEmail").text("Bạn không thể để trống dữ liệu này")
+                stop = true;
+            }
+            if (password === "") {
+                $("#errorPW").text("Bạn không thể để trống dữ liệu này")
+                stop = true;
+            } else if (password.length < 8) {
+                $("#errorPW").text("Mật khẩu có ít nhất 8 ký tự. Thử lại.")
+                stop = true;
+            }
+            if (rePass === "") {
+                $("#errorPWagain").text("Bạn không thể để trống dữ liệu này")
+                stop = true;
+            } else if (password !== rePass) {
+                $("#errorPWagain").text("Mật khẩu không tương ứng. Thử lại.")
+                stop = true;
+            }
+            if (phone === "") {
+                $("#errorPhone").text("Bạn không thể để trống dữ liệu này")
+                stop = true;
+            }
+            if (name === "") {
+                $("#errorName").text("Bạn không thể để trống dữ liệu này")
+                stop = true;
+            }
+            if (address === "") {
+                $("#errorAddress").text("Bạn không thể để trống dữ liệu này")
+                stop = true;
+            }
+            if (stop === true) {
+                event.preventDefault();
+            }
+        });
+        $("#mail").change(function () {
+            $.ajax({
+                url: "/hostel/checkEmail",
+                method: "post",
+                data: {
+                    email: $("#mail").val(),
+                },
+                success: function (value) {
+                    console.log(value)
+                    if (value === "exist") {
+                        $("#errorEmail").text("Email này đã có người đăng ký. Thử lại")
+                        stop = true;
+                    } else {
+                        $("#errorEmail").text("")
+                    }
+                },
+                error: function (err) {
+                    console.log(err)
+                    stop = true;
+                },
+            })
+        });
+
+
+    })
+
+</script>
 </body>
 
 <!-- Mirrored from pixelgeeklab.com/html/realestast/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 16 Aug 2015 08:54:11 GMT -->

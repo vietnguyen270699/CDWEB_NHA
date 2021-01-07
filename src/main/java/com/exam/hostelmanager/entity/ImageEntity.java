@@ -13,41 +13,46 @@ import javax.persistence.Table;
 @Table(name = "image")
 public class ImageEntity extends BaseEntity {
 
-	@Column
-	private String link;
+    @Column
+    private String link;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	private PostEntity post_id;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private PostEntity post_id;
 
-	public ImageEntity() {
-		super();
-	}
+    public ImageEntity() {
+        super();
+    }
 
-	public ImageEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy) {
-		super(id, createDate, createBy, modifyDate, modifyBy);
-	}
+    public ImageEntity(String imgLink) {
+        super();
+        this.link = imgLink;
+    }
 
-	public ImageEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy, String link,
-			PostEntity post_id) {
-		super(id, createDate, createBy, modifyDate, modifyBy);
-		this.link = link;
-		this.post_id = post_id;
-	}
+    public ImageEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy) {
+        super(id, createDate, createBy, modifyDate, modifyBy);
+    }
 
-	public String getLink() {
-		return link;
-	}
+    public ImageEntity(Long id, Date createDate, String createBy, Date modifyDate, String modifyBy, String link,
+                       PostEntity post_id) {
+        super(id, createDate, createBy, modifyDate, modifyBy);
+        this.link = link;
+        this.post_id = post_id;
+    }
 
-	public void setLink(String link) {
-		this.link = link;
-	}
+    public String getLink() {
+        return link;
+    }
 
-	public PostEntity getPost_id() {
-		return post_id;
-	}
+    public void setLink(String link) {
+        this.link = link;
+    }
 
-	public void setPost_id(PostEntity post_id) {
-		this.post_id = post_id;
-	}
+    public PostEntity getPost_id() {
+        return post_id;
+    }
+
+    public void setPost_id(PostEntity post_id) {
+        this.post_id = post_id;
+    }
 
 }

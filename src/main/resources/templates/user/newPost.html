@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head th:replace="head :: head">
+
+</head>
+<body>
+<div id="page">
+    <header th:replace="header :: header"></header>
+    <div role="main" class="main pgl-bg-grey">
+        <section class="page-top">
+            <div class="container">
+                <div class="page-top-in"></div>
+            </div>
+        </section>
+        <section class="pgl-agents">
+            <div class="container">
+                <div th:if="${param.success}">
+                    <div class="alert alert-info">You've successfully registered
+                        to our awesome app!
+                    </div>
+                </div>
+
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">
+                        Invalid username or password. Please nhap lai
+                    </div>
+
+                </div>
+
+                <h2>Đăng bài</h2>
+                <div class="agent-profile">
+                    <div class="row">
+                        <form id="contact-form" th:action="@{/admin/postNow}"
+                              method="post" th:object="${post}" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Tên nhà trọ*</label>
+                                        <select name="property-status" th:field="*{title}"
+                                                data-placeholder="Property Status" class="chosen-select">
+
+                                            <option selected="selected" value="Nhà trọ">Nhà trọ</option>
+                                            <option value="Ký túc xá">Ký túc xá</option>
+
+
+                                        </select>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label>Tỉnh/thành</label>
+
+                                            <select name="property-status"
+                                                    th:field="*{content.city}"
+                                                    data-placeholder="Property Status"
+                                                    class="chosen-select">
+
+                                                <option selected="selected" value="TPHCM">TP Hồ
+                                                    Chí Minh
+                                                </option>
+                                                <option value="BinhDuong">Bình Dương</option>
+                                                <option value="DongNai">Đồng Nai</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Giá (vnđ)*</label>
+                                        <input type="number" name="price"
+                                               th:field="*{content.price}" id="price"
+                                               class="form-control"
+                                               min="1" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Phí</label>
+                                        <select name="fee" id="fee"
+                                                data-placeholder="Property Status"
+                                                class="chosen-select">
+                                            <option selected="selected" value="0">Miễn phí</option>
+                                            <option value="100">100 Xu</option>
+                                            <option value="200">200 Xu</option>
+                                            <option value="300">300 Xu</option>
+                                            <option value="400">400 Xu</option>
+                                            <option value="500">500 Xu</option>
+
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Địa chỉ*</label>
+                                        <input type="text" name="address"
+                                               th:field="*{content.address}" id="address"
+                                               class="form-control"
+                                               data-msg-required="Please enter the address."
+                                               required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Diện tích (m2)*</label>
+                                        <input type="number"
+                                               th:field="*{content.acreage}"
+                                               name="acreage" id="acreage"
+                                               class="form-control"
+                                               data-msg-required="Please enter the subject."
+                                               min="1"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <label>Tiền điện (vnđ)* </label>
+                                        <input type="number"
+                                               th:field="*{content.electricPrice}"
+                                               name="electricPrice"
+                                               id="electricPrice" min="1"
+                                               class="form-control"
+                                               data-msg-required="Please enter the subject."
+                                               required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Tiền nước (vnđ)*</label>
+                                        <input type="number"
+                                               th:field="*{content.waterPrice}"
+                                               name="waterPrice"
+                                               id="waterPrice" class="form-control"
+                                               data-msg-required="Please enter the subject."
+                                               min="1"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <label>Ảnh* </label>
+                                        <input type="file" id="image"
+                                               multiple="multiple" class="form-control"
+                                               name="photo"
+                                               data-msg-required="Please enter the image."
+                                               required>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label>Mô tả</label>
+                                        <textarea rows="9" name="description" id="description"
+                                                  class="form-control" th:field="*{shortDescription}"
+                                                  data-msg-required="Please enter your message." required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Đăng"
+                                       class="btn btn-primary min-wide">
+                                <input type="reset" value="Hủy"
+                                       class="btn btn-primary min-wide">
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="col-md-3 sidebar"></div>
+            </div>
+        </section>
+
+    </div>
+    <footer class="pgl-footer">
+        <div class="container">
+            <div class="pgl-upper-foot">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h2 th:text="#{label.ContactInfo}"></h2>
+
+                        <address>
+
+                            <i class="fa fa-phone"></i> Điện thoại : 0800-666-6666<br>
+                            <i class="fa fa-fax"></i> Fax : 1-800-666-8888<br> <i
+                                class="fa fa-envelope-o"></i> Mail: <a
+                                href="mailto:viet@gmail.com">viet@gmail.com</a>
+                        </address>
+                    </div>
+                    <div class="col-sm-2">
+                        <h2 th:text="#{label.tutorial}"></h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Help and FAQs</a></li>
+                            <li><a href="#">Home Price</a></li>
+                            <li><a href="#">Market View</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-sm-2">
+                        <h2 th:text="#{label.page}"></h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Font &amp; Color</a></li>
+                            <li><a href="#">Blogs</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">404 Page</a></li>
+                            <li><a href="#">Property Custom Field</a></li>
+                            <li><a href="#">Google Map</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="pgl-copyrights">
+                <p>Copyright © 2020 Nha. Designed by</p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/vendor/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/owl-carousel/owl.carousel.js"></script>
+<script src="/vendor/flexslider/jquery.flexslider-min.js"></script>
+<script src="/vendor/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript"
+        src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+<script src="/vendor/gmap/gmap3.infobox.min.js"></script>
+<script src="/vendor/masonry/imagesloaded.pkgd.min.js"></script>
+<script src="/vendor/masonry/masonry.pkgd.min.js"></script>
+
+<!-- Theme Initializer -->
+<script src="/js/theme.plugins.js"></script>
+<script src="/js/theme.js"></script>
+
+<!-- Style Switcher -->
+<script type="text/javascript" src="/style-switcher/js/switcher.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#fee").change(function(){
+            var fee = $(this).val();
+            $.ajax({
+                url: "/admin/checkCoin",
+                method: "post",
+                data: {
+                    fee: fee,
+                },
+                success: function (value) {
+                    console.log(value)
+                    if (value === "big") {
+                       alert("TÀI KHOẢN KHÔNG ĐỦ")
+                        stop = true;
+                    }
+                },
+                error: function (err) {
+                    alert("ERROR")
+                    console.log(err)
+                    stop = true;
+                },
+            })
+        });
+
+
+    })
+
+</script>
+
+</body>
+
+<!-- Mirrored from pixelgeeklab.com/html/realestast/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 16 Aug 2015 08:54:11 GMT -->
+</html>

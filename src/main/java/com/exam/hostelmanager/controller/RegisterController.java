@@ -4,10 +4,7 @@ import com.exam.hostelmanager.entity.UserEntity;
 import com.exam.hostelmanager.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("hostel")
@@ -33,7 +30,13 @@ public class RegisterController {
 
     @GetMapping("register")
     public String register(Model model) {
-        return "register";
+        return "user/register";
+    }
+
+    @PostMapping("/checkEmail")
+    @ResponseBody
+    public String check(@RequestParam String email) {
+        return (userService.findUserByEmail(email) != null ? "exist" : "ok");
     }
 
 }

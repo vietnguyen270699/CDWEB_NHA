@@ -176,6 +176,7 @@ public class UserEntity extends BaseEntity {
 	public void setPost(List<PostEntity> post) {
 		this.post = post;
 	}
-	
+
+
 	
 }

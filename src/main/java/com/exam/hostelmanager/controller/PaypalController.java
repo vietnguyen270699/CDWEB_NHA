@@ -4,7 +4,6 @@ import com.exam.hostelmanager.entity.OrderPayPal;
 import com.exam.hostelmanager.entity.UserEntity;
 import com.exam.hostelmanager.service.IUserService;
 import com.exam.hostelmanager.service.PayPalService;
-import com.google.gson.JsonObject;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
@@ -35,7 +34,7 @@ public class PaypalController {
 
     @GetMapping("/paypal")
     public String homePayPal() {
-        return "paypalHome";
+        return "user/paypalHome";
 
     }
 
@@ -66,7 +65,7 @@ public class PaypalController {
     public String cancel(RedirectAttributes redirAttrs) {
         redirAttrs.addFlashAttribute("error", "The error XYZ occurred.");
 
-        return "cancelPayPal";
+        return "user/cancelPayPal";
     }
 
     @GetMapping(value = SUCCESS_URL)
@@ -81,13 +80,11 @@ public class PaypalController {
             redirAttrs.addFlashAttribute("success", "Everything went just fine.");
 
             Payment payment = service.executePayment(paymentId, payerId);
-            System.out.println("GET JSONNNNNNNNNNNN   \n" + payment.toJSON());
             if (payment.getState().equals("approved")) {
                 entity.setMoney(entity.getMoney() + price);
 
                 userService.save(entity, 0);
-                System.out.println("PRICE: PRICE PRICE PRICE PRICE \n" + entity.getMoney() + ", " + price);
-                return "successPayPal";
+                return "user/successPayPal";
             }
 
         } catch (PayPalRESTException exception) {
