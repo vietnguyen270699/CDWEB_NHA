@@ -136,7 +136,7 @@ public class AccountController {
         postEntity.setFeeEntity(feeService.findByFee(Double.parseDouble(fee)));
 
         postService.save(postEntity);
-        return "redirect:/newPost?success";
+        return "redirect:/admin/newPost?success";
     }
 
 

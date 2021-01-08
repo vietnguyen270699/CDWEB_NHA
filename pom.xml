@@ -18,6 +18,14 @@
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <guava.version>20.0</guava.version>
+        <passay.version>1.0</passay.version>
+        <logstash-logback-encoder.version>4.8</logstash-logback-encoder.version>
+        <aerogear.version>1.0.0</aerogear.version>
+        <uap-java.version>1.4.0</uap-java.version>
+        <geoip2.version>2.12.0</geoip2.version>
+        <javax.el.version>2.2</javax.el.version>
     </properties>
 
     <dependencies>
@@ -111,18 +119,73 @@
             <version>0.9.1</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.paypal.sdk/rest-api-sdk -->
-<!--        <dependency>-->
-<!--            <groupId>com.paypal.sdk</groupId>-->
-<!--            <artifactId>rest-api-sdk</artifactId>-->
-<!--            <version>1.14.0</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.paypal.sdk</groupId>
             <artifactId>rest-api-sdk</artifactId>
             <version>1.4.2</version>
         </dependency>
 
+
+        <!-- 2fa -->
+        <dependency>
+            <groupId>org.jboss.aerogear</groupId>
+            <artifactId>aerogear-otp-java</artifactId>
+            <version>${aerogear.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Password Validation -->
+        <dependency>
+            <groupId>org.passay</groupId>
+            <artifactId>passay</artifactId>
+            <version>${passay.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash-logback-encoder.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- maxmind dependency -->
+        <dependency>
+            <groupId>com.maxmind.geoip2</groupId>
+            <artifactId>geoip2</artifactId>
+            <version>${geoip2.version}</version>
+        </dependency>
+
+        <!-- User Agent parser -->
+        <dependency>
+            <groupId>com.github.ua-parser</groupId>
+            <artifactId>uap-java</artifactId>
+            <version>${uap-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>el-api</artifactId>
+            <version>${javax.el.version}</version>
+        </dependency>
 
     </dependencies>
 
