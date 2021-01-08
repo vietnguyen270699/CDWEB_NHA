@@ -4,10 +4,11 @@ import com.exam.hostelmanager.entity.UserEntity;
 import com.exam.hostelmanager.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.UUID;
 
 @Controller
 
@@ -51,5 +52,22 @@ public class LoginController {
         return "home";
     }
 
+
+//    //reset pass
+//    @PostMapping("/user/resetPassword")
+//    public GenericResponse resetPassword(HttpServletRequest request,
+//                                         @RequestParam("email") String userEmail) {
+//        UserEntity user = userService.findUserByEmail(userEmail);
+//        if (user == null) {
+//            throw new UserNotFoundException();
+//        }
+//        String token = UUID.randomUUID().toString();
+//        userService.createPasswordResetTokenForUser(user, token);
+//        mailSender.send(constructResetTokenEmail(getAppUrl(request),
+//                request.getLocale(), token, user));
+//        return new GenericResponse(
+//                messages.getMessage("message.resetPasswordEmail", null,
+//                        request.getLocale()));
+//    }
 
 }
