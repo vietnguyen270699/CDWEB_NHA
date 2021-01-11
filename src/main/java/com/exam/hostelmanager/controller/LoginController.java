@@ -65,15 +65,13 @@ public class LoginController {
 
     @PostMapping("forgotPassword")
     public String processForgotPassForm(HttpServletRequest request, Model model) {
-        String email = request.getParameter("email");//lay name ben trang forgot
-        String token = RandomString.make(45); //do dai token
+        String email = request.getParameter("email");
+        String token = RandomString.make(45);
         System.out.println("email:  " + email + "\n token: " + token);
 
         try {
             userService.updateResetPasswordToken(token, email);
-            String resetPasswordLink = Utility.getSiteURL(request) + "/resetPassword?token=" + token;
-            System.out.println("RESETTTTTTTTTTTT   " + resetPasswordLink);
-
+            String resetPasswordLink = Utility.getSiteURL(request) + "/hostel/resetPassword?token=" + token;
             sendMail(email, resetPasswordLink);
             model.addAttribute("mess",
                     "We have sent a reset password link to your email. Please check");
@@ -116,7 +114,7 @@ public class LoginController {
         return "resetPasswordForm";
     }
 
-    @PostMapping("resetPassword")
+    @PostMapping("/resetPassword")
     public String processResetPassword(HttpServletRequest request, Model model) {
         String token = request.getParameter("token");
         String password = request.getParameter("password");
@@ -124,12 +122,9 @@ public class LoginController {
         if (userEntity == null) {
             model.addAttribute("title", "Reset your password");
             model.addAttribute("mess", "Invalid Token");
-            return "mess";
         } else {
             userService.updatePassword(userEntity, password);
             model.addAttribute("mess", "You have success changed your password");
-
-
         }
 
         return token;
