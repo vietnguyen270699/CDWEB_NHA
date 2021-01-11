@@ -118,7 +118,9 @@ public class LoginController {
     public String processResetPassword(HttpServletRequest request, Model model) {
         String token = request.getParameter("token");
         String password = request.getParameter("password");
+        System.out.println("PASSSSSS    "+password);
         UserEntity userEntity = userService.getByResetPasswordToken(token);
+        System.out.println("PASSSSSS  ENCODE  "+userEntity.getPassword());
         if (userEntity == null) {
             model.addAttribute("title", "Reset your password");
             model.addAttribute("mess", "Invalid Token");
@@ -127,7 +129,7 @@ public class LoginController {
             model.addAttribute("mess", "You have success changed your password");
         }
 
-        return token;
+        return "resetPasswordForm";
 
     }
 }
