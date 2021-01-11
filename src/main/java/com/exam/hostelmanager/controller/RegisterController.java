@@ -2,7 +2,7 @@ package com.exam.hostelmanager.controller;
 
 import com.exam.hostelmanager.entity.RoleEntity;
 import com.exam.hostelmanager.entity.UserEntity;
-import com.exam.hostelmanager.service.IUserService;
+import com.exam.hostelmanager.service.UserService;
 import com.exam.hostelmanager.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +16,7 @@ import java.util.Arrays;
 public class RegisterController {
 
     @Autowired
-    private IUserService userService;
+    private UserService userService;
     @Autowired
     private RoleService roleService;
 
@@ -47,7 +47,7 @@ public class RegisterController {
     @PostMapping("/checkEmail")
     @ResponseBody
     public String check(@RequestParam String email) {
-        return (userService.findUserByEmail(email) != null ? "exist" : "ok");
+        return (userService.findByEmail(email) != null ? "exist" : "ok");
     }
 
 }

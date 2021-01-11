@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.exam.hostelmanager.entity.PostEntity;
 import com.exam.hostelmanager.entity.UserEntity;
-import com.exam.hostelmanager.service.IUserService;
+import com.exam.hostelmanager.service.UserService;
 import com.exam.hostelmanager.service.PostService;
 
 @Controller
@@ -19,7 +19,7 @@ public class AdminController {
     @Autowired
     private PostService postservice;
     @Autowired
-    private IUserService userService;
+    private UserService userService;
 
     @GetMapping("home")
     public String loginAdmin() {

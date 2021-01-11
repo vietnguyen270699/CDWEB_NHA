@@ -2,7 +2,7 @@ package com.exam.hostelmanager.controller;
 
 import com.exam.hostelmanager.entity.OrderPayPal;
 import com.exam.hostelmanager.entity.UserEntity;
-import com.exam.hostelmanager.service.IUserService;
+import com.exam.hostelmanager.service.UserService;
 import com.exam.hostelmanager.service.PayPalService;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
@@ -25,7 +25,7 @@ public class PaypalController {
     @Autowired
     private PayPalService service;
     @Autowired
-    private IUserService userService;
+    private UserService userService;
 
 
     public static final String SUCCESS_URL = "pay/success";
@@ -76,7 +76,7 @@ public class PaypalController {
 
         try {
             User user = (User) ((Authentication) principal).getPrincipal();
-            UserEntity entity = userService.findUserByEmail(user.getUsername());
+            UserEntity entity = userService.findByEmail(user.getUsername());
             redirAttrs.addFlashAttribute("success", "Everything went just fine.");
 
             Payment payment = service.executePayment(paymentId, payerId);
