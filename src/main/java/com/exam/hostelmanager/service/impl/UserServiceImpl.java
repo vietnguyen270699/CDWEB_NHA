@@ -1,11 +1,10 @@
 package com.exam.hostelmanager.service.impl;
 
 
-import com.exam.hostelmanager.dto.UserDTO;
 import com.exam.hostelmanager.entity.RoleEntity;
 import com.exam.hostelmanager.entity.UserEntity;
 import com.exam.hostelmanager.repository.UserRepository;
-import com.exam.hostelmanager.service.IUserService;
+import com.exam.hostelmanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,15 +14,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
 @Service
-public class UserServiceImpl implements IUserService {
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -48,7 +44,31 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public UserEntity findUserByEmail(String email) {
+    public void updateResetPasswordToken(String token, String email) throws Exception {
+        UserEntity user = userRepository.findByEmail(email).orElse(null);
+        if (user != null) {
+            user.setResetPasswordToken(token);
+            userRepository.save(user);
+        } else {
+            throw new Exception("Could not find any customer with the email " + email);
+        }
+    }
+
+    @Override
+    public UserEntity getByResetPasswordToken(String token) {
+        return userRepository.findByResetPasswordToken(token);
+    }
+
+    @Override
+    public void updatePassword(UserEntity userEntity, String newPassword) {
+        userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+
+        userEntity.setResetPasswordToken(null);
+        userRepository.save(userEntity);
+    }
+
+    @Override
+    public UserEntity findByEmail(String email) {
         UserEntity userEntity = userRepository.findByEmail(email).orElse(null);
         return userEntity;
     }

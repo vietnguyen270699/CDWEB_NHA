@@ -21,7 +21,11 @@ public class UserEntity extends BaseEntity {
 	String address;
 	@Column
 	double money;
-	
+
+	@Column
+	String resetPasswordToken;
+
+
 	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<RoleEntity> roles = new ArrayList<>();
@@ -87,6 +91,14 @@ public class UserEntity extends BaseEntity {
 		this.phone = phone;
 		this.address = address;
 		this.money = money;
+	}
+
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
 	}
 
 	public String getUserName() {

@@ -7,6 +7,15 @@ public class UserDTO extends BaseDTO<UserDTO> {
     int phone;
     String address;
     double money;
+    String resetPasswordToken;
+
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
 
     public double getMoney() {
         return money;

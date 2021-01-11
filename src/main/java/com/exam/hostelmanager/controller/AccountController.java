@@ -34,7 +34,7 @@ public class AccountController {
     @Autowired
     private PostService postService;
     @Autowired
-    private IUserService userService;
+    private UserService userService;
 
     @Autowired
     private FeeService feeService;
@@ -62,7 +62,7 @@ public class AccountController {
 
         // updateU profile
         User user = (User) ((Authentication) principal).getPrincipal();
-        UserEntity userEntity = userService.findUserByEmail(user.getUsername());
+        UserEntity userEntity = userService.findByEmail(user.getUsername());
         model.addAttribute("profile", userEntity);
 
         // list posted of user
@@ -87,7 +87,7 @@ public class AccountController {
     @PostMapping("updateNow")
     public String updateNow(Principal principal, @ModelAttribute("user") UserEntity userEntity) {
         User user = (User) ((Authentication) principal).getPrincipal();
-        UserEntity entity = userService.findUserByEmail(user.getUsername());
+        UserEntity entity = userService.findByEmail(user.getUsername());
         entity.setPhone(userEntity.getPhone());
         entity.setUserName(userEntity.getUserName());
         entity.setPassword(userEntity.getPassword());
@@ -106,7 +106,7 @@ public class AccountController {
     @ResponseBody
     public String check(@RequestParam String fee, Principal principal) {
         User user = (User) ((Authentication) principal).getPrincipal();
-        UserEntity entity = userService.findUserByEmail(user.getUsername());
+        UserEntity entity = userService.findByEmail(user.getUsername());
 
         return (entity.getMoney() < Double.parseDouble(fee) ? "big" : "ok");
     }
@@ -115,7 +115,7 @@ public class AccountController {
     public String postNow(Principal principal, @ModelAttribute("post") PostEntity postEntity,
                           @RequestParam("photo") MultipartFile photo, @RequestParam("fee") String fee) {
         User user = (User) ((Authentication) principal).getPrincipal();
-        UserEntity entity = userService.findUserByEmail(user.getUsername());
+        UserEntity entity = userService.findByEmail(user.getUsername());
         entity.setMoney(entity.getMoney() - Double.parseDouble(fee));
         userService.save(entity, 0);
         postEntity.setUserEntity(entity);

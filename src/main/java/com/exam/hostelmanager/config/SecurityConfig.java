@@ -1,6 +1,6 @@
 package com.exam.hostelmanager.config;
 
-import com.exam.hostelmanager.service.IUserService;
+import com.exam.hostelmanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +18,7 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private IUserService userService;
+    private UserService userService;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
