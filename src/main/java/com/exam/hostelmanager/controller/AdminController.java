@@ -1,12 +1,14 @@
 package com.exam.hostelmanager.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
+import com.exam.hostelmanager.entity.RoleEntity;
+import com.exam.hostelmanager.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.exam.hostelmanager.entity.PostEntity;
 import com.exam.hostelmanager.entity.UserEntity;
@@ -20,6 +22,8 @@ public class AdminController {
     private PostService postservice;
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
 
     @GetMapping("home")
     public String loginAdmin() {
@@ -42,13 +46,28 @@ public class AdminController {
     }
 
     @GetMapping("adminFeedback")
-    public String loginAdminFeeback() {
+    public String loginAdminFeedback() {
         return "admin/adminFeedbackManager";
     }
 
     @GetMapping("adminUser/formAddUser")
     public String loginAdminFormAdd() {
         return "admin/adminFormAdd";
+    }
+
+    @ModelAttribute("user")
+    public UserEntity userEntity() {
+        return new UserEntity();
+    }
+
+
+    @PostMapping("adminUser/formAddUser")
+    public String addUserNow(@ModelAttribute("user") UserEntity entity) {
+        RoleEntity roleEntity = roleService.findByRoleName("ROLE_ADMIN");
+        entity.setRoles(Arrays.asList(roleEntity));
+        userService.save(entity, 1);
+
+        return "redirect:/admin/adminUser/formAddUser?success";
     }
 
     @GetMapping("adminUser/formEditUser")
@@ -59,6 +78,13 @@ public class AdminController {
     @GetMapping("adminPost/formEditPost")
     public String loginAdminFormEditPost() {
         return "admin/adminFormEditPost";
+    }
+
+
+    @PostMapping("/checkEmail")
+    @ResponseBody
+    public String check(@RequestParam String email) {
+        return (userService.findByEmail(email) != null ? "exist" : "ok");
     }
 
 }

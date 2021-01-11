@@ -61,9 +61,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updatePassword(UserEntity userEntity, String newPassword) {
-        System.out.println("GETTTTT PASSSS  "+  newPassword);
         userEntity.setPassword(passwordEncoder.encode(newPassword));
-        System.out.println("GETTTTT PASSSS  "+ userEntity.getPassword());
         userEntity.setResetPasswordToken(null);
         userRepository.save(userEntity);
     }
@@ -81,7 +79,6 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotFoundException("Invalid username or password");
         }
         User result = new User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
-        System.out.println(result.getUsername() + "\n" + result.getPassword());
         for (RoleEntity a : user.getRoles()) {
             System.out.println(a.getRoleName());
         }
