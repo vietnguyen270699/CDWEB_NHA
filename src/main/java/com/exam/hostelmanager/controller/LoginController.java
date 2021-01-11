@@ -67,7 +67,6 @@ public class LoginController {
     public String processForgotPassForm(HttpServletRequest request, Model model) {
         String email = request.getParameter("email");
         String token = RandomString.make(45);
-        System.out.println("email:  " + email + "\n token: " + token);
 
         try {
             userService.updateResetPasswordToken(token, email);
@@ -118,9 +117,8 @@ public class LoginController {
     public String processResetPassword(HttpServletRequest request, Model model) {
         String token = request.getParameter("token");
         String password = request.getParameter("password");
-        System.out.println("PASSSSSS    "+password);
         UserEntity userEntity = userService.getByResetPasswordToken(token);
-        System.out.println("PASSSSSS  ENCODE  "+userEntity.getPassword());
+
         if (userEntity == null) {
             model.addAttribute("title", "Reset your password");
             model.addAttribute("mess", "Invalid Token");
