@@ -532,9 +532,9 @@ hr {
 /* pgl-property */
 /* line 436, ../sass/theme-elements.scss */
 .label {
-  background-color: #333333;
+  /*background-color: #333333;*/
   border-radius: 0;
-  color: white;
+  color: black;
   display: inline-block;
   font-size: 1em;
   margin-right: -4px;
