@@ -140,38 +140,7 @@ public class AccountController {
     }
 
 
-    //delete account
-    @ResponseBody
-    @RequestMapping("list/deletepostsave/{id}")
-    public boolean listDeletePostSave(ModelMap model, @PathVariable("id") Long id) {
-
-        Cookie listSave = cookieService.read("listsave");
-
-        String idDelete = id.toString();
-        String value = id.toString();
-        String newValue = "";
-        if (listSave != null) {
-            value = listSave.getValue();
-            String[] splits = value.split(",");
-
-            if (value.contains(id.toString())) {
-                for (String string : splits) {
-                    if (!string.equalsIgnoreCase(idDelete)) {
-                        newValue += "," + string.toString();
-                    }
-                }
-            } else {
-                return false;
-            }
-        }
-        if (newValue.length() != 0) {
-            newValue = newValue.substring(1, newValue.length());
-            cookieService.create("listsave", newValue, 30);
-        } else {
-            cookieService.delete("listsave");
-        }
-        return true;
-    }
+  
 
 
 }

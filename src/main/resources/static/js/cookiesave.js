@@ -17,7 +17,7 @@ $(document).ready(function() {
 	$(".btn-delete").click(function() {
 		var id = $(this).attr("data-id");
 		$.ajax({
-			url: "/admin/list/deletepostsave/" + id,
+			url: "/hostel/list/deletepostsave/" + id,
 			success: function(response) {
 				if (response) {
 					alert("Đã xóa thành công: " + id)
