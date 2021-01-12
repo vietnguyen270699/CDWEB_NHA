@@ -21,15 +21,19 @@ public class RegisterController {
     private RoleService roleService;
 
     @PostMapping("registerNow")
-    public String registerUserAccount(@ModelAttribute("user") UserEntity entity,
-                                      @RequestParam("role") String role) {
-        boolean bRole = Boolean.parseBoolean(role);
-        RoleEntity roleEntity = bRole ? roleService.findByRoleName("ROLE_USER") :
+    public String registerUserAccount(@ModelAttribute("user") UserEntity entity) {
+
+        RoleEntity roleEntity = (entity.getRoles().size() != 0) ? roleService.findByRoleName("ROLE_USER") :
                 roleService.findByRoleName("ROLE_GUEST");
 
         entity.setRoles(Arrays.asList(roleEntity));
 
         userService.save(entity, 1);
+//        System.out.println(entity.getRoles());
+//        for (RoleEntity a : entity.getRoles()) {
+//            System.out.println("AAAAAAAAAAAAAAAAAAAAAAA  "+a.getRoleName());
+//
+//        }
         return "redirect:/hostel/register?success";
     }
 
