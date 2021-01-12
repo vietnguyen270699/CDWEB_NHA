@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+>
 
 <head th:replace="head :: head">
 
@@ -9,8 +11,6 @@
 		<header th:replace="header :: header">
 			
 		</header>
-		
-		
 		<!-- Begin Main -->
 		<div role="main" class="main pgl-bg-grey">
 			<!-- Begin page top -->
@@ -25,7 +25,9 @@
 			
 			<div class="container">
 				<div class="pgl-error text-center">
-					<h1 class="error-title"><strong>Ban không có quyền truy cập</strong></h1>
+					<h1 class="error-title"><strong>Ban không có quyền truy cập
+						<span sec:authentication="principal.authorities"></span>
+					</strong></h1>
 					<p class="error-msg">The page cannot be found</p>
 					<a href="index-2.html" class="btn btn-primary">Return to the homepage</a>
 				</div>
@@ -40,7 +42,7 @@
 				<div class="pgl-upper-foot">
 					<div class="row">
 						<div class="col-sm-4">
-							<h2>Thông tin liên hệ</h2>
+							<h2 th:text="#{label.ContactInfo}"></h2>
 							
 							<address>
 								
@@ -50,7 +52,7 @@
 							</address>
 						</div>
 						<div class="col-sm-2">
-							<h2>Hướng dẫn</h2>
+							<h2 th:text="#{label.tutorial}"></h2>
 							<ul class="list-unstyled">
 								<li><a href="#">Help and FAQs</a></li>
 								<li><a href="#">Home Price</a></li>
@@ -59,7 +61,7 @@
 							</ul>
 						</div>
 						<div class="col-sm-2">
-							<h2>Trang</h2>
+							<h2 th:text="#{label.page}"></h2>
 							<ul class="list-unstyled">
 								<li><a href="#">Font &amp; Color</a></li>
 								<li><a href="#">Blogs</a></li>

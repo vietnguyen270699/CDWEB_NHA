@@ -1,228 +1,261 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+>
 
 <head th:replace="head :: head">
 
 </head>
 <body>
-	<div id="page">
-		<header th:replace="header :: header">
+<div id="page">
+    <header th:replace="header :: header">
 
-		</header>
-
-
-		<!-- Begin Main -->
-		<div role="main" class="main pgl-bg-grey">
-			<!-- Begin page top -->
-			<section class="page-top">
-				<div class="container">
-					<div class="page-top-in">
-						<h2><span>Article detail</span></h2>
-					</div>
-				</div>
-			</section>
-			<!-- End page top -->
-
-			<!-- Begin content with sidebar -->
-			<div class="container">
-				<div class="row">
-					<div class="col-md-9 content">
-						<div class="blog-posts">
-							<article class="post post-large post-single">
-								<div class="post-image">
-									<div class="owl-carousel pgl-pro-slide pgl-img-slide" data-plugin-options='{"items": 1, "pagination": false, "autoHeight": true}'>
-										<div class="item"><img class="img-responsive" src="/images/blog/demo-1.jpg" alt="Blog">
-											<div class="item-caption">
-												<p><small>Caption here eaque ipsa</small></p>
-											</div>
-										</div>
-										<div class="item"><img class="img-responsive" src="/images/blog/demo-1.jpg" alt="Blog">
-											<div class="item-caption">
-												<p><small>Excepteur sint occaecat cupidatat</small></p>
-											</div>
-										</div>
-										<div class="item"><img class="img-responsive" src="/images/blog/demo-3.jpg" alt="Blog">
-											<div class="item-caption">
-												<p><small>Voluptatem accusantium doloremque laudantium</small></p>
-											</div>
-										</div>
-									</div>
-
-								</div>
-								<div class="post-body">
-
-										<ul class="post-action" >
-											<li class="btn-pre"><a href="#">Riff Raff Eats Fried Okra With Oprah on 'Dolce &amp; Gabbana’</a></li>
-											<li class="btn-next"><a href="#">Watch Drunk Riff Raff Freestyle About Failed Hoop Dreams for 10 Minutes</a></li>
-										</ul>
-
-										<!-- begin comment -->
-									<div class="comment">
-										<div class="post-block post-comments clearfix" >
-											<h2 id="title-comment"> Thảo luận</h2>
-											<ul style="list-style-type: none">
-												<li>
-													<div class="comment">
-														<div class="img-circle"> <img class="avatar" width="50" alt="" src="/images/blog/avatar.png"> </div>
-														<div class="comment-block">
-															<span class="comment-by"> <strong>Frank Reman</strong></span>
-															<span class="date"><small><i class="fa fa-clock-o"></i> January 12, 2013</small></span>
-															<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-															<a href="#commentreply"><small><i class="fa fa-reply"></i> Reply</small></a>
-														</div>
-													</div>
-													<ul class="comments reply">
-														<li>
-															<div class="comment">
-																<div class="img-circle"> <img class="avatar" width="50" alt="" src="/images/blog/avatar.png"> </div>
-																<div class="comment-block">
-																	<span class="comment-by"> <strong>Frank Reman</strong></span>
-																	<span class="date"><small><i class="fa fa-clock-o"></i> July 11, 2014</small></span>
-																	<p>Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-																	<a href="#commentreply"><small><i class="fa fa-reply"></i> Reply</small></a>
-																</div>
-															</div>
-														</li>
-														<li>
-															<div class="comment">
-																<div class="img-circle"> <img class="avatar" width="50" alt="" src="/images/blog/avatar.png"> </div>
-																<div class="comment-block">
-																	<span class="comment-by"> <strong>Frank Reman</strong></span>
-																	<span class="date"><small><i class="fa fa-clock-o"></i> July 11, 2014</small></span>
-																	<p>Gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-																	<a href="#commentreply"><small><i class="fa fa-reply"></i> Reply</small></a>
-																</div>
-															</div>
-														</li>
-													</ul>
-												</li>
-												<li>
-													<div class="comment">
-														<div class="img-circle"> <img class="avatar" width="50" alt="" src="/images/blog/avatar.png"> </div>
-														<div class="comment-block">
-															<span class="comment-by"> <strong>Frank Reman</strong></span>
-															<span class="date"><small><i class="fa fa-clock-o"></i> July 11, 2014</small></span>
-															<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae</p>
-															<a href="#commentreply"><small><i class="fa fa-reply"></i> Reply</small></a>
-														</div>
-													</div>
-												</li>
-												<li>
-													<div class="comment">
-														<div class="img-circle"> <img class="avatar" width="50" alt="" src="/images/blog/avatar.png"> </div>
-														<div class="comment-block">
-															<span class="comment-by"> <strong>Frank Reman</strong></span>
-															<span class="date"><small><i class="fa fa-clock-o"></i> July 11, 2014</small></span>
-															<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-															<a href="#commentreply"><small><i class="fa fa-reply"></i> Reply</small></a>
-														</div>
-													</div>
-												</li>
-											</ul>
-										</div>
-										<div class="post-block post-leave-comment">
-											<h3>Leave a comment</h3>
-
-											<div class="row">
-												<form action="#" type="post" class="col-md-9">
+    </header>
 
 
-													<div class="form-group" id="commentreply">
-														<div class="row">
-															<div class="col-md-12">
-																<label>Comment *</label>
-																<textarea maxlength="5000" rows="10" class="form-control" name="comment" id="comment"></textarea>
-															</div>
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-md-12">
-															<input type="submit" value="Submit Comment" class="btn btn-default btn-sm" data-loading-text="Loading...">
-														</div>
-													</div>
-												</form>
-											</div>
-										</div>
-									</div>
-								</div>
-                        </div>
+    <!-- Begin Main -->
+    <div role="main" class="main pgl-bg-grey">
+        <!-- Begin page top -->
+        <section class="page-top">
+            <div class="container">
+                <div class="page-top-in">
+                    <h2><span>Article detail</span></h2>
+                </div>
+            </div>
+        </section>
+        <!-- End page top -->
 
-							<!-- end comment -->
-							</article>
+        <!-- Begin content with sidebar -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 content">
+                    <div class="blog-posts">
+                        <article class="post post-large post-single">
+                            <div class="post-image">
+                                <div class="owl-carousel pgl-pro-slide pgl-img-slide"
+                                     data-plugin-options='{"items": 1, "pagination": false, "autoHeight": true}'>
+                                    <div class="item"><img class="img-responsive" src="/images/blog/demo-1.jpg"
+                                                           alt="Blog">
+                                        <div class="item-caption">
+                                            <p><small>Caption here eaque ipsa</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="item"><img class="img-responsive" src="/images/blog/demo-1.jpg"
+                                                           alt="Blog">
+                                        <div class="item-caption">
+                                            <p><small>Excepteur sint occaecat cupidatat</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="item"><img class="img-responsive" src="/images/blog/demo-3.jpg"
+                                                           alt="Blog">
+                                        <div class="item-caption">
+                                            <p><small>Voluptatem accusantium doloremque laudantium</small></p>
+                                        </div>
+                                    </div>
+                                </div>
 
-						</div>
-					</div>
+                            </div>
+                            <div class="post-body">
+
+                                <ul class="post-action">
+                                    <li class="btn-pre"><a href="#">Riff Raff Eats Fried Okra With Oprah on 'Dolce &amp;
+                                        Gabbanaâ€™</a></li>
+                                    <li class="btn-next"><a href="#">Watch Drunk Riff Raff Freestyle About Failed Hoop
+                                        Dreams for 10 Minutes</a></li>
+                                </ul>
+
+                                <!-- begin comment -->
+                                <div class="comment">
+                                    <div class="post-block post-comments clearfix">
+                                        <h2 id="title-comment" th:text="#{Comment}"></h2>
+                                        <ul style="list-style-type: none">
+                                            <li>
+                                                <div class="comment">
+                                                    <div class="img-circle"><img class="avatar" width="50" alt=""
+                                                                                 src="/images/blog/avatar.png"></div>
+                                                    <div class="comment-block">
+                                                        <span class="comment-by"> <strong>Frank Reman</strong></span>
+                                                        <span class="date"><small><i class="fa fa-clock-o"></i> January 12, 2013</small></span>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                                                            viverra euismod odio, gravida pellentesque urna varius
+                                                            vitae, gravida pellentesque urna varius vitae. Lorem ipsum
+                                                            dolor sit amet, consectetur adipiscing elit.</p>
+                                                        <a href="#commentreply"><small><i class="fa fa-reply"></i> Reply</small></a>
+                                                    </div>
+                                                </div>
+                                                <ul class="comments reply">
+                                                    <li>
+                                                        <div class="comment">
+                                                            <div class="img-circle"><img class="avatar" width="50"
+                                                                                         alt=""
+                                                                                         src="/images/blog/avatar.png">
+                                                            </div>
+                                                            <div class="comment-block">
+                                                                <span class="comment-by"> <strong>Frank Reman</strong></span>
+                                                                <span class="date"><small><i class="fa fa-clock-o"></i> July 11, 2014</small></span>
+                                                                <p>Nam viverra euismod odio, gravida pellentesque urna
+                                                                    varius vitae, gravida pellentesque urna varius
+                                                                    vitae. Lorem ipsum dolor sit amet, consectetur
+                                                                    adipiscing elit.</p>
+                                                                <a href="#commentreply"><small><i
+                                                                        class="fa fa-reply"></i> Reply</small></a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="comment">
+                                                            <div class="img-circle"><img class="avatar" width="50"
+                                                                                         alt=""
+                                                                                         src="/images/blog/avatar.png">
+                                                            </div>
+                                                            <div class="comment-block">
+                                                                <span class="comment-by"> <strong>Frank Reman</strong></span>
+                                                                <span class="date"><small><i class="fa fa-clock-o"></i> July 11, 2014</small></span>
+                                                                <p>Gravida pellentesque urna varius vitae. Lorem ipsum
+                                                                    dolor sit amet, consectetur adipiscing elit.</p>
+                                                                <a href="#commentreply"><small><i
+                                                                        class="fa fa-reply"></i> Reply</small></a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <div class="comment">
+                                                    <div class="img-circle"><img class="avatar" width="50" alt=""
+                                                                                 src="/images/blog/avatar.png"></div>
+                                                    <div class="comment-block">
+                                                        <span class="comment-by"> <strong>Frank Reman</strong></span>
+                                                        <span class="date"><small><i class="fa fa-clock-o"></i> July 11, 2014</small></span>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                                                            viverra euismod odio, gravida pellentesque urna varius
+                                                            vitae, gravida pellentesque urna varius vitae</p>
+                                                        <a href="#commentreply"><small><i class="fa fa-reply"></i> Reply</small></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="comment">
+                                                    <div class="img-circle"><img class="avatar" width="50" alt=""
+                                                                                 src="/images/blog/avatar.png"></div>
+                                                    <div class="comment-block">
+                                                        <span class="comment-by"> <strong>Frank Reman</strong></span>
+                                                        <span class="date"><small><i class="fa fa-clock-o"></i> July 11, 2014</small></span>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                        <a href="#commentreply"><small><i class="fa fa-reply"></i> Reply</small></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="post-block post-leave-comment">
+                                        <h3>Leave a comment</h3>
+
+                                        <div class="row">
+                                            <form action="#" type="post" class="col-md-9">
 
 
-		</div>
-		<!-- End Main -->
+                                                <div class="form-group" id="commentreply">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label>Comment *</label>
+                                                            <textarea maxlength="5000" rows="10" class="form-control"
+                                                                      name="comment" id="comment"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="submit" value="Submit Comment"
+                                                               class="btn btn-default btn-sm"
+                                                               data-loading-text="Loading...">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
 
-		<!-- Begin footer -->
-		<footer class="pgl-footer">
-			<div class="container">
-				<div class="pgl-upper-foot">
-					<div class="row">
-						<div class="col-sm-4">
-							<h2>Thông tin liên hệ</h2>
+                    <!-- end comment -->
+                    </article>
 
-							<address>
+                </div>
+            </div>
+        </div>
 
-								<i class="fa fa-phone"></i> Điện thoại : 0800-666-6666<br>
-								<i class="fa fa-fax"></i> Fax : 1-800-666-8888<br>
-								<i class="fa fa-envelope-o"></i> Mail: <a href="mailto:viet@gmail.com">viet@gmail.com</a>
-							</address>
-						</div>
-						<div class="col-sm-2">
-							<h2>Hướng dẫn</h2>
-							<ul class="list-unstyled">
-								<li><a href="#">Help and FAQs</a></li>
-								<li><a href="#">Home Price</a></li>
-								<li><a href="#">Market View</a></li>
+    </div>
+    <!-- End Main -->
 
-							</ul>
-						</div>
-						<div class="col-sm-2">
-							<h2>Trang</h2>
-							<ul class="list-unstyled">
-								<li><a href="#">Font &amp; Color</a></li>
-								<li><a href="#">Blogs</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">404 Page</a></li>
-								<li><a href="#">Property Custom Field</a></li>
-								<li><a href="#">Google Map</a></li>
-							</ul>
-						</div>
+    <!-- Begin footer -->
+    <footer class="pgl-footer">
+        <div class="container">
+            <div class="pgl-upper-foot">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h2 th:text="#{label.ContactInfo}"></h2>
 
-					</div>
-				</div>
-				<div class="pgl-copyrights">
-					<p>Copyright © 2020 Nha. Designed by</p>
-				</div>
-			</div>
-		</footer>
-		<!-- End footer -->
+                        <address>
 
-	</div>
+                            <i class="fa fa-phone"></i> Điện thoại : 0800-666-6666<br>
+                            <i class="fa fa-fax"></i> Fax : 1-800-666-8888<br>
+                            <i class="fa fa-envelope-o"></i> Mail: <a
+                                href="mailto:viet@gmail.com">viet@gmail.com</a>
+                        </address>
+                    </div>
+                    <div class="col-sm-2">
+                        <h2 th:text="#{label.tutorial}"></h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Help and FAQs</a></li>
+                            <li><a href="#">Home Price</a></li>
+                            <li><a href="#">Market View</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-sm-2">
+                        <h2 th:text="#{label.page}"></h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Font &amp; Color</a></li>
+                            <li><a href="#">Blogs</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">404 Page</a></li>
+                            <li><a href="#">Property Custom Field</a></li>
+                            <li><a href="#">Google Map</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="pgl-copyrights">
+                <p>Copyright © 2020 Nha. Designed by</p>
+            </div>
+        </div>
+    </footer>
+    <!-- End footer -->
+
+</div>
 
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="/vendor/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="/bootstrap/js/bootstrap.min.js"></script>
-	<script src="/vendor/owl-carousel/owl.carousel.js"></script>
-	<script src="/vendor/flexslider/jquery.flexslider-min.js"></script>
-	<script src="/vendor/chosen/chosen.jquery.min.js"></script>
-	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
-	<script src="/vendor/gmap/gmap3.infobox.min.js"></script>
-	<script src="/vendor/masonry/imagesloaded.pkgd.min.js"></script>
-	<script src="/vendor/masonry/masonry.pkgd.min.js"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/vendor/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/owl-carousel/owl.carousel.js"></script>
+<script src="/vendor/flexslider/jquery.flexslider-min.js"></script>
+<script src="/vendor/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+<script src="/vendor/gmap/gmap3.infobox.min.js"></script>
+<script src="/vendor/masonry/imagesloaded.pkgd.min.js"></script>
+<script src="/vendor/masonry/masonry.pkgd.min.js"></script>
 
-	<!-- Theme Initializer -->
-	<script src="/js/theme.plugins.js"></script>
-	<script src="/js/theme.js"></script>
+<!-- Theme Initializer -->
+<script src="/js/theme.plugins.js"></script>
+<script src="/js/theme.js"></script>
 
-	<!-- Style Switcher -->
-	<script type="text/javascript" src="/style-switcher/js/switcher.js"></script>
+<!-- Style Switcher -->
+<script type="text/javascript" src="/style-switcher/js/switcher.js"></script>
 
 </body>
 
