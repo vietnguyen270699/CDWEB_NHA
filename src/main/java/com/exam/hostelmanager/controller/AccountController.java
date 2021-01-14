@@ -120,7 +120,7 @@ public class AccountController {
         userService.save(entity, 0);
         postEntity.setUserEntity(entity);
 
-        Path path = Paths.get("uploads/");
+        Path path = Paths.get("src/main/resources/static/images/properties/");
         try {
             InputStream inputStream = photo.getInputStream();
             Files.copy(inputStream, path.resolve(photo.getOriginalFilename()),
